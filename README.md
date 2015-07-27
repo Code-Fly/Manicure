@@ -2,7 +2,11 @@
 A WeChat server
 
 ###	Server API
+##### core
 http://www.mydomain.com/api/keystone/core/
+##### Get image location on server
+http://www.mydomain.com/api/keystone/file/image/product
+REQUEST {url:URL,pid:PRODUCT_ID}
 
 ###	Menu API
 ##### create
@@ -25,10 +29,16 @@ http://www.mydomain.com/api/keystone/material/query/{mediaId}
 http://www.mydomain.com/api/keystone/material/list
 
 ###	Shop API
-##### Get shop (Request Method GET)
+##### Get shop
 http://www.mydomain.com/api/keystone/shop/query/{poiId}
-##### Get shop list  (Request Method GET)
-http://www.mydomain.com/api/keystone//shop/list/{begain}/{limit}
+##### Get shop list
+http://www.mydomain.com/api/keystone/shop/list/{begain}/{limit}
+
+###	Product API
+##### Get product
+http://www.mydomain.com/api/keystone/product/query/{productId}
+##### Get product list
+http://www.mydomain.com/api/keystone/product/list/{status}
 
 ###	Mobile web page
 ##### Index
@@ -40,6 +50,10 @@ http://www.mydomain.com/mobile/home
 http://www.mydomain.com/mobile/service
 ##### Order list
 http://www.mydomain.com/mobile/order
-##### Service list
+##### Product list
 http://www.mydomain.com/mobile/list
+##### Space list
+http://www.mydomain.com/mobile/space
+##### Product detail
+http://www.mydomain.com/mobile/product/{productId}
 

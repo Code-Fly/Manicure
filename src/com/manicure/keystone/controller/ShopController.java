@@ -31,7 +31,7 @@ public class ShopController extends BaseController {
 	@Resource
 	ShopService shopService;
 
-	@RequestMapping(value = "/shop/query/{poiId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/shop/query/{poiId}")
 	@ResponseBody
 	public String getShop(HttpServletRequest request, HttpServletResponse response, @PathVariable String poiId) {
 		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
@@ -49,7 +49,7 @@ public class ShopController extends BaseController {
 
 	}
 
-	@RequestMapping(value = "/shop/list/{begain}/{limit}", method = RequestMethod.GET)
+	@RequestMapping(value = "/shop/list/{begain}/{limit}")
 	@ResponseBody
 	public String getShopList(HttpServletRequest request, HttpServletResponse response, @PathVariable int begain, @PathVariable int limit) {
 		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);

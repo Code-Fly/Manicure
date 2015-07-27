@@ -31,7 +31,7 @@ public class ProductController extends BaseController {
 	@Resource
 	ProductService productService;
 
-	@RequestMapping(value = "/product/list/{status}", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/list/{status}")
 	@ResponseBody
 	public String getProductList(HttpServletRequest request, HttpServletResponse response, @PathVariable int status) {
 		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
@@ -48,7 +48,7 @@ public class ProductController extends BaseController {
 		return resp.toString();
 	}
 
-	@RequestMapping(value = "/product/query/{productId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/query/{productId}")
 	@ResponseBody
 	public String getProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String productId) {
 		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);

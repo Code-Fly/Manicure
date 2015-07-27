@@ -18,7 +18,17 @@
 		</div>
 		<div role="main">
 			<div class="ui-grid-solo">
-				<img id="product-main-img" src="${ctx}/mobile/images/slides/bridge.jpg" style="width: 100%;height: 200px;">
+			<div id="product-slider" class="slider-pro">
+					<div class="sp-slides">
+						<div class="sp-slide">
+							<img id="product-main-img" class="sp-image"  data-src="${ctx}/mobile/images/slides/bridge.jpg" />
+
+						</div>
+
+						
+
+					</div>
+				<%-- <img id="product-main-img" src="${ctx}/mobile/images/slides/bridge.jpg" style="width: 100%;height: 200px;"> --%>
 			</div>
 			<div style="padding: 20px;">
 				<div class="ui-grid-a">

@@ -5,10 +5,6 @@ package com.manicure.keystone.service.impl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -19,13 +15,9 @@ import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Service;
 
-import com.manicure.base.helper.Encoder;
 import com.manicure.base.helper.HttpClientUtil;
 import com.manicure.base.service.BaseService;
 import com.manicure.keystone.entity.error.ErrorMsg;
-import com.manicure.keystone.entity.response.Article;
-import com.manicure.keystone.entity.response.NewsMessage;
-import com.manicure.keystone.entity.response.TextMessage;
 import com.manicure.keystone.service.iface.ICoreService;
 
 /**

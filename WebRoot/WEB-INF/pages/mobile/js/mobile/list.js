@@ -27,7 +27,6 @@ $(document).on('pagecontainershow', function(e, ui) {
 			var jList = json;
 			for (var i = 0; i < jList.length; i++) {
 				var pid = jList[i].product_id;
-				var link = _ctx + "/mobile/product/" + pid;
 				var main_img = jList[i].product_base.main_img;
 				var name = jList[i].product_base.name;
 				var description = jList[i].product_base.detail_html.replace(/<[^>]+>/g, "");
@@ -35,15 +34,24 @@ $(document).on('pagecontainershow', function(e, ui) {
 					description = description.substring(0, descLen) + '...';
 				}
 				var price = "¥" + (jList[i].sku_list[0].price / 100).toFixed(2);
-
-				AppendListItem("#page-list-list-service", pid, link, main_img, name, description, price);
-
+				formatData(main_img, pid, name, description, price);
 			}
 
-			$("#page-list-list-service").listview('refresh');
-
 		}
+		
+		function formatData(url, pid, name, description, price) {
+			$.post(_ctx + "/api/keystone/file/image/product", {
+				url : url,
+				pid : pid
+			}, function(data) {
+				var main_img = _ctx + data;
+				var link = _ctx + "/mobile/product/" + pid;
 
+				AppendListItem("#page-list-list-service", pid, link, main_img, name, description, price);
+				$("#page-list-list-service").listview('refresh');
+			});
+		}
+		
 		function AppendListItem(target, pid, href, img, title, discription, status) {
 			var elmLi = $(document.createElement("li"));
 			var elmImg = $(document.createElement("img"));
@@ -53,7 +61,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 
 			var listLi = elmLi.clone();
 			var listA = elmA.clone().attr("href", href).attr("id", pid).attr("data-ajax", "false").addClass("product-item");
-			var listImg = elmImg.clone().attr("src", img).addClass("ui-li-thumb");
+			var listImg = elmImg.clone().attr("src", img).addClass("ui-li-thumb").css("width", "100%").css("height", "100%");
 			var listH2 = elmH2.clone().text(title);
 			var listP = elmP.clone().text(discription);
 			var listSt = elmP.clone().addClass("ui-li-aside").css("color", "white").text(status);

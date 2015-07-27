@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
+import com.manicure.base.helper.FileUtil;
 import com.manicure.keystone.service.impl.CoreService;
 
 /**
@@ -42,6 +44,18 @@ public class CoreController extends BaseController {
 				logger.error(e.getMessage());
 			}
 		}
+
+	}
+
+	@RequestMapping(value = "/file/image/product")
+	@ResponseBody
+	public String getImage(HttpServletRequest request, HttpServletResponse response) {
+		String url = request.getParameter("url");
+		String pid = request.getParameter("pid");
+		if (null != url || null == pid) {
+			url = FileUtil.getWeChatImage(url, FileUtil.CATEGORY_PRODUCT, pid, false);
+		}
+		return url;
 
 	}
 }

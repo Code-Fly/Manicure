@@ -17,8 +17,7 @@ import net.sf.json.JSONObject;
  */
 public class ConfigUtil {
 	public static String getJson(String fileName) throws IOException {
-		String path = Thread.currentThread().getContextClassLoader().getResource("/").getPath();
-		path = "/" + path.substring(1, path.indexOf("classes")) + "conf/" + fileName;
+		String path = Const.getServerPath() + "/conf/" + fileName;
 		FileInputStream fileInputStream = new FileInputStream(path);
 		InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
 		BufferedReader reader = new BufferedReader(inputStreamReader);
