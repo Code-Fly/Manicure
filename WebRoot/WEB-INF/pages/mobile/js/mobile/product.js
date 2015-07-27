@@ -4,7 +4,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			return;
 		
 		var _pid = window.location.href.replace(_ctx + "/mobile/product/", "")
-		var payUrl = "http://mp.weixin.qq.com/bizmall/malldetail?id=&pid=PRODUCT_ID&scene=&action=show_detail&showwxpaytitle=1#wechat_redirect";
+		var payUrl = "http://mp.weixin.qq.com/bizmall/malldetail?id=&pid=PRODUCT_ID&biz=MzI5MjAwNjA4Ng==&scene=&action=show_detail&showwxpaytitle=1#wechat_redirect";
 
 		$.getJSON(_ctx + "/api/keystone/product/query/" + _pid, function(json) {
 			if (null == json) {
@@ -62,7 +62,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				
 				$('#product-slider').sliderPro({
 					width : "100%",
-					aspectRatio : 1.6,
+					aspectRatio : 1.4,
 					arrows : false,
 					buttons : false,
 					fullScreen : false,
