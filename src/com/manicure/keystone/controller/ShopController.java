@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
+import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.keystone.service.impl.CoreService;
 import com.manicure.keystone.service.impl.ShopService;
 
@@ -34,14 +35,14 @@ public class ShopController extends BaseController {
 	@RequestMapping(value = "/shop/query/{poiId}")
 	@ResponseBody
 	public String getShop(HttpServletRequest request, HttpServletResponse response, @PathVariable String poiId) {
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
-			return at.toString();
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
 
-		JSONObject resp = shopService.getShop(at.getString("access_token"), poiId);
-		if (resp.containsKey("errcode")) {
+		JSONObject resp = shopService.getShop(at, poiId);
+		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
 			logger.error(resp.toString());
 			return resp.toString();
 		}
@@ -52,14 +53,14 @@ public class ShopController extends BaseController {
 	@RequestMapping(value = "/shop/list/{begain}/{limit}")
 	@ResponseBody
 	public String getShopList(HttpServletRequest request, HttpServletResponse response, @PathVariable int begain, @PathVariable int limit) {
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
-			return at.toString();
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
 
-		JSONObject resp = shopService.getShopList(at.getString("access_token"), begain, limit);
-		if (resp.containsKey("errcode")) {
+		JSONObject resp = shopService.getShopList(at, begain, limit);
+		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
 			logger.error(resp.toString());
 			return resp.toString();
 		}

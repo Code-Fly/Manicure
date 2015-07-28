@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
+import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.keystone.service.iface.ICoreService;
 import com.manicure.keystone.service.impl.MaterialService;
 
@@ -40,11 +41,12 @@ public class MaterialController extends BaseController {
 	@ResponseBody
 	public String getMaterialList(HttpServletRequest request, HttpServletResponse response) {
 		// 调用接口获取access_token
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {			
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
-		JSONObject resp = materialService.getMaterialList(at.getString("access_token"));
+		JSONObject resp = materialService.getMaterialList(at);
 		if (resp.containsKey("errcode")) {
 			logger.error(resp.toString());
 		}
@@ -62,12 +64,12 @@ public class MaterialController extends BaseController {
 	@ResponseBody
 	public String getMaterial(HttpServletRequest request, HttpServletResponse response, @PathVariable String mediaId) {
 		// 调用接口获取access_token
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
-			return at.toString();
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {			
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
-		JSONObject resp = materialService.getMaterial(at.getString("access_token"), mediaId);
+		JSONObject resp = materialService.getMaterial(at, mediaId);
 		if (resp.containsKey("errcode")) {
 			logger.error(resp.toString());
 			return resp.toString();

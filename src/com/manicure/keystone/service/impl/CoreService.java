@@ -16,6 +16,7 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.manicure.base.helper.HttpClientUtil;
+import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.base.service.BaseService;
 import com.manicure.keystone.entity.error.ErrorMsg;
 import com.manicure.keystone.service.iface.ICoreService;
@@ -26,8 +27,6 @@ import com.manicure.keystone.service.iface.ICoreService;
  */
 @Service
 public class CoreService extends BaseService implements ICoreService {
-	@Resource
-	LoginService loginMgr;
 	@Resource
 	MenuService menuService;
 
@@ -49,7 +48,7 @@ public class CoreService extends BaseService implements ICoreService {
 
 		PrintWriter out = response.getWriter();
 		// 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
-		if (loginMgr.checkSignature(TOKEN, signature, timestamp, nonce)) {
+		if (KeystoneUtil.checkSignature(TOKEN, signature, timestamp, nonce)) {
 			out.print(echostr);
 		}
 		out.close();

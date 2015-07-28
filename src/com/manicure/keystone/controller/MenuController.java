@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.manicure.base.controller.BaseController;
 import com.manicure.base.helper.ConfigUtil;
 import com.manicure.base.helper.Encoder;
+import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.base.helper.UrlUtil;
+import com.manicure.keystone.entity.error.ErrorMsg;
 import com.manicure.keystone.service.impl.CoreService;
 import com.manicure.keystone.service.impl.MenuService;
 
@@ -41,10 +43,10 @@ public class MenuController extends BaseController {
 		StringBuffer url = request.getRequestURL();
 		String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append(request.getServletContext().getContextPath()).append("/").toString();
 		// 调用接口获取access_token
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
-			return at.toString();
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {			
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
 		String menuStr = ConfigUtil.getJson("menu.json");
 
@@ -65,7 +67,7 @@ public class MenuController extends BaseController {
 		menuStr = menuStr.replace(MenuService.V3001_ADDREDD, urlAddress);
 		logger.info(menuStr);
 		// 调用接口创建菜单
-		JSONObject resp = JSONObject.fromObject(menuService.create(at.getString("access_token"), JSONObject.fromObject(menuStr)));
+		JSONObject resp = JSONObject.fromObject(menuService.create(at, JSONObject.fromObject(menuStr)));
 		if (resp.containsKey("errcode")) {
 			logger.error(resp.toString());
 			return resp.toString();

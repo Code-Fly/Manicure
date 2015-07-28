@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
+import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.keystone.service.impl.CoreService;
 import com.manicure.keystone.service.impl.ProductService;
 
@@ -34,13 +35,13 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = "/product/list/{status}")
 	@ResponseBody
 	public String getProductList(HttpServletRequest request, HttpServletResponse response, @PathVariable int status) {
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
-			return at.toString();
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {			
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
 
-		JSONObject resp = productService.getProductList(at.getString("access_token"), status);
+		JSONObject resp = productService.getProductList(at, status);
 		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
 			logger.error(resp.toString());
 			return resp.toString();
@@ -51,13 +52,13 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = "/product/query/{productId}")
 	@ResponseBody
 	public String getProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String productId) {
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
-			return at.toString();
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {			
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
 
-		JSONObject resp = productService.getProduct(at.getString("access_token"), productId);
+		JSONObject resp = productService.getProduct(at, productId);
 		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
 			logger.error(resp.toString());
 			return resp.toString();

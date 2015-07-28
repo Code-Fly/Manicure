@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
+import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.keystone.entity.error.ErrorMsg;
 import com.manicure.keystone.service.impl.CoreService;
 import com.manicure.keystone.service.impl.UserService;
@@ -117,14 +118,13 @@ public class UserController extends BaseController {
 	@ResponseBody
 	public String getWeChatUserInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable String openId) {
 		// 调用接口获取access_token
-		// 调用接口获取access_token
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
-			return at.toString();
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {			
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
 
-		JSONObject resp = userService.getWeChatUserInfo(at.getString("access_token"), openId);
+		JSONObject resp = userService.getWeChatUserInfo(at, openId);
 		if (resp.containsKey("errcode")) {
 			logger.error(resp.toString());
 			return resp.toString();
@@ -136,15 +136,15 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/user/list/{nextOpenId}")
 	@ResponseBody
 	public String getWeChatUserList(HttpServletRequest request, HttpServletResponse response, @PathVariable String nextOpenId) {
-		JSONObject at = coreService.getAccessToken(APP_ID, APP_SECRET);
-		if (at.containsKey("errcode")) {
-			logger.error(at.toString());
-			return at.toString();
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {			
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
 		}
 		if ("0".equals(nextOpenId))
 			nextOpenId = null;
 
-		JSONObject resp = userService.getWeChatUserList(at.getString("access_token"), nextOpenId);
+		JSONObject resp = userService.getWeChatUserList(at, nextOpenId);
 		if (resp.containsKey("errcode")) {
 			logger.error(resp.toString());
 			return resp.toString();

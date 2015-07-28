@@ -1,22 +1,38 @@
 /**
  * 
  */
-package com.manicure.keystone.service.impl;
+package com.manicure.base.helper;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Date;
 
-import org.springframework.stereotype.Service;
+import net.sf.json.JSONObject;
 
-import com.manicure.keystone.service.iface.ILoginService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.manicure.keystone.service.impl.CoreService;
 
 /**
  * @author Barrie
  *
  */
-@Service
-public class LoginService implements ILoginService {
+public class KeystoneUtil {
+	private static final Logger logger = LoggerFactory.getLogger(KeystoneUtil.class);
+
+	public static String accessToken = null;
+	public static String errmsg = null;
+	
+	
+
+	/**
+	 * 
+	 */
+	public KeystoneUtil() {
+		accessTokenKeeper();
+	}
 
 	/**
 	 * 验证签名
@@ -26,9 +42,8 @@ public class LoginService implements ILoginService {
 	 * @param nonce
 	 * @return
 	 */
-	@Override
-	public boolean checkSignature(String token, String signature,
-			String timestamp, String nonce) {
+
+	public static boolean checkSignature(String token, String signature, String timestamp, String nonce) {
 		String[] arr = new String[] { token, timestamp, nonce };
 		// 将token、timestamp、nonce三个参数进行字典序排序
 		Arrays.sort(arr);
@@ -74,8 +89,7 @@ public class LoginService implements ILoginService {
 	 * @return
 	 */
 	private static String byteToHexStr(byte mByte) {
-		char[] Digit = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A',
-				'B', 'C', 'D', 'E', 'F' };
+		char[] Digit = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 		char[] tempArr = new char[2];
 		tempArr[0] = Digit[(mByte >>> 4) & 0X0F];
 		tempArr[1] = Digit[mByte & 0X0F];
@@ -84,4 +98,17 @@ public class LoginService implements ILoginService {
 		return s;
 	}
 
+	protected void accessTokenKeeper() {
+		CoreService coreService = new CoreService();
+		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
+		if (at.containsKey("errcode")) {
+			KeystoneUtil.accessToken = null;
+			KeystoneUtil.errmsg = at.toString();
+			logger.error(at.toString());
+		}
+		KeystoneUtil.accessToken = at.getString("access_token");
+		KeystoneUtil.errmsg = null;
+		logger.info(new Date() + "> access token: " + KeystoneUtil.accessToken);
+
+	}
 }
