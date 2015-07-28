@@ -5,6 +5,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 	(function() {
 		if (ui.toPage[0].id != "order-page")
 			return;
+		$("#order-header").text("我的米宝");
 		$(document).on("click", "#page-order-btn-list-all", function() {
 			$("#page-order-list-orders").hide();
 			$("#page-order-list-orders").fadeIn();

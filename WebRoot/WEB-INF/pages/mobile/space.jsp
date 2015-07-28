@@ -11,7 +11,7 @@
 	<div data-role="page" id="space-page" data-title="我的">
 		<div data-role="header">
 			<a data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">后退</a>
-			<h2>个人中心</h2>
+			<h2 id="space-header">个人中心</h2>
 		</div>
 		<div role="main">
 			<div class="ui-grid-a ui-bar ui-bar-b">

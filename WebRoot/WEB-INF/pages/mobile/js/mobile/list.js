@@ -5,7 +5,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 	(function() {
 		if (ui.toPage[0].id != "list-page")
 			return;
-
+		$("#list-header").text("米宝服务");
 		$.getJSON(_ctx + "/api/keystone/product/list/1", function(json) {
 			if (null == json) {
 				alert("null");
@@ -19,7 +19,9 @@ $(document).on('pagecontainershow', function(e, ui) {
 		});
 
 		function loadAllProduct(json) {
-			var descLen = $(".ui-li-has-thumb a p").width() / 15;
+			// var descLen = $(".ui-li-has-thumb a p").width() / 15;
+			var descLen = $("#page-list-list-service").width() / 2 / 21
+			// alert(descLen);
 			if (descLen == 0) {
 				descLen = 6
 			}
@@ -35,23 +37,35 @@ $(document).on('pagecontainershow', function(e, ui) {
 				}
 				var price = "¥" + (jList[i].sku_list[0].price / 100).toFixed(2);
 				formatData(main_img, pid, name, description, price);
+				
 			}
-
+			$("#page-list-list-service").listview('refresh');
 		}
-		
+
 		function formatData(url, pid, name, description, price) {
-			$.post(_ctx + "/api/keystone/file/image/product", {
-				url : url,
-				pid : pid
-			}, function(data) {
-				var main_img = _ctx + data;
-				var link = _ctx + "/mobile/product/" + pid;
-
-				AppendListItem("#page-list-list-service", pid, link, main_img, name, description, price);
-				$("#page-list-list-service").listview('refresh');
-			});
+			$.ajax({ 
+		          type : "POST", 
+		          url : _ctx + "/api/keystone/file/image/product", 
+		          data : {"url": url,"pid": pid}, 
+		          async : false, 
+		          success : function(data){ 
+						var main_img = _ctx + data;
+						var link = _ctx + "/mobile/product/" + pid;
+						AppendListItem("#page-list-list-service", pid, link, main_img, name, description, price);
+		          } 
+		    });
+			
+//			$.post(_ctx + "/api/keystone/file/image/product", {
+//				url : url,
+//				pid : pid
+//			}, function(data) {
+//				var main_img = _ctx + data;
+//				var link = _ctx + "/mobile/product/" + pid;
+//				callBack("#page-list-list-service", pid, link, main_img, name, description, price);
+//				$("#page-list-list-service").listview('refresh');
+//			});
 		}
-		
+
 		function AppendListItem(target, pid, href, img, title, discription, status) {
 			var elmLi = $(document.createElement("li"));
 			var elmImg = $(document.createElement("img"));
@@ -60,7 +74,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			var elmP = $(document.createElement("p"));
 
 			var listLi = elmLi.clone();
-			var listA = elmA.clone().attr("href", href).attr("id", pid).attr("data-ajax", "false").addClass("product-item");
+			var listA = elmA.clone().attr("href", href).attr("id", pid).addClass("product-item");
 			var listImg = elmImg.clone().attr("src", img).addClass("ui-li-thumb").css("width", "100%").css("height", "100%");
 			var listH2 = elmH2.clone().text(title);
 			var listP = elmP.clone().text(discription);
@@ -73,6 +87,8 @@ $(document).on('pagecontainershow', function(e, ui) {
 			listLi.append(listA);
 			$(target).append(listLi);
 		}
+		
+		
 	})();
 
 });

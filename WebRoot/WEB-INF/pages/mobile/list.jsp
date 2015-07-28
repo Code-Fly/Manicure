@@ -12,7 +12,7 @@
 	<div data-role="page" id="list-page">
 		<div data-role="header">
 			<a data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">后退</a>
-			<h2>米宝服务</h2>
+			<h2 id="list-header">米宝服务</h2>
 		</div>
 		<div role="main" class="ui-content">
 			<div class="ui-grid-b" style="font-size: 0.8em;text-align: center;">
@@ -73,13 +73,13 @@
 
 			<div class="ui-grid-solo">
 				<ul data-role="listview" data-inset="true" id="page-list-list-service">
-
+					<%-- 
 					<li><a href="#"> <img src="${ctx}/mobile/_assets/img/apple.png" class="ui-li-thumb">
 							<h2>无商品</h2>
 							<p>没有商品</p>
 							<p class="ui-li-aside">¥0</p>
 					</a></li>
-
+ 					--%>
 				</ul>
 
 			</div>
