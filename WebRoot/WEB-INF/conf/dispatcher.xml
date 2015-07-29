@@ -55,9 +55,5 @@
 			</list>
 		</property>
 	</bean>
-	<mvc:resources mapping="/mobile/_assets/**" location="/WEB-INF/pages/mobile/_assets/" cache-period="31556926" />
-	<mvc:resources mapping="/mobile/_search/**" location="/WEB-INF/pages/mobile/_search/" cache-period="31556926" />
-	<mvc:resources mapping="/mobile/js/**" location="/WEB-INF/pages/mobile/js/" cache-period="31556926" />
-	<mvc:resources mapping="/mobile/css/**" location="/WEB-INF/pages/mobile/css/" cache-period="31556926" />
-	<mvc:resources mapping="/mobile/images/**" location="/WEB-INF/pages/mobile/images/" cache-period="31556926" />
+	<mvc:resources mapping="/mobile/static/**" location="/WEB-INF/pages/mobile/static/" cache-period="31556926" />
 </beans>

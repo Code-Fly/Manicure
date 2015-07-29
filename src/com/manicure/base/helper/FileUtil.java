@@ -26,7 +26,7 @@ public class FileUtil {
 	public static String CATEGORY_USER = "/user";
 
 	private static String getFile(String url, String subPath, String category, String filename, String extension, boolean force) {
-		String localPathStr = Const.getServerPath() + "/pages/mobile" + subPath + category;
+		String localPathStr = Const.getServerPath() + "/pages/mobile/static" + subPath + category;
 		File localPath = new File(localPathStr);
 		if (!localPath.exists() && !localPath.isDirectory()) {
 			localPath.mkdirs();
@@ -75,7 +75,7 @@ public class FileUtil {
 			return null;
 		}
 
-		return ("/mobile" + subPath + category + "/" + savedFileName);
+		return ("/mobile/static" + subPath + category + "/" + savedFileName);
 	}
 
 	public static String getWeChatImage(String url, String category, String filename, boolean force) {

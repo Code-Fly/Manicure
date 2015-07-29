@@ -6,7 +6,7 @@
 <base href="<%=basePath%>">
 <title>Home</title>
 <%@ include file="meta/meta.jsp"%>
-<link rel="stylesheet" href="${ctx}/css/listview-grid.css">
+
 </head>
 <body>
 	<div data-role="page" id="list-page">
@@ -14,7 +14,7 @@
 			<a data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">后退</a>
 			<h2 id="list-header">米宝服务</h2>
 		</div>
-		<div role="main" class="ui-content">
+		<div role="main">
 			<div class="ui-grid-b" style="font-size: 0.8em;text-align: center;">
 				<div class="ui-block-a typebtn">
 					<a href="#" data-theme="b" data-role="button">美甲</a>
@@ -34,7 +34,7 @@
 					<a data-theme="f" data-role="button">护理</a>
 				</div>
 			</div>
-			<div class="ui-bar ui-bar-b" style="padding: 5px;">
+			<div class="ui-bar " style="padding: 0px;">
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
 						<select name="select-native-1" id="select-native-1" data-mini="true" data-theme="a">

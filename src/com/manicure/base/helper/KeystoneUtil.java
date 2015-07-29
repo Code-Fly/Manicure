@@ -98,7 +98,7 @@ public class KeystoneUtil {
 		return s;
 	}
 
-	protected void accessTokenKeeper() {
+	public void accessTokenKeeper() {
 		CoreService coreService = new CoreService();
 		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
 		if (at.containsKey("errcode")) {
@@ -108,7 +108,7 @@ public class KeystoneUtil {
 		}
 		KeystoneUtil.accessToken = at.getString("access_token");
 		KeystoneUtil.errmsg = null;
-		logger.info(new Date() + "> access token: " + KeystoneUtil.accessToken);
+		logger.info(new Date() + " > access token: " + KeystoneUtil.accessToken);
 
 	}
 }

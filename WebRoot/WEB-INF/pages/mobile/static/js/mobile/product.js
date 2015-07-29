@@ -2,7 +2,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 	(function() {
 		if (ui.toPage[0].id != "product-page")
 			return;
-		
+
 		var _pid = window.location.href.replace(_ctx + "/mobile/product/", "")
 		var payUrl = "http://mp.weixin.qq.com/bizmall/malldetail?id=&pid=PRODUCT_ID&biz=MzI5MjAwNjA4Ng==&scene=&action=show_detail&showwxpaytitle=1#wechat_redirect";
 
@@ -57,9 +57,10 @@ $(document).on('pagecontainershow', function(e, ui) {
 				$("#product-description").text(description);
 				$("#product-cost").text(cost);
 				$("#product-last").text(last);
-				$("#product-btn-pay").attr("href", payUrl.replace("PRODUCT_ID", _pid));
-				
-				
+				// $("#product-btn-pay").attr("href",
+				// payUrl.replace("PRODUCT_ID", _pid));
+				$("#product-btn-to-door-service").attr("href", _ctx + "/mobile/purchase-select-employee?type=todoor&pid=" + pid);
+				$("#product-btn-to-shop-service").attr("href", _ctx + "/mobile/purchase-select-employee?type=toshop&pid=" + pid);
 				$('#product-slider').sliderPro({
 					width : "100%",
 					aspectRatio : 1.4,

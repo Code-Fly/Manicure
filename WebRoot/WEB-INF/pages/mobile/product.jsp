@@ -7,7 +7,7 @@
 <title>Home</title>
 <%@ include file="meta/meta.jsp"%>
 <SCRIPT type="text/javascript">
-	//var _pid = "${pid}";
+	var __pid = "${pid}";
 </SCRIPT>
 </head>
 <body>
@@ -59,28 +59,57 @@
 				</div>
 				<div class="ui-grid-solo" style="padding-left: 10px;padding-right: 10px;padding-bottom: 10px;">
 					<ul data-role="listview" data-inset="true">
-						<li><a href="#"> <img src="${ctx}/mobile/_assets/img/blackberry_10.png">
-								<h2>Demo</h2>
-								<p>Demo</p>
-								<p class="ui-li-aside">Demo</p>
+						<li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
+								<h2>叶海燕</h2>
+								<p>
+									专业:
+									<n style="color:blue;">4.5</n>
+									感动:
+									<n style="color:green;">4.0</n>
+									守时:
+									<n style="color:red;">5.0</n>
+								</p>
+								<p class="ui-li-aside" style="color:orange;">服务32次</p>
 						</a></li>
-						<li><a href="#"> <img src="${ctx}/mobile/_assets/img/blackberry_10.png">
-								<h2>Demo</h2>
-								<p>Demo</p>
-								<p class="ui-li-aside">Demo</p>
+						<li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
+								<h2>张君苗</h2>
+								<p>
+									专业:
+									<n style="color:blue;">3.5</n>
+									感动:
+									<n style="color:green;">4.4</n>
+									守时:
+									<n style="color:red;">5.0</n>
+								</p>
+								<p class="ui-li-aside" style="color:orange;">服务46次</p>
 						</a></li>
-						<li><a href="#"> <img src="${ctx}/mobile/_assets/img/blackberry_10.png">
-								<h2>Demo</h2>
-								<p>Demo</p>
-								<p class="ui-li-aside">Demo</p>
+						<li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
+								<h2>黄雅莉</h2>
+								<p>
+									专业:
+									<n style="color:blue;">2.5</n>
+									感动:
+									<n style="color:green;">4.0</n>
+									守时:
+									<n style="color:red;">4.0</n>
+								</p>
+								<p class="ui-li-aside" style="color:orange;">服务25次</p>
 						</a></li>
 					</ul>
 				</div>
-				<div class="ui-grid-solo" style="padding-left: 10px;padding-right: 10px;padding-bottom: 10px;">
-					<a id="product-btn-pay" href="#" data-ajax="false" class="ui-btn ui-btn-d ui-shadow ui-corner-all">预约</a>
+
+			</div>
+			<div data-role="footer" data-position="fixed" style="text-align: center;">
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a id="product-btn-to-door-service" href="#" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 60%;">上门服务</a>
+					</div>
+					<div class="ui-block-b">
+						<a id="product-btn-to-shop-service" href="#" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 60%;">到店服务</a>
+					</div>
+
 				</div>
 			</div>
-			<%@ include file="meta/footer.jsp"%>
 			<!-- /footer -->
 		</div>
 	</div>
