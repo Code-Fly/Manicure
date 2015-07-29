@@ -40,10 +40,16 @@
 					<p style="color:black;margin-top: 5px;">确认下单</p>
 				</div>
 			</div>
-			<p style="font-size: 0.6em;">选择甲师</p>
+			<p style="font-size: 0.6em;">&nbsp;选择店面</p>
+			<div class="ui-grid-solo" style="padding:10px;">
+				<select name="select-native-17" id="select-native-17">
+					<option value="1" selected="selected">南京 淘淘巷</option>
+				</select>
+			</div>
+			<p style="font-size: 0.6em;">&nbsp;选择甲师</p>
 			<div class="ui-grid-solo" style="padding-bottom: 10px;">
 				<ul data-role="listview">
-					<li><a href="${ctx}/mobile/purchase-select-time?pid=xxx"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
+					<li><a class="purchase-select-employee-btn-next" href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
 							<h2>叶海燕</h2>
 							<p>
 								专业:
@@ -55,7 +61,7 @@
 							</p>
 							<p class="ui-li-aside" style="color:orange;">服务32次</p>
 					</a></li>
-					<li><a href="${ctx}/mobile/purchase-select-time?pid=xxx"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
+					<li><a href="#" class="purchase-select-employee-btn-next"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
 							<h2>张君苗</h2>
 							<p>
 								专业:
@@ -67,7 +73,7 @@
 							</p>
 							<p class="ui-li-aside" style="color:orange;">服务46次</p>
 					</a></li>
-					<li><a href="${ctx}/mobile/purchase-select-time?pid=xxx"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
+					<li><a href="#" class="purchase-select-employee-btn-next"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
 							<h2>黄雅莉</h2>
 							<p>
 								专业:

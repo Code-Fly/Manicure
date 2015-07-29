@@ -59,8 +59,8 @@ $(document).on('pagecontainershow', function(e, ui) {
 				$("#product-last").text(last);
 				// $("#product-btn-pay").attr("href",
 				// payUrl.replace("PRODUCT_ID", _pid));
-				$("#product-btn-to-door-service").attr("href", _ctx + "/mobile/purchase-select-employee?type=todoor&pid=" + pid);
-				$("#product-btn-to-shop-service").attr("href", _ctx + "/mobile/purchase-select-employee?type=toshop&pid=" + pid);
+				$("#product-btn-to-door-service").attr("href", _ctx + "/mobile/purchase-input-address?type=todoor&pid=" + pid);
+				$("#product-btn-to-shop-service").attr("href", _ctx + "/mobile/purchase-input-address?type=toshop&pid=" + pid);
 				$('#product-slider').sliderPro({
 					width : "100%",
 					aspectRatio : 1.4,

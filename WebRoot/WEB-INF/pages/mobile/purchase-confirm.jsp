@@ -10,11 +10,10 @@
 <script src="http://cdn.rawgit.com/jquery/jquery-ui/1.10.4/ui/jquery.ui.datepicker.js"></script>
 <link rel="stylesheet" href="http://cdn.rawgit.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.css">
 <style type="text/css">
-
 </style>
 </head>
 <body>
-	<div data-role="page">
+	<div data-role="page" id="purchase-confirm-page">
 		<div data-role="header">
 			<h2>填写订单</h2>
 		</div>
@@ -47,15 +46,11 @@
 					<p style="color: orange;margin-top: 5px;">确认下单</p>
 				</div>
 			</div>
-			<div class="ui-grid-solo">
-				
+			<div class="ui-grid-solo"></div>
+			<div class="ui-grid-solo"></div>
+			<div data-role="footer" data-position="fixed" style="text-align: center;">
+				<a href="#" id="purchase-select-confirm-btn-next" data-ajax="false" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">付款</a>
 			</div>
-			<div class="ui-grid-solo">
-			
-				
-		</div>
-		<div data-role="footer" data-position="fixed" style="text-align: center;">
-			<a href="#" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">付款</a>
 		</div>
 		<!-- /footer -->
 	</div>

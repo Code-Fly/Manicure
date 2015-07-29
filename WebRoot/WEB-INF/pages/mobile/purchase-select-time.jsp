@@ -95,7 +95,7 @@
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" style="text-align: center;">
-			<a href="${ctx}/mobile/purchase-confirm?pid=xxx" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">确认订单</a>
+			<a href="#" id="purchase-select-time-btn-next" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">确认订单</a>
 		</div>
 		<!-- /footer -->
 	</div>
