@@ -44,8 +44,7 @@ public class OrderService extends BaseService implements IOrderService {
 		if (!"0".equals(endTime)) {
 			request.put("endtime", endTime);
 		}
-		logger.info(request.toString());
-
+		
 		JSONObject response = HttpClientUtil.doHttpsPost(url, "GET", request.toString());
 		
 		if (null == response) {

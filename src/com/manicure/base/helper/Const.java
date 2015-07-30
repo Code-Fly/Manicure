@@ -36,6 +36,10 @@ public class Const {
 
 	public static final String URL_USER_GET_LIST = ConfigUtil.getProperty(propertiesFile, "url.user.get.list");
 
+	public static final String URL_USER_GROUP_GET_LIST = ConfigUtil.getProperty(propertiesFile, "url.user.group.get.list");
+
+	public static final String URL_USER_GROUP_GET_BY_OPENID = ConfigUtil.getProperty(propertiesFile, "url.user.group.get.by.openid");
+
 	public static final String URL_MATERIAL_GET_LIST = ConfigUtil.getProperty(propertiesFile, "url.material.get.list");
 
 	public static final String URL_MATERIAL_GET_DETAIL = ConfigUtil.getProperty(propertiesFile, "url.material.get.detail");

@@ -19,8 +19,13 @@ http://www.mydomain.com/api/keystone/user/query/sns/{openId}/{accessToken}
 http://www.mydomain.com/api/keystone/user/sns/oauth 
 ##### Get WeChat user
 http://www.mydomain.com/api/keystone/user/query/{openId} 
-##### Get WeChat user (Query from the very beginning of the list when {nextOpenId} is 0)
+##### Get WeChat user
 http://www.mydomain.com/api/keystone/user/list/{nextOpenId}
+##### Get WeChat user group list
+http://www.mydomain.com/api/keystone/user/group/list
+##### Get WeChat user group by openid
+http://www.mydomain.com/api/keystone/user/group/query/{openId}
+
 
 ###	Material API
 ##### Get material
