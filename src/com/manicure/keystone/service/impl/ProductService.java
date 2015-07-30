@@ -9,7 +9,6 @@ import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Service;
 
-import com.manicure.base.helper.FileUtil;
 import com.manicure.base.helper.HttpClientUtil;
 import com.manicure.base.service.BaseService;
 import com.manicure.keystone.entity.error.ErrorMsg;
@@ -26,9 +25,10 @@ import com.manicure.keystone.service.iface.IProductService;
 public class ProductService extends BaseService implements IProductService {
 	@Resource
 	ICoreService coreService;
-	protected final int ALL = 0;
-	protected final int ON_SHELVES = 1;
-	protected final int OFF_SHELVES = 2;
+	
+	public final int STATUS_ALL = 0;
+	public final int STATUS_ON_SHELVES = 1;
+	public final int STATUS_OFF_SHELVES = 2;
 
 	/**
 	 * 

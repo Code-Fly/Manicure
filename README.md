@@ -40,6 +40,12 @@ http://www.mydomain.com/api/keystone/product/query/{productId}
 ##### Get product list
 http://www.mydomain.com/api/keystone/product/list/{status}
 
+###	Order API
+##### Get order
+http://www.mydomain.com/api/keystone/order/query/{orderId}
+##### Get order list
+http://www.mydomain.com/api/keystone/order/list/{status}/{beginTime}/{endTime}
+
 ###	Mobile web page
 ##### Index
 http://www.mydomain.com/mobile/
