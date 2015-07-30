@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.manicure.base.helper.HttpClientUtil;
 import com.manicure.base.service.BaseService;
 import com.manicure.keystone.entity.error.ErrorMsg;
-import com.manicure.keystone.entity.request.order.OrderReq;
 import com.manicure.keystone.service.iface.ICoreService;
 import com.manicure.keystone.service.iface.IOrderService;
 
@@ -60,10 +59,10 @@ public class OrderService extends BaseService implements IOrderService {
 	public JSONObject getOrder(String accessToken, String orderId) {
 		String url = URL_ORDER_GET_DETAIL.replace("ACCESS_TOKEN", accessToken);
 
-		OrderReq request = new OrderReq();
-		request.setOrder_id(orderId);
+		JSONObject request = new JSONObject();
+		request.put("order_id", orderId);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", JSONObject.fromObject(request).toString());
+		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

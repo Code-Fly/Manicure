@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import com.manicure.base.helper.HttpClientUtil;
 import com.manicure.base.service.BaseService;
 import com.manicure.keystone.entity.error.ErrorMsg;
-import com.manicure.keystone.entity.request.material.MaterialListReq;
-import com.manicure.keystone.entity.request.material.MaterialReq;
 import com.manicure.keystone.service.iface.ICoreService;
 import com.manicure.keystone.service.iface.IMaterialService;
 
@@ -26,21 +24,26 @@ public class MaterialService extends BaseService implements IMaterialService {
 	@Resource
 	ICoreService coreService;
 
+	public static String MATERIAL_TYPE_IMAGE = "image";
+	public static String MATERIAL_TYPE_VIDEO = "video";
+	public static String MATERIAL_TYPE_VOICE = "voice";
+	public static String MATERIAL_TYPE_NEWS = "news";
+
 	/**
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 * 
 	 */
-	public JSONObject getMaterialList(String accessToken) {
+	public JSONObject getMaterialList(String accessToken, String type, int offset, int count) {
 
 		String url = URL_MATERIAL_GET_LIST.replace("ACCESS_TOKEN", accessToken);
 
-		MaterialListReq request = new MaterialListReq();
-		request.setType(MaterialListReq.TYPE_NEWS);
-		request.setCount(20);
-		request.setOffset(0);
+		JSONObject request = new JSONObject();
+		request.put("type", type);
+		request.put("offset", offset);
+		request.put("count", count);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", JSONObject.fromObject(request).toString());
+		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -64,10 +67,10 @@ public class MaterialService extends BaseService implements IMaterialService {
 
 		String url = URL_MATERIAL_GET_DETAIL.replace("ACCESS_TOKEN", accessToken);
 
-		MaterialReq request = new MaterialReq();
-		request.setMedia_id(mediaId);
-		
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", JSONObject.fromObject(request).toString());
+		JSONObject request = new JSONObject();
+		request.put("media_id", mediaId);
+
+		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

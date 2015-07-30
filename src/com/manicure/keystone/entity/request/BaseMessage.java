@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.manicure.keystone.entity.request.message;
+package com.manicure.keystone.entity.request;
 
 import com.manicure.base.entity.BaseEntity;
 

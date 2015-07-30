@@ -37,16 +37,16 @@ public class MaterialController extends BaseController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/material/list")
+	@RequestMapping(value = "/material/list/{type}/{offset}/{count}")
 	@ResponseBody
-	public String getMaterialList(HttpServletRequest request, HttpServletResponse response) {
+	public String getMaterialList(HttpServletRequest request, HttpServletResponse response, @PathVariable String type, @PathVariable int offset, @PathVariable int count) {
 		// 调用接口获取access_token
 		String at = KeystoneUtil.accessToken;
-		if (null == at) {			
+		if (null == at) {
 			logger.error(KeystoneUtil.errmsg);
 			return KeystoneUtil.errmsg;
 		}
-		JSONObject resp = materialService.getMaterialList(at);
+		JSONObject resp = materialService.getMaterialList(at, type, offset, count);
 		if (resp.containsKey("errcode")) {
 			logger.error(resp.toString());
 		}
@@ -65,7 +65,7 @@ public class MaterialController extends BaseController {
 	public String getMaterial(HttpServletRequest request, HttpServletResponse response, @PathVariable String mediaId) {
 		// 调用接口获取access_token
 		String at = KeystoneUtil.accessToken;
-		if (null == at) {			
+		if (null == at) {
 			logger.error(KeystoneUtil.errmsg);
 			return KeystoneUtil.errmsg;
 		}

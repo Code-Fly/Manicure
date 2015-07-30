@@ -20,4 +20,7 @@ public interface IUserService {
 
 	public JSONObject getWeChatUserList(String accessToken, String nextOpenId);
 
+	public JSONObject getWeChatUserGroupList(String accessToken);
+
+	public JSONObject getWeChatUserGroupByOpenId(String accessToken, String openId);
 }

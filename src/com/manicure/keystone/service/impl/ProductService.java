@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import com.manicure.base.helper.HttpClientUtil;
 import com.manicure.base.service.BaseService;
 import com.manicure.keystone.entity.error.ErrorMsg;
-import com.manicure.keystone.entity.request.product.ProductListReq;
-import com.manicure.keystone.entity.request.product.ProductReq;
 import com.manicure.keystone.service.iface.ICoreService;
 import com.manicure.keystone.service.iface.IProductService;
 
@@ -25,7 +23,7 @@ import com.manicure.keystone.service.iface.IProductService;
 public class ProductService extends BaseService implements IProductService {
 	@Resource
 	ICoreService coreService;
-	
+
 	public final int STATUS_ALL = 0;
 	public final int STATUS_ON_SHELVES = 1;
 	public final int STATUS_OFF_SHELVES = 2;
@@ -36,10 +34,10 @@ public class ProductService extends BaseService implements IProductService {
 	public JSONObject getProductList(String accessToken, int status) {
 		String url = URL_PROGUCT_GET_LIST.replace("ACCESS_TOKEN", accessToken);
 
-		ProductListReq request = new ProductListReq();
-		request.setStatus(status);
+		JSONObject request = new JSONObject();
+		request.put("status", status);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", JSONObject.fromObject(request).toString());
+		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -55,10 +53,44 @@ public class ProductService extends BaseService implements IProductService {
 	public JSONObject getProduct(String accessToken, String productId) {
 		String url = URL_PROGUCT_GET_DETAIL.replace("ACCESS_TOKEN", accessToken);
 
-		ProductReq request = new ProductReq();
-		request.setProduct_id(productId);
+		JSONObject request = new JSONObject();
+		request.put("product_id", productId);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", JSONObject.fromObject(request).toString());
+		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+
+		if (null == response) {
+			ErrorMsg errMsg = new ErrorMsg();
+			errMsg.setErrcode("-1");
+			errMsg.setErrmsg("server is busy");
+
+			return JSONObject.fromObject(errMsg);
+		}
+
+		return response;
+	}
+
+	public JSONObject getProductGroupList(String accessToken) {
+		String url = URL_PROGUCT_GROUP_GET_LIST.replace("ACCESS_TOKEN", accessToken);
+
+		JSONObject response = HttpClientUtil.doHttpsPost(url, "GET", null);
+
+		if (null == response) {
+			ErrorMsg errMsg = new ErrorMsg();
+			errMsg.setErrcode("-1");
+			errMsg.setErrmsg("server is busy");
+
+			return JSONObject.fromObject(errMsg);
+		}
+
+		return response;
+	}
+
+	public JSONObject getProductGroupDetail(String accessToken, String groupId) {
+		String url = URL_PROGUCT_GROUP_GET_DETAIL.replace("ACCESS_TOKEN", accessToken);
+
+		JSONObject request = new JSONObject();
+		request.put("group_id", groupId);
+		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
