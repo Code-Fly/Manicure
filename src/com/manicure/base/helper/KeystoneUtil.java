@@ -6,7 +6,6 @@ package com.manicure.base.helper;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.Date;
 
 import net.sf.json.JSONObject;
 
@@ -108,7 +107,7 @@ public class KeystoneUtil {
 		}
 		KeystoneUtil.accessToken = at.getString("access_token");
 		KeystoneUtil.errmsg = null;
-		logger.info(new Date() + " > access token: " + KeystoneUtil.accessToken);
+		logger.info("access token: " + KeystoneUtil.accessToken);
 
 	}
 }

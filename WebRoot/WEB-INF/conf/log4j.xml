@@ -9,7 +9,7 @@
 		<param name="MaxFileSize" value="1024KB" />
 		<param name="MaxBackupIndex" value="50" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="Project %-5p [%l] %m%n" />
+			<param name="ConversionPattern" value="Project %-5p %d{yyyy-MM-dd HH:mm:ss} [%l] %m%n" />
 		</layout>
 	</appender>
 
@@ -20,7 +20,7 @@
 		<param name="Threshold" value="info" />
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="Project %-5p [%l] %m%n" />
+			<param name="ConversionPattern" value="Project %-5p %d{yyyy-MM-dd HH:mm:ss} [%l] %m%n" />
 		</layout>
 		<filter class="org.apache.log4j.varia.StringMatchFilter">
 			<param name="StringToMatch" value="com.xuggle.ferry.NativeLogger" />
