@@ -79,3 +79,37 @@ CREATE TABLE `service_comment` (
 -- ----------------------------
 -- Records of service_comment
 -- ----------------------------
+
+
+
+DROP TABLE IF EXISTS `technician`;
+CREATE TABLE `technician` (
+	`id` INT(24) NOT NULL,
+	`name` VARCHAR(16) NULL DEFAULT NULL,
+	`service_type` INT(2) NULL DEFAULT NULL COMMENT '服务类型',
+	`protal_id` VARCHAR(24) NULL DEFAULT NULL COMMENT '技师所在门店id',
+	`job_title` VARCHAR(24) NOT NULL DEFAULT '高级职业师' COMMENT '职称',
+	`origin` VARCHAR(16) NULL DEFAULT NULL COMMENT '籍贯',
+	`constellation` VARCHAR(12) NULL DEFAULT NULL COMMENT '星座',
+	`love` VARCHAR(64) NULL DEFAULT NULL COMMENT '爱好',
+	`self_desc` VARCHAR(128) NULL DEFAULT NULL COMMENT '自我介绍',
+	`header_pic` VARCHAR(64) NULL DEFAULT NULL COMMENT '头像地址',
+	`self_pic1` VARCHAR(64) NULL DEFAULT NULL COMMENT '个人图片',
+	`self_pic2` VARCHAR(64) NULL DEFAULT NULL,
+	`self_pic3` VARCHAR(64) NULL DEFAULT NULL,
+	 PRIMARY KEY (`id`)
+)
+COMMENT='技师表'
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+DROP TABLE IF EXISTS `tec_service`;
+CREATE TABLE `tec_service` (
+	`id` INT(9) NOT NULL AUTO_INCREMENT,
+	`tec_id` INT(9) NOT NULL COMMENT '技师id',
+	`product_id` VARCHAR(64) NOT NULL COMMENT '服务id',
+	PRIMARY KEY (`id`)
+)
+COMMENT='技师与服务关联表'
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
