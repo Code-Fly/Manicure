@@ -6,15 +6,15 @@ package com.manicure.technician.controller;
 
 import java.util.List;
 
+import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.manicure.base.controller.BaseController;
-import com.manicure.commmon.Constant;
 import com.manicure.technician.entity.Technician;
 import com.manicure.technician.iface.TechnicianService;
 
@@ -23,7 +23,7 @@ import com.manicure.technician.iface.TechnicianService;
  *
  */
 @Controller
-@RequestMapping(value = "/api/technician")
+@RequestMapping(value = "/technician")
 public class TechnicianController extends BaseController {
 	
 	@Autowired
@@ -33,12 +33,10 @@ public class TechnicianController extends BaseController {
 	 * @param productId
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/query", method = RequestMethod.GET)
-	public ModelAndView getTechByProductId(@RequestParam("productId") String productId){
-		ModelAndView model = new ModelAndView(Constant.TECH_MODEL);
+	public String getTechByProductId(@RequestParam("productId") String productId){
 		List<Technician> techs = techService.queryTechsByProductId(productId);
-		model.addObject(techs);
-		return model;
-		
+		return JSONArray.fromObject(techs).toString();
 	}
 }

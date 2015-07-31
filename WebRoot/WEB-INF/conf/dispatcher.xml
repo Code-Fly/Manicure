@@ -55,5 +55,6 @@
 			</list>
 		</property>
 	</bean>
+	
 	<mvc:resources mapping="/mobile/static/**" location="/WEB-INF/pages/mobile/static/" cache-period="31556926" />
 </beans>
