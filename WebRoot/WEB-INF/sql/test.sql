@@ -16,75 +16,48 @@ Date: 2015-07-19 21:31:20
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `order`
+-- Table structure for `order_comment`
 -- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
-  `orderid` int(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '订单id',
-  `serviceid` int(8) unsigned DEFAULT NULL COMMENT '订单id',
-  `time` datetime(6) DEFAULT NULL COMMENT '预约时间',
-  `storeid` int(8) unsigned DEFAULT NULL COMMENT '门店id',
-  `technicianid` int(8) unsigned DEFAULT NULL COMMENT '技师id',
-  `price` decimal(6,2) unsigned DEFAULT NULL COMMENT '服务价格',
-  `actprice` decimal(6,2) unsigned DEFAULT NULL COMMENT '实付价格',
-  `ticketid` int(8) unsigned DEFAULT NULL COMMENT '优惠券id',
-  `userid` int(8) unsigned DEFAULT NULL COMMENT '用户id',
-  `state` int(1) unsigned DEFAULT NULL COMMENT '订单状态',
-  PRIMARY KEY (`orderid`),
-  KEY `serviceid` (`serviceid`),
-  CONSTRAINT `serviceid` FOREIGN KEY (`serviceid`) REFERENCES `service` (`serviceid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `order_comment`;
+CREATE TABLE `order_comment` (
+  `order_id` int(36)  COMMENT '订单id',
+  `stars` int(2) DEFAULT 5    COMMENT '星数',
+  `profnal_score` int(2) DEFAULT 5 COMMENT '专业分数' ,
+  `move_score` int(2)  DEFAULT 5 COMMENT '感动分数' ,
+  `punctual_score` int(2) DEFAULT 5 COMMENT '守时分数' ,
+  `description` varchar(120) DEFAULT NULL COMMENT '评论内容',
+  `comment_time`  datetime(6)   DEFAULT NULL COMMENT '评论时间',
+  `pic1` VARCHAR(64)  DEFAULT NULL COMMENT '评价图片1',
+   `pic2` VARCHAR(64)  DEFAULT NULL COMMENT '评价图片2',
+   `pic3` VARCHAR(64)  DEFAULT NULL COMMENT '评价图片3',
+  PRIMARY KEY (`order_id`)
+)
+COMMENT='订单评价表，一个订单一个评价'
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of order
+-- Table structure for `order_extend`
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `service`
--- ----------------------------
-DROP TABLE IF EXISTS `service`;
-CREATE TABLE `service` (
-  `serviceid` int(8) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL COMMENT '服务名称',
-  `description` varchar(80) DEFAULT NULL COMMENT '服务描述',
-  `sales` bigint(8) unsigned DEFAULT NULL COMMENT '销量',
-  `price` decimal(6,2) unsigned DEFAULT NULL COMMENT '服务价格',
-  `taketime` int(3) unsigned DEFAULT NULL COMMENT '服务花时',
-  `keeptime` int(3) unsigned DEFAULT NULL COMMENT '效果持续时间',
-  `type` int(8) unsigned DEFAULT NULL COMMENT '服务类型',
-  `imageid` int(8) unsigned DEFAULT NULL COMMENT '图片id',
-  PRIMARY KEY (`serviceid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of service
--- ----------------------------
-
--- ----------------------------
--- Table structure for `service_comment`
--- ----------------------------
-DROP TABLE IF EXISTS `service_comment`;
-CREATE TABLE `service_comment` (
-  `id` int(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '服务评价id',
-  `serviceid` int(8) unsigned DEFAULT NULL COMMENT '服务id',
-  `stars` int(1) unsigned DEFAULT NULL COMMENT '星数',
-  `description` varchar(140) DEFAULT NULL COMMENT '评论内容',
-  `userid` int(8) unsigned DEFAULT NULL COMMENT '用户id',
-  `time` datetime(6) DEFAULT NULL COMMENT '评论时间',
-  PRIMARY KEY (`id`),
-  KEY `serviceid2` (`serviceid`),
-  CONSTRAINT `serviceid2` FOREIGN KEY (`serviceid`) REFERENCES `service` (`serviceid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of service_comment
--- ----------------------------
-
-
+DROP TABLE IF EXISTS `order_extend`;
+CREATE TABLE `order_extend` (
+  `order_id` int(36)  COMMENT '订单id',
+  `tec_id` INT(24)  comment '技师id',
+  `product_id` VARCHAR(64)  COMMENT '服务id',
+  `buyer_openid` varchar(28)  DEFAULT NULL COMMENT '用户id',
+  `buyer_nick` varchar (20)  DEFAULT NULL COMMENT '用户微信账号',
+  `name` varchar(20) DEFAULT NULL COMMENT '用户名子',
+  `order_time`  datetime(6)   DEFAULT NULL COMMENT '预定日期',
+  `order_type` int(1)  DEFAULT 1  COMMENT '订单类型 1：上门，2：到门店',
+  `address` varchar(36) DEFAULT NULL COMMENT '服务地址（门店或者住址）',
+  `tel` varchar(12) DEFAULT NULL COMMENT '电话号码'
+  PRIMARY KEY (`order_id`)
+)
+COMMENT='订单扩展表，主表信息微信提供'
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `technician`;
 CREATE TABLE `technician` (
-	`id` INT(24) NOT NULL,
+	`id` INT(9) NOT NULL,
 	`name` VARCHAR(16) NULL DEFAULT NULL,
 	`service_type` INT(2) NULL DEFAULT NULL COMMENT '服务类型',
 	`protal_id` VARCHAR(24) NULL DEFAULT NULL COMMENT '技师所在门店id',
@@ -101,8 +74,6 @@ CREATE TABLE `technician` (
 )
 COMMENT='技师表'
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 DROP TABLE IF EXISTS `tec_service`;
 CREATE TABLE `tec_service` (
