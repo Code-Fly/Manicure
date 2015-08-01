@@ -47,10 +47,10 @@ public class MerchantController extends BaseController {
 		map.put("nick_name", Const.MERCHANT_NAME);// 提供方名称
 		map.put("send_name", Const.MERCHANT_NAME);// 用户名
 		map.put("re_openid", openId);// 用户openid
-		map.put("total_amount", 500);// 付款金额
-		map.put("min_value", 500);// 最小红包
-		map.put("max_value", 500);// 最大红包
-		map.put("total_num", 2);// 红包发送总人数
+		map.put("total_amount", 100);// 付款金额
+		map.put("min_value", 100);// 最小红包
+		map.put("max_value", 100);// 最大红包
+		map.put("total_num", 1);// 红包发送总人数
 		map.put("wishing", "新年快乐");// 红包祝福语
 		map.put("client_ip", "127.0.0.1");// ip地址
 		map.put("act_name", "过年红包");// 活动名称

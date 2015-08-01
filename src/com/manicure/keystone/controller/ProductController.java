@@ -3,6 +3,10 @@
  */
 package com.manicure.keystone.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
+import com.manicure.base.helper.Const;
+import com.manicure.base.helper.FileUtil;
 import com.manicure.base.helper.KeystoneUtil;
+import com.manicure.keystone.entity.product.Product;
+import com.manicure.keystone.entity.product.ProductBase;
+import com.manicure.keystone.entity.product.ProductInfo;
+import com.manicure.keystone.entity.product.ProductList;
 import com.manicure.keystone.service.impl.CoreService;
 import com.manicure.keystone.service.impl.ProductService;
 
@@ -45,7 +55,20 @@ public class ProductController extends BaseController {
 			logger.error(resp.toString());
 			return resp.toString();
 		}
-		return resp.toString();
+		Map<String, Class> classMap = new HashMap<String, Class>();
+		classMap.put("products_info", ProductInfo.class);
+		ProductList pList = (ProductList) JSONObject.toBean(resp, ProductList.class,classMap);
+		List<ProductInfo> pInfos = pList.getProducts_info();
+		for (int i = 0; i < pInfos.size(); i++) {
+			ProductInfo pInfo = pInfos.get(i);
+			ProductBase pBase = pInfo.getProduct_base();
+			String imageUrl = Const.getServerUrl(request) + FileUtil.getWeChatImage(pBase.getMain_img(), FileUtil.CATEGORY_PRODUCT, pInfo.getProduct_id(), false);
+			pBase.setMain_img(imageUrl);
+			pInfo.setProduct_base(pBase);
+			pInfos.set(i, pInfo);
+		}
+		pList.setProducts_info(pInfos);
+		return JSONObject.fromObject(pList).toString();
 	}
 
 	@RequestMapping(value = "/product/query/{productId}")
@@ -62,7 +85,15 @@ public class ProductController extends BaseController {
 			logger.error(resp.toString());
 			return resp.toString();
 		}
-		return resp.toString();
+		Product p = (Product) JSONObject.toBean(resp, Product.class);
+		ProductInfo pInfo = p.getProduct_info();
+		ProductBase pBase = pInfo.getProduct_base();
+
+		String imageUrl = Const.getServerUrl(request) + FileUtil.getWeChatImage(pBase.getMain_img(), FileUtil.CATEGORY_PRODUCT, pInfo.getProduct_id(), false);
+		pBase.setMain_img(imageUrl);
+		pInfo.setProduct_base(pBase);
+		p.setProduct_info(pInfo);
+		return JSONObject.fromObject(p).toString();
 	}
 
 	@RequestMapping(value = "/product/group/list")

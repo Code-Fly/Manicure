@@ -20,6 +20,7 @@ public class ProductBase extends BaseEntity {
 	private int buy_limit;
 	private String main_img;
 	private String detail_html;
+	private List<String> detail;
 
 	/**
 	 * @return the name
@@ -139,6 +140,21 @@ public class ProductBase extends BaseEntity {
 	 */
 	public void setDetail_html(String detail_html) {
 		this.detail_html = detail_html;
+	}
+
+	/**
+	 * @return the detail
+	 */
+	public List<String> getDetail() {
+		return detail;
+	}
+
+	/**
+	 * @param detail
+	 *            the detail to set
+	 */
+	public void setDetail(List<String> detail) {
+		this.detail = detail;
 	}
 
 }
