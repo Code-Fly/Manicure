@@ -6,7 +6,6 @@ package com.manicure.base.helper;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,7 +15,6 @@ import java.net.ConnectException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -118,19 +116,61 @@ public class HttpClientUtil {
 		}
 	}
 
-	public static String doHttpsPost(String url, Map<String, String> params, String charset) {
-		KeyStore keyStore;
+	public static String doHttpsPost(String url, String charset) {
+		KeyStore keyStore = null;
 		FileInputStream instream = null;
+		CloseableHttpClient httpclient = null;
+		CloseableHttpResponse response = null;
 		try {
 			keyStore = KeyStore.getInstance("PKCS12");
+			// P12文件目录
 			instream = new FileInputStream(new File(Const.MCH_KEYSTONE));
-			keyStore.load(instream, Const.MCH_KEYSTONE_SECRET.toCharArray());
+			keyStore.load(instream, Const.MCH_KEYSTONE_SECRET.toCharArray());// 这里写密码..默认是你的MCHID
 			// Trust own CA and all self-signed certs
-			SSLContext sslcontext = SSLContexts.custom().loadKeyMaterial(keyStore, Const.MCH_KEYSTONE_SECRET.toCharArray()).build();
+			SSLContext sslcontext = SSLContexts.custom().loadKeyMaterial(keyStore, Const.MCH_KEYSTONE_SECRET.toCharArray())// 这里也是写密码的
+					.build();
 			// Allow TLSv1 protocol only
 			SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext, new String[] { "TLSv1" }, null, SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
-			CloseableHttpClient client = HttpClients.custom().setSSLSocketFactory(sslsf).build();
-			HttpPost httpPost = new HttpPost(url);
+			httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
+			HttpPost httpPost = new HttpPost(url); // 设置响应头信息
+			response = httpclient.execute(httpPost);
+			HttpEntity entity = response.getEntity();
+
+			// 微信返回的报文时GBK，直接使用httpcore解析乱码
+			String respStr = EntityUtils.toString(response.getEntity(), charset);
+			EntityUtils.consume(entity);
+			return respStr;
+
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		} finally {
+			try {
+				instream.close();
+			} catch (IOException e) {
+				logger.error(e.getMessage());
+			}
+		}
+
+	}
+
+	public static String doHttpsPost(String url, Map<String, String> params, String charset) {
+		KeyStore keyStore = null;
+		FileInputStream instream = null;
+		CloseableHttpClient httpclient = null;
+		CloseableHttpResponse response = null;
+		try {
+			keyStore = KeyStore.getInstance("PKCS12");
+			// P12文件目录
+			instream = new FileInputStream(new File(Const.MCH_KEYSTONE));
+			keyStore.load(instream, Const.MCH_KEYSTONE_SECRET.toCharArray());// 这里写密码..默认是你的MCHID
+			// Trust own CA and all self-signed certs
+			SSLContext sslcontext = SSLContexts.custom().loadKeyMaterial(keyStore, Const.MCH_KEYSTONE_SECRET.toCharArray())// 这里也是写密码的
+					.build();
+			// Allow TLSv1 protocol only
+			SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext, new String[] { "TLSv1" }, null, SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
+			httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
+			HttpPost httpPost = new HttpPost(url); // 设置响应头信息
 			if (null != params) {
 				List<NameValuePair> valuePairs = new ArrayList<NameValuePair>(params.size());
 				for (Map.Entry<String, String> entry : params.entrySet()) {
@@ -141,14 +181,13 @@ public class HttpClientUtil {
 				httpPost.setEntity(formEntity);
 			}
 
-			HttpResponse resp = client.execute(httpPost);
+			response = httpclient.execute(httpPost);
+			HttpEntity entity = response.getEntity();
 
-			HttpEntity entity = resp.getEntity();
-			String respContent = EntityUtils.toString(entity, charset).trim();
-			httpPost.abort();
-			client.close();
-
-			return respContent;
+			// 微信返回的报文时GBK，直接使用httpcore解析乱码
+			String respStr = EntityUtils.toString(response.getEntity(), charset);
+			EntityUtils.consume(entity);
+			return respStr;
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -164,7 +203,6 @@ public class HttpClientUtil {
 	}
 
 	public static String doHttpsPost(String url, String params, String charset) {
-
 		KeyStore keyStore = null;
 		FileInputStream instream = null;
 		CloseableHttpClient httpclient = null;
@@ -182,14 +220,14 @@ public class HttpClientUtil {
 			// Allow TLSv1 protocol only
 			SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslcontext, new String[] { "TLSv1" }, null, SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
 			httpclient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
-			HttpPost httpost = new HttpPost(url); // 设置响应头信息
-			httpost.setEntity(new StringEntity(params, "UTF-8"));
-			response = httpclient.execute(httpost);
+			HttpPost httpPost = new HttpPost(url); // 设置响应头信息
+			httpPost.setEntity(new StringEntity(params, "UTF-8"));
+			response = httpclient.execute(httpPost);
 			HttpEntity entity = response.getEntity();
 			// String jsonStr = toStringInfo(response.getEntity(), "UTF-8");
 
 			// 微信返回的报文时GBK，直接使用httpcore解析乱码
-			String respStr = EntityUtils.toString(response.getEntity(), "UTF-8");
+			String respStr = EntityUtils.toString(response.getEntity(), charset);
 			EntityUtils.consume(entity);
 			return respStr;
 

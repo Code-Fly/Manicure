@@ -86,7 +86,7 @@ public class CoreService extends BaseService implements ICoreService {
 
 		String url = URL_GET_ACCESS_TOKEN.replace("APPID", appid).replace("APPSECRET", appsecret);
 
-		JSONObject response = JSONObject.fromObject(HttpClientUtil.doHttpsPost(url, "", "UTF-8"));
+		JSONObject response = JSONObject.fromObject(HttpClientUtil.doHttpsRequest(url, "POST", null));
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
