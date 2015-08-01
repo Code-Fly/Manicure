@@ -37,7 +37,7 @@ public class UserService extends BaseService implements IUserService {
 
 		String url = URL_SNS_OAUTH2_TOKEN_GET.replace("APPID", appId).replace("SECRET", appSecret).replace("CODE", code);
 		// 获取网页授权凭证
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -62,7 +62,7 @@ public class UserService extends BaseService implements IUserService {
 
 		String url = URL_SNS_OAUTH2_TOKEN_REFRESH.replace("APPID", appId).replace("REFRESH_TOKEN", refreshToken);
 		// 刷新网页授权凭证
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -89,7 +89,7 @@ public class UserService extends BaseService implements IUserService {
 
 		String url = URL_USER_GET_SNS_INFO.replace("ACCESS_TOKEN", accessToken).replace("OPENID", openId);
 		// 通过网页授权获取用户信息
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -115,7 +115,7 @@ public class UserService extends BaseService implements IUserService {
 
 		String url = URL_USER_GET_INFO.replace("ACCESS_TOKEN", accessToken).replace("OPENID", openId);
 		// 获取用户信息
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -141,7 +141,7 @@ public class UserService extends BaseService implements IUserService {
 
 		String url = URL_USER_GET_LIST.replace("ACCESS_TOKEN", accessToken).replace("NEXT_OPENID", nextOpenId);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -157,7 +157,7 @@ public class UserService extends BaseService implements IUserService {
 
 		String url = URL_USER_GROUP_GET_LIST.replace("ACCESS_TOKEN", accessToken);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "GET", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "GET", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -174,7 +174,7 @@ public class UserService extends BaseService implements IUserService {
 		String url = URL_USER_GROUP_GET_BY_OPENID.replace("ACCESS_TOKEN", accessToken);
 		JSONObject request = new JSONObject();
 		request.put("openid", openId);
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

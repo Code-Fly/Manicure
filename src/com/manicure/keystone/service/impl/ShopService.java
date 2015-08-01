@@ -33,7 +33,7 @@ public class ShopService extends BaseService implements IShopService {
 		request.put("begin", begin);
 		request.put("limit", limit);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -54,7 +54,7 @@ public class ShopService extends BaseService implements IShopService {
 		JSONObject request = new JSONObject();
 		request.put("poi_id", poi_id);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

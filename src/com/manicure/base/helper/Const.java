@@ -9,10 +9,20 @@ package com.manicure.base.helper;
  */
 public class Const {
 	public static final String propertiesFile = "wechat.properties";
+
+	public static final String MERCHANT_NAME = ConfigUtil.getProperty(propertiesFile, "merchant.name");
 	// 第三方用户唯一凭证
 	public static final String APP_ID = ConfigUtil.getProperty(propertiesFile, "appId");
 	// 第三方用户唯一凭证密钥
 	public static final String APP_SECRET = ConfigUtil.getProperty(propertiesFile, "appSecret");
+
+	public static final String MCH_ID = ConfigUtil.getProperty(propertiesFile, "mchId");
+
+	public static final String MCH_SECRET = ConfigUtil.getProperty(propertiesFile, "mchSecret");
+
+	public static final String MCH_KEYSTONE = ConfigUtil.getProperty(propertiesFile, "mchKeystone");
+
+	public static final String MCH_KEYSTONE_SECRET = ConfigUtil.getProperty(propertiesFile, "mchKeystoneSecret");
 	// 与接口配置信息中的Token要一致
 	public static final String TOKEN = ConfigUtil.getProperty(propertiesFile, "token");
 	// 获取access_token的接口地址（GET） 限200（次/天）
@@ -59,6 +69,14 @@ public class Const {
 	public static final String URL_ORDER_GET_LIST = ConfigUtil.getProperty(propertiesFile, "url.order.get.list");
 
 	public static final String URL_ORDER_GET_DETAIL = ConfigUtil.getProperty(propertiesFile, "url.order.get.detail");
+
+	public static final String URL_MERCHANT_COUPON_SEND = ConfigUtil.getProperty(propertiesFile, "url.merchant.coupon.send");
+
+	public static final String URL_MERCHANT_COUPON_GET_DETAIL = ConfigUtil.getProperty(propertiesFile, "url.merchant.coupon.get.detail");
+
+	public static final String URL_MERCHANT_REDPACK_SEND = ConfigUtil.getProperty(propertiesFile, "url.merchant.redpack.send");
+
+	public static final String URL_MERCHANT_PAY_REFUND = ConfigUtil.getProperty(propertiesFile, "url.merchant.pay.refund");
 
 	public static String getServerPath() {
 		String path = Thread.currentThread().getContextClassLoader().getResource("/").getPath();

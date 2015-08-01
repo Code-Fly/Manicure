@@ -37,7 +37,7 @@ public class ProductService extends BaseService implements IProductService {
 		JSONObject request = new JSONObject();
 		request.put("status", status);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -56,7 +56,7 @@ public class ProductService extends BaseService implements IProductService {
 		JSONObject request = new JSONObject();
 		request.put("product_id", productId);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -72,7 +72,7 @@ public class ProductService extends BaseService implements IProductService {
 	public JSONObject getProductGroupList(String accessToken) {
 		String url = URL_PROGUCT_GROUP_GET_LIST.replace("ACCESS_TOKEN", accessToken);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "GET", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "GET", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -90,7 +90,7 @@ public class ProductService extends BaseService implements IProductService {
 
 		JSONObject request = new JSONObject();
 		request.put("group_id", groupId);
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

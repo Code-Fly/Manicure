@@ -43,7 +43,7 @@ public class MaterialService extends BaseService implements IMaterialService {
 		request.put("offset", offset);
 		request.put("count", count);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -70,7 +70,7 @@ public class MaterialService extends BaseService implements IMaterialService {
 		JSONObject request = new JSONObject();
 		request.put("media_id", mediaId);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

@@ -51,6 +51,14 @@ http://www.mydomain.com/api/keystone/order/query/{orderId}
 ##### Get order list
 http://www.mydomain.com/api/keystone/order/list/{status}/{beginTime}/{endTime}
 
+###	Merchant API
+##### Send redpack
+http://www.mydomain.com/api/keystone/redpack/send/{openId}
+##### Send coupon (doesn't work)
+http://www.mydomain.com/api/keystone/coupon/send/{couponStockId}/{openId}
+##### Pay refund (doesn't work)
+http://www.mydomain.com/api/keystone/pay/refund/{tradeId}
+
 ###	Mobile web page
 ##### Index
 http://www.mydomain.com/mobile/
