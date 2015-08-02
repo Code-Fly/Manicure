@@ -43,7 +43,11 @@ http://www.mydomain.com/api/keystone/shop/list/{begain}/{limit}
 ##### Get product
 http://www.mydomain.com/api/keystone/product/query/{productId}
 ##### Get product list
-http://www.mydomain.com/api/keystone/product/list/{status}
+http://www.mydomain.com/api/keystone/product/list/{status}/{groupId}
+##### Get product group list
+http://www.mydomain.com/api/keystone/product/group/list
+##### Get product group detail by groupId
+http://www.mydomain.com/api/keystone/product/group/query/{groupId}
 
 ###	Order API
 ##### Get order
