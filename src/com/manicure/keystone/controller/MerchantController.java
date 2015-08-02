@@ -58,6 +58,9 @@ public class MerchantController extends BaseController {
 		map.put("sign", KeystoneUtil.createSign(map, Const.MCH_SECRET));// 签名
 
 		Map<String, String> resp = merchantService.sendRedpack(map);
+		if ("FAIL".equals(resp.get("result_code"))) {
+			logger.error(resp.toString());
+		}
 
 		return resp.toString();
 
@@ -93,7 +96,7 @@ public class MerchantController extends BaseController {
 		map.put("nonce_str", KeystoneUtil.getNonceStr());
 		map.put("op_user_id", Const.MCH_ID);
 		map.put("transaction_id", tradeId);
-		//map.put("out_trade_no", tradeId);
+		// map.put("out_trade_no", tradeId);
 		map.put("out_refund_no", KeystoneUtil.getTradeNo(Const.MCH_ID));
 		map.put("refund_fee", 1);
 		map.put("total_fee", 1);

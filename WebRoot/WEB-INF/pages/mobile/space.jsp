@@ -26,9 +26,8 @@
 				</div>
 			</div>
 			<ul data-role="listview" style="margin-top: 10px;">
-				<li><a href="#">优惠券<span class="ui-li-count">0</span></a></li>
 				<li><a href="#">我的收藏<span class="ui-li-count">0</span></a></li>
-				<li><a href="#">我的红包<span class="ui-li-count">0</span></a></li>
+				<li><a href="#">刮刮卡</a></li>
 				<li><a href="#">门店地址</a></li>
 			</ul>
 		</div>

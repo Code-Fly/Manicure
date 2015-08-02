@@ -4,6 +4,7 @@
 package com.manicure.keystone.entity.product;
 
 import java.util.List;
+import java.util.Map;
 
 import com.manicure.base.entity.BaseEntity;
 
@@ -61,4 +62,27 @@ public class ProductList extends BaseEntity {
 		this.products_info = products_info;
 	}
 
+	public void sort(String orderBy, String sort, Map<String, String> filter) {
+		ProductInfo temp; // 记录临时中间值
+		int size = products_info.size(); // 数组大小
+		for (int i = 0; i < size - 1; i++) {
+			for (int j = i + 1; j < size; j++) {
+				// 交换两数的位置
+				if ("asc".equals(sort)) {
+					if (products_info.get(i).getSku_list().get(0).getPrice() > products_info.get(j).getSku_list().get(0).getPrice()) {
+						temp = products_info.get(i);
+						products_info.set(i, products_info.get(j));
+						products_info.set(j, temp);
+					}
+				} else {
+					if (products_info.get(i).getSku_list().get(0).getPrice() < products_info.get(j).getSku_list().get(0).getPrice()) {
+						temp = products_info.get(i);
+						products_info.set(i, products_info.get(j));
+						products_info.set(j, temp);
+					}
+				}
+
+			}
+		}
+	}
 }

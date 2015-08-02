@@ -26,7 +26,6 @@ http://www.mydomain.com/api/keystone/user/group/list
 ##### Get WeChat user group by openid
 http://www.mydomain.com/api/keystone/user/group/query/{openId}
 
-
 ###	Material API
 ##### Get material
 http://www.mydomain.com/api/keystone/material/query/{mediaId}
