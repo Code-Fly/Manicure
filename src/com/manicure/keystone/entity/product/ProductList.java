@@ -62,7 +62,17 @@ public class ProductList extends BaseEntity {
 		this.products_info = products_info;
 	}
 
-	public void sort(String orderBy, String sort, Map<String, String> filter) {
+	public void sort(Map<String, String> filter) {
+		String orderBy = filter.get("orderBy");
+
+		if ("price".equals(orderBy)) {
+			sortByPrice(filter);
+		}
+	}
+
+	private void sortByPrice(Map<String, String> filter) {
+		String sort = filter.get("sort");
+
 		ProductInfo temp; // 记录临时中间值
 		int size = products_info.size(); // 数组大小
 		for (int i = 0; i < size - 1; i++) {

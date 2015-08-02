@@ -6,13 +6,13 @@ $(document).on('pagecontainershow', function(e, ui) {
 		if (ui.toPage[0].id != "list-page")
 			return;
 		$("#list-header").text("米宝服务");
-		$.getJSON(_ctx + "/api/keystone/product/list/1/0/price/desc?minPrice=12", function(json) {
+		$.getJSON(_ctx + "/api/keystone/product/list/1", { minPrice: "12", maxPrice: "15" }, function(json) {
 			if (null == json) {
 				alert("null");
 				return;
 			}
 			if (0 != json.errcode) {
-				alert(json);
+				alert(json.errmsg);
 				return;
 			}
 			loadAllProduct(json.products_info);
