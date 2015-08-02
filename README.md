@@ -5,10 +5,10 @@ A WeChat server
 ##### core
 http://www.mydomain.com/api/keystone/core/
 ##### Get image location on server
-http://www.mydomain.com/api/keystone/file/image/product
-method: POST
-param: "url", required = true
-param: "pid", required = true
+http://www.mydomain.com/api/keystone/file/image/product<br/>
+method: POST<br/>
+param: "url", required = true<br/>
+param: "pid", required = true<br/>
 
 ###	Menu API
 ##### create
@@ -16,66 +16,66 @@ http://www.mydomain.com/api/keystone/menu/create
 
 ###	User API
 ##### Get SNS user
-http://www.mydomain.com/api/keystone/user/query/sns/{openId}/{accessToken}
-method: GET
+http://www.mydomain.com/api/keystone/user/query/sns/{openId}/{accessToken}<br/>
+method: GET<br/>
 ##### SNS user OAuth
-http://www.mydomain.com/api/keystone/user/sns/oauth 
-method: GET
+http://www.mydomain.com/api/keystone/user/sns/oauth<br/>
+method: GET<br/>
 ##### Get WeChat user
-http://www.mydomain.com/api/keystone/user/query/{openId}
-method: GET
+http://www.mydomain.com/api/keystone/user/query/{openId}<br/>
+method: GET<br/>
 ##### Get WeChat user
-http://www.mydomain.com/api/keystone/user/list/{nextOpenId}
-method: GET
+http://www.mydomain.com/api/keystone/user/list/{nextOpenId}<br/>
+method: GET<br/>
 ##### Get WeChat user group list
-http://www.mydomain.com/api/keystone/user/group/list
-method: GET
+http://www.mydomain.com/api/keystone/user/group/list<br/>
+method: GET<br/>
 ##### Get WeChat user group by openid
-http://www.mydomain.com/api/keystone/user/group/query/{openId}
-method: GET
+http://www.mydomain.com/api/keystone/user/group/query/{openId}<br/>
+method: GET<br/>
 
 ###	Material API
 ##### Get material
-http://www.mydomain.com/api/keystone/material/query/{mediaId}
-method: GET
+http://www.mydomain.com/api/keystone/material/query/{mediaId}<br/>
+method: GET<br/>
 ##### Get material list
-http://www.mydomain.com/api/keystone/material/list
-method: GET
+http://www.mydomain.com/api/keystone/material/list<br/>
+method: GET<br/>
 
 ###	Shop API
 ##### Get shop
-http://www.mydomain.com/api/keystone/shop/query/{poiId}
-method: GET
+http://www.mydomain.com/api/keystone/shop/query/{poiId}<br/>
+method: GET<br/>
 ##### Get shop list
-http://www.mydomain.com/api/keystone/shop/list/{begain}/{limit}
-method: GET
+http://www.mydomain.com/api/keystone/shop/list/{begain}/{limit}<br/>
+method: GET<br/>
 
 ###	Product API
 ##### Get product
-http://www.mydomain.com/api/keystone/product/query/{productId}
-method: GET
+http://www.mydomain.com/api/keystone/product/query/{productId}<br/>
+method: GET<br/>
 ##### Get product list
-http://www.mydomain.com/api/keystone/product/list/{status}
-method: GET
-param: "groupId", required = false
-param: "orderBy", required = false
-param: "sort", required = false
-param: "minPrice", required = false
-param: "maxPrice", required = false
+http://www.mydomain.com/api/keystone/product/list/{status}<br/>
+method: GET<br/>
+param: "groupId", required = false<br/>
+param: "orderBy", required = false<br/>
+param: "sort", required = false<br/>
+param: "minPrice", required = false<br/>
+param: "maxPrice", required = false<br/>
 ##### Get product group list
-http://www.mydomain.com/api/keystone/product/group/list
-method: GET
+http://www.mydomain.com/api/keystone/product/group/list<br/>
+method: GET<br/>
 ##### Get product group detail by groupId
-http://www.mydomain.com/api/keystone/product/group/query/{groupId}
-method: GET
+http://www.mydomain.com/api/keystone/product/group/query/{groupId}<br/>
+method: GET<br/>
 
 ###	Order API
 ##### Get order
-http://www.mydomain.com/api/keystone/order/query/{orderId}
-method: GET
+http://www.mydomain.com/api/keystone/order/query/{orderId}<br/>
+method: GET<br/>
 ##### Get order list
-http://www.mydomain.com/api/keystone/order/list/{status}/{beginTime}/{endTime}
-method: GET
+http://www.mydomain.com/api/keystone/order/list/{status}/{beginTime}/{endTime}<br/>
+method: GET<br/>
 
 ###	Merchant API
 ##### Send redpack
