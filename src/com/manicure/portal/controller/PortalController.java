@@ -34,7 +34,10 @@ public class PortalController extends BaseController {
 	 */
 	@RequestMapping(value = "/query", method = RequestMethod.GET)
 	public  String  getPortalIds(@RequestParam("productId") String productId){
+		logger.info("productId:"+productId);
 		List<String> ids = portalService.getPortalIdsByProductId(productId);
-		return JSONArray.fromObject(ids).toString();
+		String portalIds = JSONArray.fromObject(ids).toString();
+		logger.info(portalIds);
+		return portalIds;
 	}
 }
