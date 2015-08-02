@@ -12,26 +12,12 @@ import com.manicure.base.entity.BaseEntity;
  *
  */
 public class ProductInfo extends BaseEntity {
-	private String product_id;
 	private ProductBase product_base;
 	private List<SkuList> sku_list;
-	private AttrExt attrext;
 	private DeliveryInfo delivery_info;
-
-	/**
-	 * @return the product_id
-	 */
-	public String getProduct_id() {
-		return product_id;
-	}
-
-	/**
-	 * @param product_id
-	 *            the product_id to set
-	 */
-	public void setProduct_id(String product_id) {
-		this.product_id = product_id;
-	}
+	private String product_id;
+	private int status;
+	private AttrExt attrext;
 
 	/**
 	 * @return the product_base
@@ -64,21 +50,6 @@ public class ProductInfo extends BaseEntity {
 	}
 
 	/**
-	 * @return the attrext
-	 */
-	public AttrExt getAttrext() {
-		return attrext;
-	}
-
-	/**
-	 * @param attrext
-	 *            the attrext to set
-	 */
-	public void setAttrext(AttrExt attrext) {
-		this.attrext = attrext;
-	}
-
-	/**
 	 * @return the delivery_info
 	 */
 	public DeliveryInfo getDelivery_info() {
@@ -91,6 +62,51 @@ public class ProductInfo extends BaseEntity {
 	 */
 	public void setDelivery_info(DeliveryInfo delivery_info) {
 		this.delivery_info = delivery_info;
+	}
+
+	/**
+	 * @return the product_id
+	 */
+	public String getProduct_id() {
+		return product_id;
+	}
+
+	/**
+	 * @param product_id
+	 *            the product_id to set
+	 */
+	public void setProduct_id(String product_id) {
+		this.product_id = product_id;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public int getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status
+	 *            the status to set
+	 */
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	/**
+	 * @return the attrext
+	 */
+	public AttrExt getAttrext() {
+		return attrext;
+	}
+
+	/**
+	 * @param attrext
+	 *            the attrext to set
+	 */
+	public void setAttrext(AttrExt attrext) {
+		this.attrext = attrext;
 	}
 
 }

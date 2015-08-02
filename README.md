@@ -43,13 +43,25 @@ http://www.mydomain.com/api/keystone/shop/list/{begain}/{limit}
 ##### Get product
 http://www.mydomain.com/api/keystone/product/query/{productId}
 ##### Get product list
-http://www.mydomain.com/api/keystone/product/list/{status}
+http://www.mydomain.com/api/keystone/product/list/{status}/{groupId}
+##### Get product group list
+http://www.mydomain.com/api/keystone/product/group/list
+##### Get product group detail by groupId
+http://www.mydomain.com/api/keystone/product/group/query/{groupId}
 
 ###	Order API
 ##### Get order
 http://www.mydomain.com/api/keystone/order/query/{orderId}
 ##### Get order list
 http://www.mydomain.com/api/keystone/order/list/{status}/{beginTime}/{endTime}
+
+###	Merchant API
+##### Send redpack
+http://www.mydomain.com/api/keystone/redpack/send/{openId}
+##### Send coupon (doesn't work)
+http://www.mydomain.com/api/keystone/coupon/send/{couponStockId}/{openId}
+##### Pay refund (doesn't work)
+http://www.mydomain.com/api/keystone/pay/refund/{tradeId}
 
 ###	Mobile web page
 ##### Index

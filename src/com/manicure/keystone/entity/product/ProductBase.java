@@ -13,13 +13,30 @@ import com.manicure.base.entity.BaseEntity;
  */
 public class ProductBase extends BaseEntity {
 	private String name;
-	private List<String> category_id;
+	private List<Integer> category_id;
+
+	/**
+	 * @return the category_id
+	 */
+	public List<Integer> getCategory_id() {
+		return category_id;
+	}
+
+	/**
+	 * @param category_id
+	 *            the category_id to set
+	 */
+	public void setCategory_id(List<Integer> category_id) {
+		this.category_id = category_id;
+	}
+
 	private List<String> img;
 	private List<Property> property;
 	private List<SkuInfo> sku_info;
 	private int buy_limit;
 	private String main_img;
 	private String detail_html;
+	private List<String> detail;
 
 	/**
 	 * @return the name
@@ -34,21 +51,6 @@ public class ProductBase extends BaseEntity {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @return the category_id
-	 */
-	public List<String> getCategory_id() {
-		return category_id;
-	}
-
-	/**
-	 * @param category_id
-	 *            the category_id to set
-	 */
-	public void setCategory_id(List<String> category_id) {
-		this.category_id = category_id;
 	}
 
 	/**
@@ -139,6 +141,21 @@ public class ProductBase extends BaseEntity {
 	 */
 	public void setDetail_html(String detail_html) {
 		this.detail_html = detail_html;
+	}
+
+	/**
+	 * @return the detail
+	 */
+	public List<String> getDetail() {
+		return detail;
+	}
+
+	/**
+	 * @param detail
+	 *            the detail to set
+	 */
+	public void setDetail(List<String> detail) {
+		this.detail = detail;
 	}
 
 }

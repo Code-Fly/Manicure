@@ -34,9 +34,9 @@ public class CoreService extends BaseService implements ICoreService {
 	 * 确认请求来自微信服务器
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");  
-        response.setCharacterEncoding("UTF-8");
-        
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+
 		// 微信加密签名
 		String signature = request.getParameter("signature");
 		// 时间戳
@@ -85,8 +85,8 @@ public class CoreService extends BaseService implements ICoreService {
 		// WeChatAccessToken accessToken = null;
 
 		String url = URL_GET_ACCESS_TOKEN.replace("APPID", appid).replace("APPSECRET", appsecret);
-		 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", null);
+
+		JSONObject response = JSONObject.fromObject(HttpClientUtil.doHttpsRequest(url, "POST", null));
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

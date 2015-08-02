@@ -44,7 +44,7 @@ public class OrderService extends BaseService implements IOrderService {
 			request.put("endtime", endTime);
 		}
 		
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "GET", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "GET", request.toString());
 		
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -62,7 +62,7 @@ public class OrderService extends BaseService implements IOrderService {
 		JSONObject request = new JSONObject();
 		request.put("order_id", orderId);
 
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", request.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", request.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

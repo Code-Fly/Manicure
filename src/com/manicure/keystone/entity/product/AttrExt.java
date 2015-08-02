@@ -10,16 +10,16 @@ import com.manicure.base.entity.BaseEntity;
  *
  */
 public class AttrExt extends BaseEntity {
-	private boolean isPostFree;
-	private boolean isHasReceipt;
-	private boolean isUnderGuaranty;
-	private boolean isSupportReplace;
+	private int isPostFree;
+	private int isHasReceipt;
+	private int isUnderGuaranty;
+	private int isSupportReplace;
 	private Location location;
 
 	/**
 	 * @return the isPostFree
 	 */
-	public boolean isPostFree() {
+	public int getIsPostFree() {
 		return isPostFree;
 	}
 
@@ -27,14 +27,14 @@ public class AttrExt extends BaseEntity {
 	 * @param isPostFree
 	 *            the isPostFree to set
 	 */
-	public void setPostFree(boolean isPostFree) {
+	public void setIsPostFree(int isPostFree) {
 		this.isPostFree = isPostFree;
 	}
 
 	/**
 	 * @return the isHasReceipt
 	 */
-	public boolean isHasReceipt() {
+	public int getIsHasReceipt() {
 		return isHasReceipt;
 	}
 
@@ -42,14 +42,14 @@ public class AttrExt extends BaseEntity {
 	 * @param isHasReceipt
 	 *            the isHasReceipt to set
 	 */
-	public void setHasReceipt(boolean isHasReceipt) {
+	public void setIsHasReceipt(int isHasReceipt) {
 		this.isHasReceipt = isHasReceipt;
 	}
 
 	/**
 	 * @return the isUnderGuaranty
 	 */
-	public boolean isUnderGuaranty() {
+	public int getIsUnderGuaranty() {
 		return isUnderGuaranty;
 	}
 
@@ -57,14 +57,14 @@ public class AttrExt extends BaseEntity {
 	 * @param isUnderGuaranty
 	 *            the isUnderGuaranty to set
 	 */
-	public void setUnderGuaranty(boolean isUnderGuaranty) {
+	public void setIsUnderGuaranty(int isUnderGuaranty) {
 		this.isUnderGuaranty = isUnderGuaranty;
 	}
 
 	/**
 	 * @return the isSupportReplace
 	 */
-	public boolean isSupportReplace() {
+	public int getIsSupportReplace() {
 		return isSupportReplace;
 	}
 
@@ -72,7 +72,7 @@ public class AttrExt extends BaseEntity {
 	 * @param isSupportReplace
 	 *            the isSupportReplace to set
 	 */
-	public void setSupportReplace(boolean isSupportReplace) {
+	public void setIsSupportReplace(int isSupportReplace) {
 		this.isSupportReplace = isSupportReplace;
 	}
 
