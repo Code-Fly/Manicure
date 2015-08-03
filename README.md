@@ -102,3 +102,7 @@ http://www.mydomain.com/mobile/space
 ##### Product detail
 http://www.mydomain.com/mobile/product/{productId}
 
+######
+http://www.mydomain.com/mobile/technician/query?productId={productId}
+http://www.mydomain.com/mobile/technician/query/{tecId}
+http://www.mydomain.com/mobile/portal/query?productId={productId}

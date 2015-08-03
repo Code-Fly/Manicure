@@ -21,7 +21,7 @@ import net.sf.json.JSONArray;
  *
  */
 @Controller
-@RequestMapping(value = "/api/portal")
+@RequestMapping(value = "/portal")
 public class PortalController extends BaseController {
 	
 	
