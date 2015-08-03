@@ -11,7 +11,6 @@
 <body>
 	<div data-role="page" id="order-page" data-title="订单">
 		<div data-role="header">
-			<a data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">后退</a>
 			<h2 id="order-header">我的米宝</h2>
 		</div>
 		<div role="main">

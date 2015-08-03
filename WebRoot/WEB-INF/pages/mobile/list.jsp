@@ -11,7 +11,6 @@
 <body>
 	<div data-role="page" id="list-page">
 		<div data-role="header">
-			<a data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">后退</a>
 			<h2 id="list-header">米宝服务</h2>
 		</div>
 		<div role="main">

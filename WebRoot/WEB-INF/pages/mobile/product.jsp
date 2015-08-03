@@ -13,7 +13,7 @@
 <body>
 	<div data-role="page" id="product-page">
 		<div data-role="header">
-			<a data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">后退</a>
+			<a href="${ctx}/mobile/index" data-ajax="false" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-home" >首页</a>
 			<h2 id="product-header"></h2>
 		</div>
 		<div role="main">
@@ -38,7 +38,8 @@
 						</div>
 						<div class="ui-block-b" style="text-align: right;">
 							<p style="color:orange;">
-								<n id="product-sales">0</n>人做过
+								<n id="product-sales">0</n>
+								人做过
 							</p>
 						</div>
 					</div>

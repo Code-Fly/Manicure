@@ -6,16 +6,10 @@
 <base href="<%=basePath%>">
 <title>米兰美甲艺社</title>
 <%@ include file="meta/meta.jsp"%>
-<script type="text/javascript">
-	$(document).on("pagecontainerchange", function() {
-
-	});
-</script>
 </head>
 <body>
 	<div data-role="page" id="home-page" data-title="首页">
 		<div data-role="header">
-			<a data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">后退</a>
 			<h2 id="home-header">米兰美甲艺社</h2>
 		</div>
 		<div role="main" id="main">
