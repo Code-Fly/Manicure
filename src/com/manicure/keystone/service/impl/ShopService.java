@@ -27,7 +27,7 @@ public class ShopService extends BaseService implements IShopService {
 	/**
 	 * 
 	 */
-	public JSONObject getShopList(String accessToken, int begin, int limit) {
+	public JSONObject getShopList(String accessToken, String begin, String limit) {
 		String url = URL_SHOP_GET_LIST.replace("TOKEN", accessToken);
 		JSONObject request = new JSONObject();
 		request.put("begin", begin);

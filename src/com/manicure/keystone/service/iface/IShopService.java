@@ -13,5 +13,5 @@ public interface IShopService {
 
 	public JSONObject getShop(String accessToken, String poi_id);
 
-	public JSONObject getShopList(String accessToken, int begin, int limit);
+	public JSONObject getShopList(String accessToken, String begin, String limit);
 }

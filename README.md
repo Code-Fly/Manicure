@@ -47,8 +47,10 @@ method: GET<br/>
 http://www.mydomain.com/api/keystone/shop/query/{poiId}<br/>
 method: GET<br/>
 ##### Get shop list
-http://www.mydomain.com/api/keystone/shop/list/{begain}/{limit}<br/>
+http://www.mydomain.com/api/keystone/shop/list<br/>
 method: GET<br/>
+param: "begin", required = false<br/>
+param: "limit", required = false<br/>
 
 ###	Product API
 ##### Get product
@@ -74,8 +76,10 @@ method: GET<br/>
 http://www.mydomain.com/api/keystone/order/query/{orderId}<br/>
 method: GET<br/>
 ##### Get order list
-http://www.mydomain.com/api/keystone/order/list/{status}/{beginTime}/{endTime}<br/>
+http://www.mydomain.com/api/keystone/order/list/{status}<br/>
 method: GET<br/>
+param: "beginTime", required = false<br/>
+param: "endTime", required = false<br/>
 
 ###	Merchant API
 ##### Send redpack
