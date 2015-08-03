@@ -49,25 +49,27 @@ public class TechnicianServiceImp implements TechnicianService {
 	@Override
 	public Technician queryTechInfoById(int id) {
 		Technician tec = tecMapper.selectByPrimaryKey(id);
-		OrderExtendExample  oee = new OrderExtendExample();
-		oee.or().andTecIdEqualTo(id);
-		int orderCount = orexMapper.countByExample(oee);
-		tec.setOrderCount(orderCount);
-		HashMap<String,Object> commentHashMap = orcMapper.getCommentInfoByTecId(id);
-		tec.setCommentCount((Integer)commentHashMap.get("comment_count"));
-		tec.setEvaluation((Integer)commentHashMap.get("evaluation"));
-		tec.setStars((BigDecimal)commentHashMap.get("stars"));
-		tec.setProfnalScore((BigDecimal)commentHashMap.get("profnal_score"));
-		tec.setMoveScore((BigDecimal)commentHashMap.get("move_score"));
-		tec.setPunctualScore((BigDecimal)commentHashMap.get("punctual_score"));
-		List<Business> business = busnMapper.selectByTecId(id);
-		StringBuffer busnName = new StringBuffer();
-		for(Business bus:business){
-			busnName.append(bus.getName()).append(",");
+		if (null != tec) {
+			OrderExtendExample  oee = new OrderExtendExample();
+			oee.or().andTecIdEqualTo(id);
+			int orderCount = orexMapper.countByExample(oee);
+			tec.setOrderCount(orderCount);
+			HashMap<String,Object> commentHashMap = orcMapper.getCommentInfoByTecId(id);
+			tec.setCommentCount((Integer)commentHashMap.get("comment_count"));
+			tec.setEvaluation((Integer)commentHashMap.get("evaluation"));
+			tec.setStars((BigDecimal)commentHashMap.get("stars"));
+			tec.setProfnalScore((BigDecimal)commentHashMap.get("profnal_score"));
+			tec.setMoveScore((BigDecimal)commentHashMap.get("move_score"));
+			tec.setPunctualScore((BigDecimal)commentHashMap.get("punctual_score"));
+			List<Business> business = busnMapper.selectByTecId(id);
+			StringBuffer busnName = new StringBuffer();
+			for(Business bus:business){
+				busnName.append(bus.getName()).append(",");
+			}
+			if(busnName.length() > 1){
+				tec.setBusiness(busnName.substring(0, busnName.length() -1));
+			} 
 		}
-		if(busnName.length() > 1){
-			tec.setBusiness(busnName.substring(0, busnName.length() -1));
-		} 
 		return tec;
 	}
 

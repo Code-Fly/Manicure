@@ -10,6 +10,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,8 +52,11 @@ public class TechnicianController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/query/{id}", method = RequestMethod.GET)
-	public String getTechInfoById(int id){
+	public String getTechInfoById(@PathVariable  int id){
 		Technician tech = techService.queryTechInfoById(id);
+		if (null == tech) {
+			return "";
+		}
 		return JSONObject.fromObject(tech).toString();
 	}
 }
