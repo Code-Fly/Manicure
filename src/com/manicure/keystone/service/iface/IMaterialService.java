@@ -10,7 +10,7 @@ import net.sf.json.JSONObject;
  *
  */
 public interface IMaterialService {
-	public JSONObject getMaterialList(String accessToken);
+	public JSONObject getMaterialList(String accessToken, String type, int offset, int count);
 
 	public JSONObject getMaterial(String accessToken, String mediaId);
 }

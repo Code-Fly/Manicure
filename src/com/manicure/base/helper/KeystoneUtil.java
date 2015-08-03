@@ -5,11 +5,19 @@ package com.manicure.base.helper;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,8 +32,6 @@ public class KeystoneUtil {
 
 	public static String accessToken = null;
 	public static String errmsg = null;
-	
-	
 
 	/**
 	 * 
@@ -98,6 +104,59 @@ public class KeystoneUtil {
 		return s;
 	}
 
+	public static String getTradeNo(String mchId) {
+		String order = mchId + new SimpleDateFormat("yyyyMMdd").format(new Date());
+		Random r = new Random();
+		for (int i = 0; i < 10; i++) {
+			order += r.nextInt(9);
+		}
+		return order;
+	}
+
+	/**
+	 * 随机16为数值
+	 * 
+	 * @return
+	 */
+	public static String getNonceStr() {
+		Date now = new Date();
+		SimpleDateFormat outFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		String currTime = outFormat.format(now);
+		String strTime = currTime.substring(8, currTime.length());
+		int num = 1;
+		double random = Math.random();
+		if (random < 0.1) {
+			random = random + 0.1;
+		}
+		for (int i = 0; i < 4; i++) {
+			num = num * 10;
+		}
+		return (int) ((random * num)) + strTime;
+	}
+
+	public static String createSign(Map<String, Object> map, String mchKey) {
+		SortedMap<String, String> packageParams = new TreeMap<String, String>();
+		for (Map.Entry<String, Object> m : map.entrySet()) {
+			packageParams.put(m.getKey(), m.getValue().toString());
+		}
+
+		StringBuffer sb = new StringBuffer();
+		Set<?> es = packageParams.entrySet();
+		Iterator<?> it = es.iterator();
+		while (it.hasNext()) {
+			Map.Entry entry = (Map.Entry) it.next();
+			String k = (String) entry.getKey();
+			String v = (String) entry.getValue();
+			if (!StringUtils.isEmpty(v) && !"sign".equals(k) && !"key".equals(k)) {
+				sb.append(k + "=" + v + "&");
+			}
+		}
+		sb.append("key=" + mchKey);
+
+		String sign = MD5Util.MD5Encode(sb.toString(), "UTF-8").toUpperCase();
+		return sign;
+	}
+
 	public void accessTokenKeeper() {
 		CoreService coreService = new CoreService();
 		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
@@ -108,7 +167,7 @@ public class KeystoneUtil {
 		}
 		KeystoneUtil.accessToken = at.getString("access_token");
 		KeystoneUtil.errmsg = null;
-		logger.info(new Date() + " > access token: " + KeystoneUtil.accessToken);
+		logger.info("access token: " + KeystoneUtil.accessToken);
 
 	}
 }

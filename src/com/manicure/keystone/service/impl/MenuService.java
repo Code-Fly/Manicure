@@ -55,7 +55,7 @@ public class MenuService extends BaseService {
 		// 拼装创建菜单的url
 		String url = URL_MENU_CREATE.replace("ACCESS_TOKEN", accessToken);		
 		// 调用接口创建菜单
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "POST", json.toString());
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "POST", json.toString());
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -74,7 +74,7 @@ public class MenuService extends BaseService {
 	 */
 	public JSONObject get(String accessToken) {
 		String url = URL_MENU_GET.replace("ACCESS_TOKEN", accessToken);
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "GET", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "GET", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();
@@ -93,7 +93,7 @@ public class MenuService extends BaseService {
 	 */
 	public JSONObject delete(String accessToken) {
 		String url = URL_MENU_DELETE.replace("ACCESS_TOKEN", accessToken);
-		JSONObject response = HttpClientUtil.doHttpsPost(url, "GET", null);
+		JSONObject response = HttpClientUtil.doHttpsRequest(url, "GET", null);
 
 		if (null == response) {
 			ErrorMsg errMsg = new ErrorMsg();

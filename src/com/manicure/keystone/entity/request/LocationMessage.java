@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.manicure.keystone.entity.request.message;
+package com.manicure.keystone.entity.request;
 
 /**
  * 地理位置消息

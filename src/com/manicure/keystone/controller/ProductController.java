@@ -3,6 +3,9 @@
  */
 package com.manicure.keystone.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,11 +15,16 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
+import com.manicure.base.helper.Const;
+import com.manicure.base.helper.FileUtil;
 import com.manicure.base.helper.KeystoneUtil;
+import com.manicure.keystone.entity.product.Product;
+import com.manicure.keystone.entity.product.ProductBase;
+import com.manicure.keystone.entity.product.ProductInfo;
 import com.manicure.keystone.service.impl.CoreService;
 import com.manicure.keystone.service.impl.ProductService;
 
@@ -34,26 +42,50 @@ public class ProductController extends BaseController {
 
 	@RequestMapping(value = "/product/list/{status}")
 	@ResponseBody
-	public String getProductList(HttpServletRequest request, HttpServletResponse response, @PathVariable int status) {
+	public String getProductList(HttpServletRequest request, HttpServletResponse response, @PathVariable int status, @RequestParam(value = "groupId", required = false) String groupId,
+			@RequestParam(value = "orderBy", required = false) String orderBy, @RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "minPrice", required = false) String minPrice, @RequestParam(value = "maxPrice", required = false) String maxPrice) {
+		Map<String, String> filter = new HashMap<String, String>();
+		if (null != minPrice) {
+			filter.put("minPrice", minPrice);
+		}
+		if (null != maxPrice) {
+			filter.put("maxPrice", maxPrice);
+		}
+		if (null != groupId) {
+			filter.put("groupId", groupId);
+		} else {
+			filter.put("groupId", "0");
+		}
+		if (null != orderBy) {
+			filter.put("orderBy", orderBy);
+		} else {
+			filter.put("orderBy", "price");
+		}
+		if (null != sort) {
+			filter.put("sort", sort);
+		} else {
+			filter.put("sort", "asc");
+		}
 		String at = KeystoneUtil.accessToken;
-		if (null == at) {			
+		if (null == at) {
 			logger.error(KeystoneUtil.errmsg);
 			return KeystoneUtil.errmsg;
 		}
 
-		JSONObject resp = productService.getProductList(at, status);
+		JSONObject resp = productService.getProductList(request, at, status, filter);
 		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
 			logger.error(resp.toString());
 			return resp.toString();
 		}
-		return resp.toString();
+		return JSONObject.fromObject(resp).toString();
 	}
 
 	@RequestMapping(value = "/product/query/{productId}")
 	@ResponseBody
 	public String getProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String productId) {
 		String at = KeystoneUtil.accessToken;
-		if (null == at) {			
+		if (null == at) {
 			logger.error(KeystoneUtil.errmsg);
 			return KeystoneUtil.errmsg;
 		}
@@ -63,7 +95,48 @@ public class ProductController extends BaseController {
 			logger.error(resp.toString());
 			return resp.toString();
 		}
+		Product p = (Product) JSONObject.toBean(resp, Product.class);
+		ProductInfo pInfo = p.getProduct_info();
+		ProductBase pBase = pInfo.getProduct_base();
+
+		String imageUrl = Const.getServerUrl(request) + FileUtil.getWeChatImage(pBase.getMain_img(), FileUtil.CATEGORY_PRODUCT, pInfo.getProduct_id(), false);
+		pBase.setMain_img(imageUrl);
+		pInfo.setProduct_base(pBase);
+		p.setProduct_info(pInfo);
+		return JSONObject.fromObject(p).toString();
+	}
+
+	@RequestMapping(value = "/product/group/list")
+	@ResponseBody
+	public String getProductGroupList(HttpServletRequest request, HttpServletResponse response) {
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
+		}
+
+		JSONObject resp = productService.getProductGroupList(at);
+		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
+			logger.error(resp.toString());
+			return resp.toString();
+		}
 		return resp.toString();
 	}
 
+	@RequestMapping(value = "/product/group/query/{groupId}")
+	@ResponseBody
+	public String getProductGroupDetail(HttpServletRequest request, HttpServletResponse response, @PathVariable String groupId) {
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
+		}
+
+		JSONObject resp = productService.getProductGroupDetail(at, groupId);
+		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
+			logger.error(resp.toString());
+			return resp.toString();
+		}
+		return resp.toString();
+	}
 }

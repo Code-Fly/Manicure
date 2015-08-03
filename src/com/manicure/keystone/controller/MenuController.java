@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
 import com.manicure.base.helper.ConfigUtil;
-import com.manicure.base.helper.Encoder;
 import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.base.helper.UrlUtil;
-import com.manicure.keystone.entity.error.ErrorMsg;
 import com.manicure.keystone.service.impl.CoreService;
 import com.manicure.keystone.service.impl.MenuService;
 
@@ -50,19 +48,19 @@ public class MenuController extends BaseController {
 		}
 		String menuStr = ConfigUtil.getJson("menu.json");
 
-		String urlHome = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", Encoder.urlEncodeUTF8(tempContextUrl + "mobile/index")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
+		String urlHome = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/index")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V2002_WEB_HOME, urlHome);
-		String urlOrder = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", Encoder.urlEncodeUTF8(tempContextUrl + "mobile/order")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
+		String urlOrder = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/order")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V3002_ORDER, urlOrder);
-		String urlNewArrived = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", Encoder.urlEncodeUTF8(tempContextUrl + "mobile/index")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
+		String urlNewArrived = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/index")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V1003_NEW_ARRIVED, urlNewArrived);
-		String urlLottery = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", Encoder.urlEncodeUTF8(tempContextUrl + "mobile/home")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
+		String urlLottery = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/home")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V1001_LOTTERY, urlLottery);
-		String urlAddress = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", Encoder.urlEncodeUTF8(tempContextUrl + "mobile/home")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
+		String urlAddress = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/home")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V3001_ADDREDD, urlAddress);
 		logger.info(menuStr);

@@ -6,13 +6,13 @@ $(document).on('pagecontainershow', function(e, ui) {
 		if (ui.toPage[0].id != "list-page")
 			return;
 		$("#list-header").text("米宝服务");
-		$.getJSON(_ctx + "/api/keystone/product/list/1", function(json) {
+		$.getJSON(_ctx + "/api/keystone/product/list/1", { minPrice: "12", maxPrice: "15" }, function(json) {
 			if (null == json) {
 				alert("null");
 				return;
 			}
 			if (0 != json.errcode) {
-				alert(json);
+				alert(json.errmsg);
 				return;
 			}
 			loadAllProduct(json.products_info);
@@ -36,36 +36,39 @@ $(document).on('pagecontainershow', function(e, ui) {
 					description = description.substring(0, descLen) + '...';
 				}
 				var price = "¥" + (jList[i].sku_list[0].price / 100).toFixed(2);
-				formatData(main_img, pid, name, description, price);
+				//formatData(main_img, pid, name, description, price);
+				var link = _ctx + "/mobile/product/" + pid;
+				AppendListItem("#page-list-list-service", pid, link, main_img, name, description, price);
+
 
 			}
 			$("#page-list-list-service").listview('refresh');
 		}
 
-		function formatData(url, pid, name, description, price) {
-			var main_img = _ctx + $.ajax({
-				type : "POST",
-				url : _ctx + "/api/keystone/file/image/product",
-				data : {
-					"url" : url,
-					"pid" : pid
-				},
-				async : false
-			}).responseText;
-			var link = _ctx + "/mobile/product/" + pid;
-			AppendListItem("#page-list-list-service", pid, link, main_img, name, description, price);
-
-			// $.post(_ctx + "/api/keystone/file/image/product", {
-			// url : url,
-			// pid : pid
-			// }, function(data) {
-			// var main_img = _ctx + data;
-			// var link = _ctx + "/mobile/product/" + pid;
-			// callBack("#page-list-list-service", pid, link, main_img, name,
-			// description, price);
-			// $("#page-list-list-service").listview('refresh');
-			// });
-		}
+//		function formatData(url, pid, name, description, price) {
+//			var main_img = _ctx + $.ajax({
+//				type : "POST",
+//				url : _ctx + "/api/keystone/file/image/product",
+//				data : {
+//					"url" : url,
+//					"pid" : pid
+//				},
+//				async : false
+//			}).responseText;
+//			var link = _ctx + "/mobile/product/" + pid;
+//			AppendListItem("#page-list-list-service", pid, link, main_img, name, description, price);
+//
+//			// $.post(_ctx + "/api/keystone/file/image/product", {
+//			// url : url,
+//			// pid : pid
+//			// }, function(data) {
+//			// var main_img = _ctx + data;
+//			// var link = _ctx + "/mobile/product/" + pid;
+//			// callBack("#page-list-list-service", pid, link, main_img, name,
+//			// description, price);
+//			// $("#page-list-list-service").listview('refresh');
+//			// });
+//		}
 
 		function AppendListItem(target, pid, href, img, title, discription, status) {
 			var elmLi = $(document.createElement("li"));

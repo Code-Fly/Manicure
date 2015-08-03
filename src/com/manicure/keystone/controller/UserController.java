@@ -119,7 +119,7 @@ public class UserController extends BaseController {
 	public String getWeChatUserInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable String openId) {
 		// 调用接口获取access_token
 		String at = KeystoneUtil.accessToken;
-		if (null == at) {			
+		if (null == at) {
 			logger.error(KeystoneUtil.errmsg);
 			return KeystoneUtil.errmsg;
 		}
@@ -137,7 +137,7 @@ public class UserController extends BaseController {
 	@ResponseBody
 	public String getWeChatUserList(HttpServletRequest request, HttpServletResponse response, @PathVariable String nextOpenId) {
 		String at = KeystoneUtil.accessToken;
-		if (null == at) {			
+		if (null == at) {
 			logger.error(KeystoneUtil.errmsg);
 			return KeystoneUtil.errmsg;
 		}
@@ -145,6 +145,40 @@ public class UserController extends BaseController {
 			nextOpenId = null;
 
 		JSONObject resp = userService.getWeChatUserList(at, nextOpenId);
+		if (resp.containsKey("errcode")) {
+			logger.error(resp.toString());
+			return resp.toString();
+		}
+		return resp.toString();
+	}
+
+	@RequestMapping(value = "/user/group/list")
+	@ResponseBody
+	public String getWeChatUserGroupList(HttpServletRequest request, HttpServletResponse response) {
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
+		}
+
+		JSONObject resp = userService.getWeChatUserGroupList(at);
+		if (resp.containsKey("errcode")) {
+			logger.error(resp.toString());
+			return resp.toString();
+		}
+		return resp.toString();
+	}
+
+	@RequestMapping(value = "/user/group/query/{openId}")
+	@ResponseBody
+	public String getWeChatUserGroupByOpenId(HttpServletRequest request, HttpServletResponse response, @PathVariable String openId) {
+		String at = KeystoneUtil.accessToken;
+		if (null == at) {
+			logger.error(KeystoneUtil.errmsg);
+			return KeystoneUtil.errmsg;
+		}
+
+		JSONObject resp = userService.getWeChatUserGroupByOpenId(at, openId);
 		if (resp.containsKey("errcode")) {
 			logger.error(resp.toString());
 			return resp.toString();

@@ -15,14 +15,15 @@ $(document).on('pagecontainershow', function(e, ui) {
 				alert(json);
 				return;
 			}
-			// alert(json.product_info)
+			
 			loadProduct(json.product_info);
-
+			
+			
 		});
-
+		
 		function loadProduct(json) {
 			var jList = json;
-
+			
 			var main_img = jList.product_base.main_img;
 			var name = jList.product_base.name;
 			var description = jList.product_base.detail_html.replace(/<[^>]+>/g, "");
@@ -39,38 +40,58 @@ $(document).on('pagecontainershow', function(e, ui) {
 					cost = property[i].vid;
 				}
 			}
-
-			formatData(main_img, _pid, name, description, price, oriPrice, property, cost, last);
-
-		}
-
-		function formatData(url, pid, name, description, price, oriPrice, property, cost, last) {
-			$.post(_ctx + "/api/keystone/file/image/product", {
-				url : url,
-				pid : pid
-			}, function(data) {
-				var main_img = _ctx + data;
-				$("#product-header").text(name);
-				$("#product-main-img").attr("src", main_img).attr("data-src", main_img);
-				$("#product-ori-price").text(oriPrice);
-				$("#product-price").text(price);
-				$("#product-description").text(description);
-				$("#product-cost").text(cost);
-				$("#product-last").text(last);
-				// $("#product-btn-pay").attr("href",
-				// payUrl.replace("PRODUCT_ID", _pid));
-				$("#product-btn-to-door-service").attr("href", _ctx + "/mobile/purchase-input-address?type=todoor&pid=" + pid);
-				$("#product-btn-to-shop-service").attr("href", _ctx + "/mobile/purchase-input-address?type=toshop&pid=" + pid);
-				$('#product-slider').sliderPro({
-					width : "100%",
-					aspectRatio : 1.4,
-					arrows : false,
-					buttons : false,
-					fullScreen : false,
-					touchSwipe : false,
-				});
+			
+			$("#product-header").text(name);
+			$("#product-main-img").attr("src", main_img).attr("data-src", main_img);
+			$("#product-ori-price").text(oriPrice);
+			$("#product-price").text(price);
+			$("#product-description").text(description);
+			$("#product-cost").text(cost);
+			$("#product-last").text(last);
+			// $("#product-btn-pay").attr("href", payUrl.replace("PRODUCT_ID", _pid));			
+			$("#product-btn-to-door-service").attr("href", _ctx + "/mobile/purchase-input-address?type=todoor&pid=" + _pid);
+			$("#product-btn-to-shop-service").attr("href", _ctx + "/mobile/purchase-input-address?type=toshop&pid=" + _pid);
+			
+			$("#product-slider").sliderPro({
+				width : "100%",
+				aspectRatio : 1.4,
+				arrows : false,
+				buttons : false,
+				fullScreen : false,
+				touchSwipe : false,
 			});
+			
+			//formatData(main_img, _pid, name, description, price, oriPrice, property, cost, last);
+
 		}
+
+//		function formatData(url, pid, name, description, price, oriPrice, property, cost, last) {
+//			$.post(_ctx + "/api/keystone/file/image/product", {
+//				url : url,
+//				pid : pid
+//			}, function(data) {
+//				var main_img = _ctx + data;
+//				$("#product-header").text(name);
+//				$("#product-main-img").attr("src", main_img).attr("data-src", main_img);
+//				$("#product-ori-price").text(oriPrice);
+//				$("#product-price").text(price);
+//				$("#product-description").text(description);
+//				$("#product-cost").text(cost);
+//				$("#product-last").text(last);
+//				// $("#product-btn-pay").attr("href",
+//				// payUrl.replace("PRODUCT_ID", _pid));
+//				$("#product-btn-to-door-service").attr("href", _ctx + "/mobile/purchase-input-address?type=todoor&pid=" + pid);
+//				$("#product-btn-to-shop-service").attr("href", _ctx + "/mobile/purchase-input-address?type=toshop&pid=" + pid);
+//				$('#product-slider').sliderPro({
+//					width : "100%",
+//					aspectRatio : 1.4,
+//					arrows : false,
+//					buttons : false,
+//					fullScreen : false,
+//					touchSwipe : false,
+//				});
+//			});
+//		}
 
 	})();
 
