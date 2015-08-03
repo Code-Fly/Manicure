@@ -64,10 +64,12 @@ public class ProductList extends BaseEntity {
 
 	public void sort(Map<String, String> filter) {
 		String orderBy = filter.get("orderBy");
-
 		if ("price".equals(orderBy)) {
 			sortByPrice(filter);
+		} else if ("sales".equals(orderBy)) {
+			sortBySales(filter);
 		}
+
 	}
 
 	private void sortByPrice(Map<String, String> filter) {
@@ -86,6 +88,32 @@ public class ProductList extends BaseEntity {
 					}
 				} else {
 					if (products_info.get(i).getSku_list().get(0).getPrice() < products_info.get(j).getSku_list().get(0).getPrice()) {
+						temp = products_info.get(i);
+						products_info.set(i, products_info.get(j));
+						products_info.set(j, temp);
+					}
+				}
+
+			}
+		}
+	}
+	
+	private void sortBySales(Map<String, String> filter) {
+		String sort = filter.get("sort");
+
+		ProductInfo temp; // 记录临时中间值
+		int size = products_info.size(); // 数组大小
+		for (int i = 0; i < size - 1; i++) {
+			for (int j = i + 1; j < size; j++) {
+				// 交换两数的位置
+				if ("asc".equals(sort)) {
+					if (Integer.parseInt(products_info.get(i).getProduct_base().getDetail().get(0)) > Integer.parseInt(products_info.get(j).getProduct_base().getDetail().get(0))) {
+						temp = products_info.get(i);
+						products_info.set(i, products_info.get(j));
+						products_info.set(j, temp);
+					}
+				} else {
+					if (Integer.parseInt(products_info.get(i).getProduct_base().getDetail().get(0)) < Integer.parseInt(products_info.get(j).getProduct_base().getDetail().get(0))) {
 						temp = products_info.get(i);
 						products_info.set(i, products_info.get(j));
 						products_info.set(j, temp);

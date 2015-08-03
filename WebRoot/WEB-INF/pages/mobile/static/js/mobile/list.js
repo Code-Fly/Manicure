@@ -6,7 +6,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 		if (ui.toPage[0].id != "list-page")
 			return;
 		$("#list-header").text("米宝服务");
-		$.getJSON(_ctx + "/api/keystone/product/list/1", { minPrice: "12", maxPrice: "15" }, function(json) {
+		$.getJSON(_ctx + "/api/keystone/product/list/1", { orderBy: "sales", sort: "desc"}, function(json) {
 			if (null == json) {
 				alert("null");
 				return;
