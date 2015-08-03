@@ -102,7 +102,9 @@ http://www.mydomain.com/mobile/space
 ##### Product detail
 http://www.mydomain.com/mobile/product/{productId}
 
-######
-http://www.mydomain.com/mobile/technician/query?productId={productId}
-http://www.mydomain.com/mobile/technician/query/{tecId}
-http://www.mydomain.com/mobile/portal/query?productId={productId}
+###### 根据服务查看能做该服务的所有技师
+http://www.mydomain.com/technician/query?productId={productId}
+###### 根据技师详细信息
+http://www.mydomain.com/technician/query/{tecId}
+###### 查看能做该服务的所有门店id
+http://www.mydomain.com/portal/query?productId={productId}
