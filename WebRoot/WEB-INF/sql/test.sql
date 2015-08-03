@@ -84,3 +84,7 @@ CREATE TABLE `tec_service` (
 )
 COMMENT='技师与服务关联表'
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 技师详细信息试图
+CREATE VIEW test.tec_info as 
+select tec.*,sum(oc.evaluation) as evaluation,avg(oc.stars) as stars, avg(oc.profnal_score) as profnal_score,avg(oc.move_score) as move_score ,avg(oc.punctual_score) as punctual_score from technician tec,order_extend oe,order_comment oc where tec.id = oe.tec_id and oe.order_id = oc.order_id

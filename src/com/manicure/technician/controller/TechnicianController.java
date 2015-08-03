@@ -7,6 +7,8 @@ package com.manicure.technician.controller;
 import java.util.List;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +30,7 @@ public class TechnicianController extends BaseController {
 	
 	@Autowired
 	TechnicianService techService;
+	
 	/**
 	 * 根据productId 查找能做该产品的技师
 	 * @param productId
@@ -38,5 +41,18 @@ public class TechnicianController extends BaseController {
 	public String getTechByProductId(@RequestParam("productId") String productId){
 		List<Technician> techs = techService.queryTechsByProductId(productId);
 		return JSONArray.fromObject(techs).toString();
+	}
+	
+
+	/**
+	 * 根据productId 查找能做该产品的技师
+	 * @param productId
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/query/{id}", method = RequestMethod.GET)
+	public String getTechInfoById(int id){
+		Technician tech = techService.queryTechInfoById(id);
+		return JSONObject.fromObject(tech).toString();
 	}
 }

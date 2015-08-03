@@ -93,6 +93,7 @@
     -->
     id, `name`, lng, lat, province, city, district, street, street_number
   </sql>
+  
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.manicure.business.entity.BusinessExample" >
     <!--
       WARNING - @mbggenerated
@@ -123,6 +124,14 @@
     from business
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByTecId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+   select bu.* from business bu,tec_business tb 
+   		where 
+   		tb.busns_id = bu.id 
+   	and tb.tec_id = #{tecId,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     <!--
       WARNING - @mbggenerated
