@@ -5,7 +5,7 @@
 
 # Package Files #
 #*.war
-#*.ear
+#commons-pool2-2.4.2.jarcommons-pool2-2.4.2.jar*.ear
 .DS_Store
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 #hs_err_pid*
