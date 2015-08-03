@@ -25,7 +25,6 @@ import com.manicure.keystone.entity.product.ProductBase;
 import com.manicure.keystone.entity.product.ProductInfo;
 import com.manicure.keystone.entity.product.ProductList;
 import com.manicure.keystone.entity.product.SkuList;
-import com.manicure.keystone.service.iface.ICoreService;
 import com.manicure.keystone.service.iface.IProductService;
 
 /**
@@ -117,6 +116,35 @@ public class ProductService extends BaseService implements IProductService {
 	}
 
 	/**
+	 * formated product
+	 * 
+	 * @param request
+	 * @param accessToken
+	 * @param groupId
+	 * @return
+	 */
+	public JSONObject getProduct(HttpServletRequest request, String accessToken, String productId) {
+		JSONObject oList = orderService.getOrderList(accessToken, "0", "0", "0");
+
+		JSONObject respProduct = getProduct(accessToken, productId);
+		if (respProduct.containsKey("errcode") && !respProduct.getString("errcode").equals("0")) {
+			logger.error(respProduct.toString());
+			return respProduct;
+		}
+		Product p = (Product) JSONObject.toBean(respProduct, Product.class);
+		ProductInfo pInfo = p.getProduct_info();
+		ProductBase pBase = pInfo.getProduct_base();
+		String imageUrl = Const.getServerUrl(request) + FileUtil.getWeChatImage(pBase.getMain_img(), FileUtil.CATEGORY_PRODUCT, pInfo.getProduct_id(), false);
+		pBase.setMain_img(imageUrl);		
+		List<String> detail = new ArrayList<String>();
+		detail.add(Integer.toString(orderService.getOrderCount(oList, pInfo.getProduct_id())));
+		pBase.setDetail(detail);
+		pInfo.setProduct_base(pBase);
+		p.setProduct_info(pInfo);
+		return JSONObject.fromObject(p);
+	}
+
+	/**
 	 * get formated list
 	 * 
 	 * @param request
@@ -144,7 +172,7 @@ public class ProductService extends BaseService implements IProductService {
 			pList = (ProductList) JSONObject.toBean(resp, ProductList.class, classMap);
 			List<ProductInfo> pInfos = pList.getProducts_info();
 			JSONObject oList = orderService.getOrderList(accessToken, "0", "0", "0");
-			
+
 			for (int i = 0; i < pInfos.size(); i++) {
 				ProductInfo pInfo = pInfos.get(i);
 				ProductBase pBase = pInfo.getProduct_base();
@@ -166,7 +194,7 @@ public class ProductService extends BaseService implements IProductService {
 			List<String> pIds = respGroupDetail.getJSONObject("group_detail").getJSONArray("product_list");
 			List<ProductInfo> pInfos = new ArrayList<ProductInfo>();
 			JSONObject oList = orderService.getOrderList(accessToken, "0", "0", "0");
-			
+
 			for (int i = 0; i < pIds.size(); i++) {
 				JSONObject respProduct = getProduct(accessToken, pIds.get(i));
 				if (respProduct.containsKey("errcode") && !respProduct.getString("errcode").equals("0")) {

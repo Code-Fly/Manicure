@@ -90,20 +90,12 @@ public class ProductController extends BaseController {
 			return KeystoneUtil.errmsg;
 		}
 
-		JSONObject resp = productService.getProduct(at, productId);
+		JSONObject resp = productService.getProduct(request, at, productId);
 		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
 			logger.error(resp.toString());
 			return resp.toString();
 		}
-		Product p = (Product) JSONObject.toBean(resp, Product.class);
-		ProductInfo pInfo = p.getProduct_info();
-		ProductBase pBase = pInfo.getProduct_base();
-
-		String imageUrl = Const.getServerUrl(request) + FileUtil.getWeChatImage(pBase.getMain_img(), FileUtil.CATEGORY_PRODUCT, pInfo.getProduct_id(), false);
-		pBase.setMain_img(imageUrl);
-		pInfo.setProduct_base(pBase);
-		p.setProduct_info(pInfo);
-		return JSONObject.fromObject(p).toString();
+		return resp.toString();
 	}
 
 	@RequestMapping(value = "/product/group/list")

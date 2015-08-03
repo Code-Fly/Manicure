@@ -37,7 +37,9 @@
 							</p>
 						</div>
 						<div class="ui-block-b" style="text-align: right;">
-							<p style="color:orange;">0人做过</p>
+							<p style="color:orange;">
+								<n id="product-sales">0</n>人做过
+							</p>
 						</div>
 					</div>
 					<div class="ui-grid-solo">

@@ -30,6 +30,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			var price = "¥" + (jList.sku_list[0].price / 100).toFixed(2);
 			var oriPrice = "¥" + (jList.sku_list[0].ori_price / 100).toFixed(2);
 			var property = jList.product_base.property;
+			var sales = jList.product_base.detail[0];
 			var cost = "0分钟";
 			var last = "0天";
 			for (var i = 0; i < property.length; i++) {
@@ -40,7 +41,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 					cost = property[i].vid;
 				}
 			}
-			
+			$("#product-sales").text(sales);
 			$("#product-header").text(name);
 			$("#product-main-img").attr("src", main_img).attr("data-src", main_img);
 			$("#product-ori-price").text(oriPrice);
