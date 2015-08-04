@@ -61,11 +61,12 @@
 					</div>
 				</div>
 				<div class="ui-grid-solo" style="padding-left: 10px;padding-right: 10px;padding-bottom: 10px;">
-					<ul data-role="listview" data-inset="true">
+					<ul data-role="listview" data-inset="true" id="page-product-list-technician">
+						<%-- 
 						<li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
 								<h2>叶海燕</h2>
 								<p>
-									专业:
+									<span>1</span>
 									<n style="color:blue;">4.5</n>
 									感动:
 									<n style="color:green;">4.0</n>
@@ -74,30 +75,7 @@
 								</p>
 								<p class="ui-li-aside" style="color:orange;">服务32次</p>
 						</a></li>
-						<li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
-								<h2>张君苗</h2>
-								<p>
-									专业:
-									<n style="color:blue;">3.5</n>
-									感动:
-									<n style="color:green;">4.4</n>
-									守时:
-									<n style="color:red;">5.0</n>
-								</p>
-								<p class="ui-li-aside" style="color:orange;">服务46次</p>
-						</a></li>
-						<li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
-								<h2>黄雅莉</h2>
-								<p>
-									专业:
-									<n style="color:blue;">2.5</n>
-									感动:
-									<n style="color:green;">4.0</n>
-									守时:
-									<n style="color:red;">4.0</n>
-								</p>
-								<p class="ui-li-aside" style="color:orange;">服务25次</p>
-						</a></li>
+						 --%>
 					</ul>
 				</div>
 
