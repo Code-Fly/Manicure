@@ -106,6 +106,8 @@ http://www.mydomain.com/mobile/space
 ##### Product detail
 http://www.mydomain.com/mobile/product/{productId}
 
+###### 查询a服务在b店里可选的技师列表
+http://www.mydomain.com/api/technician/query/productId/portalId
 ###### 根据服务查看能做该服务的所有技师
 http://www.mydomain.com/api/technician/query?productId={productId}
 ###### 根据技师详细信息

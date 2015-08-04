@@ -13,6 +13,6 @@ import com.manicure.technician.entity.Technician;
  */
 public interface TechnicianService {
 	List<Technician> queryTechsByProductId(String productId);
-	
+	List<Technician> queryTechsByProductIdAndPortalId(String productId,String portalId);
 	Technician queryTechInfoById(int id);
 }

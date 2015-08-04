@@ -73,4 +73,9 @@ public class TechnicianServiceImp implements TechnicianService {
 		return tec;
 	}
 
+	@Override
+	public List<Technician> queryTechsByProductIdAndPortalId(String productId, String portalId) {
+		return  tecMapper.selectByProductidAndPortalId(productId,portalId);
+	}
+
 }

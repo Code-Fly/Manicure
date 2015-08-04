@@ -59,4 +59,17 @@ public class TechnicianController extends BaseController {
 		}
 		return JSONObject.fromObject(tech).toString();
 	}
+	
+	
+	/**
+	 * 根据productId 查询A服务在B店里可选的技师列表
+	 * @param productId
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/query/{productId}/{portalId}", method = RequestMethod.GET)
+	public String getTechByProductIdAndPortalId(@PathVariable("productId") String productId,@PathVariable("portalId") String portalId){
+		List<Technician> techs = techService.queryTechsByProductIdAndPortalId(productId,portalId);
+		return JSONArray.fromObject(techs).toString();
+	}
 }
