@@ -43,7 +43,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				var orderCount = jList[i].orderCount;
 				var headerPic = jList[i].headerPic;
 				var tid = jList[i].id;
-				var link = "#";
+				var link = _ctx + "/mobile/technician?tid=" + tid;
 
 				AppendListItem("#page-product-list-technician", tid, link, name, moveScore, profnalScore, punctualScore, orderCount, headerPic)
 			}

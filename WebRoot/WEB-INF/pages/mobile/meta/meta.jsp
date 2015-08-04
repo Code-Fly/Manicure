@@ -25,7 +25,7 @@
 <script src="${ctx}/mobile/static/js/mobile/purchase-select-time.js"></script>
 <script src="${ctx}/mobile/static/js/mobile/purchase-confirm.js"></script>
 <script src="${ctx}/mobile/static/js/mobile/purchase-input-address.js"></script>
-
+<script src="${ctx}/mobile/static/js/mobile/technician.js"></script>
 
 <link rel="shortcut icon" href="${ctx}/mobile/static/images/favicon.ico">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/themes/default/jquery.mobile-1.4.5.min.css">
@@ -34,4 +34,4 @@
 <link rel="stylesheet" href="${ctx}/mobile/static/css/slider-pro.min.css">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/listview-grid.css">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/jquery.mobile.datepicker.css" />
-
+<link rel="stylesheet" href="${ctx}/mobile/static/css/mobile/global.css" />

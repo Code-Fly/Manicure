@@ -85,6 +85,12 @@ public class MobileController extends BaseController {
 		mobileService.setUser(request);
 		return "/mobile/purchase-confirm";
 	}
+	
+	@RequestMapping(value = "/technician")
+	public String technicion(HttpServletRequest request, HttpServletResponse response) {
+		mobileService.setUser(request);
+		return "/mobile/technician";
+	}
 
 	@RequestMapping(value = { "/", "/index" })
 	public String index(HttpServletRequest request, HttpServletResponse response) {
