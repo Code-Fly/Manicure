@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
 import com.manicure.portal.iface.PortalService;
@@ -21,7 +22,7 @@ import net.sf.json.JSONArray;
  *
  */
 @Controller
-@RequestMapping(value = "/portal")
+@RequestMapping(value = "/api/portal")
 public class PortalController extends BaseController {
 	
 	
@@ -33,6 +34,7 @@ public class PortalController extends BaseController {
 	 * @param productId
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/query", method = RequestMethod.GET)
 	public  String  getPortalIds(@RequestParam("productId") String productId){
 		logger.info("productId:"+productId);

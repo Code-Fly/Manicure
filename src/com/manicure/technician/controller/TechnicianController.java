@@ -26,7 +26,7 @@ import com.manicure.technician.iface.TechnicianService;
  *
  */
 @Controller
-@RequestMapping(value = "/technician")
+@RequestMapping(value = "/api/technician")
 public class TechnicianController extends BaseController {
 	
 	@Autowired

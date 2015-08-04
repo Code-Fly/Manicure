@@ -53,10 +53,10 @@ public class TechnicianServiceImp implements TechnicianService {
 			OrderExtendExample  oee = new OrderExtendExample();
 			oee.or().andTecIdEqualTo(id);
 			int orderCount = orexMapper.countByExample(oee);
-			tec.setOrderCount(orderCount);
+			tec.setOrderCount((long)orderCount);
 			HashMap<String,Object> commentHashMap = orcMapper.getCommentInfoByTecId(id);
-			tec.setCommentCount((Integer)commentHashMap.get("comment_count"));
-			tec.setEvaluation((Integer)commentHashMap.get("evaluation"));
+			tec.setCommentCount((Long)commentHashMap.get("comment_count"));
+			tec.setEvaluation((BigDecimal)commentHashMap.get("evaluation"));
 			tec.setStars((BigDecimal)commentHashMap.get("stars"));
 			tec.setProfnalScore((BigDecimal)commentHashMap.get("profnal_score"));
 			tec.setMoveScore((BigDecimal)commentHashMap.get("move_score"));

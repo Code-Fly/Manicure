@@ -420,37 +420,40 @@ public class Technician {
     }
 
     // add by zhangqw below
-	private Integer commentCount;
-    private Integer orderCount;
+	private Long commentCount;
+    private Long orderCount;
     // 评价总分数
-    private Integer evaluation; 
+    private BigDecimal evaluation; 
     private BigDecimal stars;
     private BigDecimal profnalScore;
     private BigDecimal moveScore;
     private BigDecimal punctualScore;
     // 商圈
     private String business;
-	public Integer getCommentCount() {
+	
+
+	
+	public Long getCommentCount() {
 		return commentCount;
 	}
 
-	public void setCommentCount(Integer commentCount) {
+	public void setCommentCount(Long commentCount) {
 		this.commentCount = commentCount;
 	}
 
-	public Integer getOrderCount() {
+	public Long getOrderCount() {
 		return orderCount;
 	}
 
-	public void setOrderCount(Integer orderCount) {
+	public void setOrderCount(Long orderCount) {
 		this.orderCount = orderCount;
 	}
 
-	public Integer getEvaluation() {
+	public BigDecimal getEvaluation() {
 		return evaluation;
 	}
 
-	public void setEvaluation(Integer evaluation) {
+	public void setEvaluation(BigDecimal evaluation) {
 		this.evaluation = evaluation;
 	}
 

@@ -107,8 +107,8 @@ http://www.mydomain.com/mobile/space
 http://www.mydomain.com/mobile/product/{productId}
 
 ###### 根据服务查看能做该服务的所有技师
-http://www.mydomain.com/technician/query?productId={productId}
+http://www.mydomain.com/api/technician/query?productId={productId}
 ###### 根据技师详细信息
-http://www.mydomain.com/technician/query/{tecId}
+http://www.mydomain.com/api/technician/query/{tecId}
 ###### 查看能做该服务的所有门店id
-http://www.mydomain.com/portal/query?productId={productId}
+http://www.mydomain.com/api/portal/query?productId={productId}
