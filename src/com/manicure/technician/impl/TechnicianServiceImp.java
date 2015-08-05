@@ -43,7 +43,29 @@ public class TechnicianServiceImp implements TechnicianService {
 	 */
 	@Override
 	public List<Technician> queryTechsByProductId(String productId) {
-		return tecMapper.selectByProductid(productId);
+		List<Technician> techs = tecMapper.selectByProductid(productId);
+		for(Technician tec:techs){
+			OrderExtendExample  oee = new OrderExtendExample();
+			oee.or().andTecIdEqualTo(tec.getId());
+			int orderCount = orexMapper.countByExample(oee);
+			tec.setOrderCount((long)orderCount);
+			HashMap<String,Object> commentHashMap = orcMapper.getCommentInfoByTecId(tec.getId());
+			tec.setCommentCount((Long)commentHashMap.get("comment_count"));
+			tec.setEvaluation((BigDecimal)commentHashMap.get("evaluation"));
+			tec.setStars((BigDecimal)commentHashMap.get("stars"));
+			tec.setProfnalScore((BigDecimal)commentHashMap.get("profnal_score"));
+			tec.setMoveScore((BigDecimal)commentHashMap.get("move_score"));
+			tec.setPunctualScore((BigDecimal)commentHashMap.get("punctual_score"));
+			List<Business> business = busnMapper.selectByTecId(tec.getId());
+			StringBuffer busnName = new StringBuffer();
+			for(Business bus:business){
+				busnName.append(bus.getName()).append(",");
+			}
+			if(busnName.length() > 1){
+				tec.setBusiness(busnName.substring(0, busnName.length() -1));
+			} 
+		}
+		return techs;
 	}
 
 	@Override
@@ -75,7 +97,29 @@ public class TechnicianServiceImp implements TechnicianService {
 
 	@Override
 	public List<Technician> queryTechsByProductIdAndPortalId(String productId, String portalId) {
-		return  tecMapper.selectByProductidAndPortalId(productId,portalId);
+		List<Technician> techs = tecMapper.selectByProductidAndPortalId(productId,portalId);
+		for(Technician tec:techs){
+			OrderExtendExample  oee = new OrderExtendExample();
+			oee.or().andTecIdEqualTo(tec.getId());
+			int orderCount = orexMapper.countByExample(oee);
+			tec.setOrderCount((long)orderCount);
+			HashMap<String,Object> commentHashMap = orcMapper.getCommentInfoByTecId(tec.getId());
+			tec.setCommentCount((Long)commentHashMap.get("comment_count"));
+			tec.setEvaluation((BigDecimal)commentHashMap.get("evaluation"));
+			tec.setStars((BigDecimal)commentHashMap.get("stars"));
+			tec.setProfnalScore((BigDecimal)commentHashMap.get("profnal_score"));
+			tec.setMoveScore((BigDecimal)commentHashMap.get("move_score"));
+			tec.setPunctualScore((BigDecimal)commentHashMap.get("punctual_score"));
+			List<Business> business = busnMapper.selectByTecId(tec.getId());
+			StringBuffer busnName = new StringBuffer();
+			for(Business bus:business){
+				busnName.append(bus.getName()).append(",");
+			}
+			if(busnName.length() > 1){
+				tec.setBusiness(busnName.substring(0, busnName.length() -1));
+			} 
+		}
+		return techs;
 	}
 
 }
