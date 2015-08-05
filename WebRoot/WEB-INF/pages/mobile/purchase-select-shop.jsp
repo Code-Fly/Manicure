@@ -7,9 +7,9 @@
 <%@ include file="meta/meta.jsp"%>
 </head>
 <body>
-	<div data-role="page" id="purchase-select-employee-page">
+	<div data-role="page" id="purchase-select-shop-page">
 		<div data-role="header">
-			<h2>选择甲师</h2>
+			<h2>选择门店</h2>
 		</div>
 		<!-- /header -->
 		<div role="main">
@@ -40,10 +40,10 @@
 					<p style="color:black;margin-top: 5px;">确认下单</p>
 				</div>
 			</div>
-			<p style="font-size: 0.6em;">&nbsp;选择甲师</p>
 			<div class="ui-grid-solo ui-content">
-				<ul data-role="listview" data-inset="true">
-					<li><a class="purchase-select-employee-btn-next" href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
+				<label for="purchase-input-address-addr">选择店面：</label>
+				<ul data-role="listview" data-inset="true" id="page-purchase-select-shop-list">
+					<%-- <li><a class="purchase-select-shop-btn-next" href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
 							<h2>叶海燕</h2>
 							<p>
 								专业:
@@ -54,33 +54,13 @@
 								<n style="color:red;">5.0</n>
 							</p>
 							<p class="ui-li-aside" style="color:orange;">服务32次</p>
-					</a></li>
-					<li><a href="#" class="purchase-select-employee-btn-next"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
-							<h2>张君苗</h2>
-							<p>
-								专业:
-								<n style="color:blue;">3.5</n>
-								感动:
-								<n style="color:green;">4.4</n>
-								守时:
-								<n style="color:red;">5.0</n>
-							</p>
-							<p class="ui-li-aside" style="color:orange;">服务46次</p>
-					</a></li>
-					<li><a href="#" class="purchase-select-employee-btn-next"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
-							<h2>黄雅莉</h2>
-							<p>
-								专业:
-								<n style="color:blue;">2.5</n>
-								感动:
-								<n style="color:green;">4.0</n>
-								守时:
-								<n style="color:red;">4.0</n>
-							</p>
-							<p class="ui-li-aside" style="color:orange;">服务25次</p>
-					</a></li>
+					</a></li> --%>
+
 				</ul>
 			</div>
+
+
+
 		</div>
 
 		<!-- /footer -->

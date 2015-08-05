@@ -61,31 +61,37 @@ public class MobileController extends BaseController {
 		mobileService.setUser(request);
 		return "/mobile/product";
 	}
-	
+
 	@RequestMapping(value = "/purchase-input-address")
 	public String purchaseInputAddress(HttpServletRequest request, HttpServletResponse response) {
 		mobileService.setUser(request);
 		return "/mobile/purchase-input-address";
 	}
-	
+
+	@RequestMapping(value = "/purchase-select-shop")
+	public String purchaseSelectShop(HttpServletRequest request, HttpServletResponse response) {
+		mobileService.setUser(request);
+		return "/mobile/purchase-select-shop";
+	}
+
 	@RequestMapping(value = "/purchase-select-employee")
 	public String purchaseSelectEmployee(HttpServletRequest request, HttpServletResponse response) {
 		mobileService.setUser(request);
 		return "/mobile/purchase-select-employee";
 	}
-	
+
 	@RequestMapping(value = "/purchase-select-time")
 	public String purchaseSelectTime(HttpServletRequest request, HttpServletResponse response) {
 		mobileService.setUser(request);
 		return "/mobile/purchase-select-time";
 	}
-	
+
 	@RequestMapping(value = "/purchase-confirm")
 	public String purchaseConfirm(HttpServletRequest request, HttpServletResponse response) {
 		mobileService.setUser(request);
 		return "/mobile/purchase-confirm";
 	}
-	
+
 	@RequestMapping(value = "/technician")
 	public String technicion(HttpServletRequest request, HttpServletResponse response) {
 		mobileService.setUser(request);

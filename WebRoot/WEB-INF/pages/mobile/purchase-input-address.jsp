@@ -49,7 +49,14 @@
 				<label for="purchase-input-address-addr">居住地址：</label>
 				<textarea cols="40" rows="8" name="purchase-input-address-addr" id="purchase-input-address-addr" placeholder="请填写并选择地址"></textarea>
 			</div>
-			<div class="ui-grid-solo" id="test"></div>
+			<div class="ui-grid-solo ui-content">
+				<label for="purchase-input-address-buz">所在商圈：</label>
+				<p id="purchase-input-address-buz"></p>
+			</div>
+			<div class="ui-grid-solo">
+				<input type="hidden" id="purchase-hid-address-point-lng">
+				<input type="hidden" id="purchase-hid-address-point-lat">
+			</div>
 			<div data-role="footer" data-position="fixed" style="text-align: center;">
 				<a href="#" id="purchase-input-address-btn-next" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">选择甲师</a>
 			</div>

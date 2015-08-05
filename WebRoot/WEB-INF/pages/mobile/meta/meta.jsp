@@ -26,6 +26,7 @@
 <script src="${ctx}/mobile/static/js/mobile/purchase-confirm.js"></script>
 <script src="${ctx}/mobile/static/js/mobile/purchase-input-address.js"></script>
 <script src="${ctx}/mobile/static/js/mobile/technician.js"></script>
+<script src="${ctx}/mobile/static/js/mobile/purchase-select-shop.js"></script>
 <script src="http://api.map.baidu.com/api?v=1.2"></script>
 <script src="${ctx}/mobile/static/js/mobile/json2.js"></script>
 

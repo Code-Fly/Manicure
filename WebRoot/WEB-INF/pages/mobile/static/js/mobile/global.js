@@ -45,29 +45,25 @@ $(document).on("pagecontainerchange", function() {
 
 });
 
-$(function() {
+$.datepicker.regional["zh-CN"] = {
+	closeText : "关闭",
+	prevText : "&#x3c;上月",
+	nextText : "下月&#x3e;",
+	currentText : "今天",
+	monthNames : [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
+	monthNamesShort : [ "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二" ],
+	dayNames : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],
+	dayNamesShort : [ "周日", "周一", "周二", "周三", "周四", "周五", "周六" ],
+	dayNamesMin : [ "日", "一", "二", "三", "四", "五", "六" ],
+	weekHeader : "周",
+	dateFormat : "yy-mm-dd",
+	firstDay : 1,
+	isRTL : !1,
+	showMonthAfterYear : !0,
+	yearSuffix : "年"
+}
 
-	$.datepicker.regional["zh-CN"] = {
-		closeText : "关闭",
-		prevText : "&#x3c;上月",
-		nextText : "下月&#x3e;",
-		currentText : "今天",
-		monthNames : [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
-		monthNamesShort : [ "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二" ],
-		dayNames : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],
-		dayNamesShort : [ "周日", "周一", "周二", "周三", "周四", "周五", "周六" ],
-		dayNamesMin : [ "日", "一", "二", "三", "四", "五", "六" ],
-		weekHeader : "周",
-		dateFormat : "yy-mm-dd",
-		firstDay : 1,
-		isRTL : !1,
-		showMonthAfterYear : !0,
-		yearSuffix : "年"
-	}
-
-	$.datepicker.setDefaults($.datepicker.regional["zh-CN"]);
-
-});
+$.datepicker.setDefaults($.datepicker.regional["zh-CN"]);
 
 function GetQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -77,44 +73,22 @@ function GetQueryString(name) {
 	return null;
 }
 
-function kset(key, value) {
-	console.log("key" + key + "value" + value);
-	window.localStorage.setItem(key, value);
-}
-
-function kget(key) {
-	console.log(key);
-	return window.sessionStorage.getItem(key);
-}
-
-function kremove(key) {
-	window.sessionStorage.removeItem(key);
-}
-
-function kclear() {
-	window.sessionStorage.clear();
-}
-// 测试更新方法
-function kupdate(key, value) {
-	window.sessionStorage.removeItem(key);
-	window.sessionStorage.setItem(key, value);
-}
-
-//临时存储  
-var SessionCache = {  
-    cache:function(value){  
-    	sessionStorage.setItem("EasyWayTempCache",value);  
-    },  
-    getCache:function(){  
-        return  sessionStorage.getItem("EasyWayTempCache");  
-    },  
-    setItem:function(key,value){  
-    	sessionStorage.setItem(key,value);  
-    },  
-    getItem:function(key){  
-        return sessionStorage.getItem(key);  
-    },  
-    removeItem:function(key){  
-        return sessionStorage.removeItem(key);  
-    }  
-};  
+// 临时存储
+var SessionCache = {
+	set : function(key, value) {
+		sessionStorage.setItem(key, value);
+	},
+	get : function(key) {
+		return sessionStorage.getItem(key);
+	},
+	remove : function(key) {
+		return sessionStorage.removeItem(key);
+	},
+	update : function(key, value) {
+		sessionStorage.removeItem(key);
+		sessionStorage.setItem(key, value);
+	},
+	clear : function() {
+		return sessionStorage.clear();
+	}
+};

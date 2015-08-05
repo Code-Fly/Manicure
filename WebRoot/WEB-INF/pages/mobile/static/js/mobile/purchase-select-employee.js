@@ -6,7 +6,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			$.mobile.changePage(_ctx + "/mobile/purchase-select-time?pid=" + GetQueryString("pid"));
 		});
 		
-		//alert(SessionCache.getItem("customerTel"));
+		
 	})();
 
 });

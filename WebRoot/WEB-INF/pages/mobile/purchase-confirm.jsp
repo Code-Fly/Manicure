@@ -11,7 +11,7 @@
 <body>
 	<div data-role="page" id="purchase-confirm-page">
 		<div data-role="header">
-			<h2>填写订单</h2>
+			<h2>确认订单</h2>
 		</div>
 		<!-- /header -->
 		<div role="main">

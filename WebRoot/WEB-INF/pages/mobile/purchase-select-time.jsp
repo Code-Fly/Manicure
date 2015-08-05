@@ -6,13 +6,12 @@
 
 <%@ include file="meta/meta.jsp"%>
 <style type="text/css">
-
 </style>
 </head>
 <body>
 	<div data-role="page" id="purchase-select-time-page">
 		<div data-role="header">
-			<h2>填写订单</h2>
+			<h2>选择时间</h2>
 		</div>
 		<!-- /header -->
 		<div role="main">
@@ -47,49 +46,49 @@
 				<input id="purchase-select-time-datapicker" type="hidden" data-role="date" data-inline="true">
 			</div>
 			<div class="ui-grid-solo" id="purchase-select-time-grid">
-			
+
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
-						<label for="grid-radio-1">07:00</label> <input type="radio" id="grid-radio-1" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-1">07:00</label> <input type="radio" id="grid-radio-1" name="customer-time-radio" value="07:00" data-mini="true">
 					</div>
 					<div class="ui-block-b">
-						<label for="grid-radio-2">08:00</label> <input type="radio" id="grid-radio-2" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-2">08:00</label> <input type="radio" id="grid-radio-2" name="customer-time-radio" value="08:00" data-mini="true">
 					</div>
 					<div class="ui-block-c">
-						<label for="grid-radio-3">09:00</label> <input type="radio" id="grid-radio-3" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-3">09:00</label> <input type="radio" id="grid-radio-3" name="customer-time-radio" value="09:00" data-mini="true">
 					</div>
 				</div>
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
-						<label for="grid-radio-4">10:00</label> <input type="radio" id="grid-radio-4" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-4">10:00</label> <input type="radio" id="grid-radio-4" name="customer-time-radio" value="10:00" data-mini="true">
 					</div>
 					<div class="ui-block-b">
-						<label for="grid-radio-5">11:00</label> <input type="radio" id="grid-radio-5" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-5">11:00</label> <input type="radio" id="grid-radio-5" name="customer-time-radio" value="11:00" data-mini="true">
 					</div>
 					<div class="ui-block-c">
-						<label for="grid-radio-6">12:00</label> <input type="radio" id="grid-radio-6" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-6">12:00</label> <input type="radio" id="grid-radio-6" name="customer-time-radio" value="12:00" data-mini="true">
 					</div>
 				</div>
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
-						<label for="grid-radio-7">13:00</label> <input type="radio" id="grid-radio-7" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-7">13:00</label> <input type="radio" id="grid-radio-7" name="customer-time-radio" value="13:00" data-mini="true">
 					</div>
 					<div class="ui-block-b">
-						<label for="grid-radio-8">14:00</label> <input type="radio" id="grid-radio-8" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-8">14:00</label> <input type="radio" id="grid-radio-8" name="customer-time-radio" value="14:00" data-mini="true">
 					</div>
 					<div class="ui-block-c">
-						<label for="grid-radio-9">15:00</label> <input type="radio" id="grid-radio-9" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-9">15:00</label> <input type="radio" id="grid-radio-9" name="customer-time-radio" value="15:00" data-mini="true">
 					</div>
 				</div>
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
-						<label for="grid-radio-10">16:00</label> <input type="radio" id="grid-radio-10" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-10">16:00</label> <input type="radio" id="grid-radio-10" name="customer-time-radio" value="16:00" data-mini="true">
 					</div>
 					<div class="ui-block-b">
-						<label for="grid-radio-11">17:00</label> <input type="radio" id="grid-radio-11" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-11">17:00</label> <input type="radio" id="grid-radio-11" name="customer-time-radio" value="17:00" data-mini="true">
 					</div>
 					<div class="ui-block-c">
-						<label for="grid-radio-12">18:00</label> <input type="radio" id="grid-radio-12" name="grid-radio-2" data-mini="true">
+						<label for="grid-radio-12">18:00</label> <input type="radio" id="grid-radio-12" name="customer-time-radio" value="18:00" data-mini="true">
 					</div>
 				</div>
 			</div>

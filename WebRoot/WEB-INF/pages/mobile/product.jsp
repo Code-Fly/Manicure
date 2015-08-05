@@ -13,7 +13,7 @@
 <body>
 	<div data-role="page" id="product-page">
 		<div data-role="header">
-			<a href="${ctx}/mobile/index" data-ajax="false" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-home" >首页</a>
+			<a href="${ctx}/mobile/index" data-ajax="false" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-home">首页</a>
 			<h2 id="product-header"></h2>
 		</div>
 		<div role="main">
@@ -27,7 +27,7 @@
 					</div>
 					<%-- <img id="product-main-img" src="${ctx}/mobile/images/slides/bridge.jpg" style="width: 100%;height: 200px;"> --%>
 				</div>
-				<div style="padding: 20px;">
+				<div class="ui-content">
 					<div class="ui-grid-a">
 						<div class="ui-block-a" style="text-align: left;">
 							<h2 style="color:#ff7070;margin-top:5px; margin-bottom: 5px" id="product-price">¥0</h2>
@@ -60,7 +60,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="ui-grid-solo" style="padding-left: 10px;padding-right: 10px;padding-bottom: 10px;">
+				<div class="ui-grid-solo ui-content">
 					<ul data-role="listview" data-inset="true" id="page-product-list-technician">
 						<%-- 
 						<li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">

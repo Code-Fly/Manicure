@@ -23,6 +23,7 @@ public class FileUtil {
 	public static String PATH_IMAGE = "/images";
 	public static String CATEGORY_MATERIAL = "/material";
 	public static String CATEGORY_PRODUCT = "/product";
+	public static String CATEGORY_SHOP = "/shop";
 	public static String CATEGORY_USER = "/user";
 
 	private static String getFile(String url, String subPath, String category, String filename, String extension, boolean force) {
