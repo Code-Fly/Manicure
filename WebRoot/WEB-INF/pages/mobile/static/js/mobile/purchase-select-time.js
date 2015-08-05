@@ -9,7 +9,8 @@ $(document).on('pagecontainershow', function(e, ui) {
 			SessionCache.set("customerTime", $("input[name='customer-time-radio']:checked").val())
 			$.mobile.changePage(_ctx + "/mobile/purchase-confirm?pid=" + GetQueryString("pid"));
 		});
-
+		
+		
 	})();
 
 });

@@ -40,6 +40,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			$(".purchase-select-shop-btn-next").on("click", function(event) {
 				// Prevent the usual navigation behavior
 				event.preventDefault();
+
 				SessionCache.set("customerShopId", $(this).attr("poi-id"));
 				SessionCache.set("customerShopName", $(this).attr("poi-name"));
 
