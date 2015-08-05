@@ -114,3 +114,5 @@ http://www.mydomain.com/api/technician/query?productId={productId}
 http://www.mydomain.com/api/technician/query/{tecId}
 ###### 查看能做该服务的所有门店id
 http://www.mydomain.com/api/portal/query?productId={productId}
+###### 查看技师的订单时间
+http://www.mydomain.com/api/technician/{tecId}/orderstime/

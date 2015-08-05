@@ -72,4 +72,16 @@ public class TechnicianController extends BaseController {
 		List<Technician> techs = techService.queryTechsByProductIdAndPortalId(productId,portalId);
 		return JSONArray.fromObject(techs).toString();
 	}
+	
+	/**
+	 * 查询A服务在C技师的最近一周的预定单的时间
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/{id}/orderstime", method = RequestMethod.GET)
+	public String getTechOrdersTime(@PathVariable("id")int id){
+		List<String> ordersTime = techService.queryTechOrderTime(id);
+		return JSONArray.fromObject(ordersTime).toString();
+	}
 }

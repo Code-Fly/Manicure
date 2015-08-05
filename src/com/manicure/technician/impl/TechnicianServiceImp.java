@@ -122,4 +122,9 @@ public class TechnicianServiceImp implements TechnicianService {
 		return techs;
 	}
 
+	@Override
+	public List<String> queryTechOrderTime(int tecId) {
+		return tecMapper.selectTecOrdersTime(tecId);
+	}
+
 }
