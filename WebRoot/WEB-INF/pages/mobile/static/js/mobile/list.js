@@ -20,8 +20,8 @@ $(document).on('pagecontainershow', function(e, ui) {
 
 		function loadAllProduct(json) {
 			// var descLen = $(".ui-li-has-thumb a p").width() / 15;
-			var descLen = $("#page-list-list-service").width() / 2 / 21
-			// alert(descLen);
+			var descLen = $("#page-list-list-service").width() / 2 / 25
+			//alert(descLen);
 			if (descLen == 0) {
 				descLen = 6
 			}

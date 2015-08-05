@@ -2,6 +2,8 @@ $(document).on('pagecontainershow', function(e, ui) {
 	(function() {
 		if (ui.toPage[0].id != "technician-page")
 			return;
+		 
+
 		var tid = GetQueryString("tid");
 		$.getJSON(_ctx + "/api/technician/query/" + tid, function(json) {
 			if (null == json) {
@@ -30,6 +32,9 @@ $(document).on('pagecontainershow', function(e, ui) {
 
 			$("#technician-selfDesc").text(json.selfDesc);
 			$("#technician-business").text(json.business);
+			
+			$("#technician-tabs").tabs();
+			$("#technician-tabs").tabs({ selected: 1 });
 		}
 	})();
 

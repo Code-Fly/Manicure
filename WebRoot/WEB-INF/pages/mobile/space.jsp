@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="<%=basePath%>">
+
 <title>Home</title>
 <%@ include file="meta/meta.jsp"%>
 </head>

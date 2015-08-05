@@ -76,3 +76,45 @@ function GetQueryString(name) {
 		return unescape(r[2]);
 	return null;
 }
+
+function kset(key, value) {
+	console.log("key" + key + "value" + value);
+	window.localStorage.setItem(key, value);
+}
+
+function kget(key) {
+	console.log(key);
+	return window.sessionStorage.getItem(key);
+}
+
+function kremove(key) {
+	window.sessionStorage.removeItem(key);
+}
+
+function kclear() {
+	window.sessionStorage.clear();
+}
+// 测试更新方法
+function kupdate(key, value) {
+	window.sessionStorage.removeItem(key);
+	window.sessionStorage.setItem(key, value);
+}
+
+//临时存储  
+var SessionCache = {  
+    cache:function(value){  
+    	sessionStorage.setItem("EasyWayTempCache",value);  
+    },  
+    getCache:function(){  
+        return  sessionStorage.getItem("EasyWayTempCache");  
+    },  
+    setItem:function(key,value){  
+    	sessionStorage.setItem(key,value);  
+    },  
+    getItem:function(key){  
+        return sessionStorage.getItem(key);  
+    },  
+    removeItem:function(key){  
+        return sessionStorage.removeItem(key);  
+    }  
+};  

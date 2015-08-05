@@ -61,7 +61,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			var elmSpan = $(document.createElement("span"));
 
 			var listLi = elmLi.clone();
-			var listA = elmA.clone().attr("href", link).attr("id", tid);
+			var listA = elmA.clone().attr("href", link).attr("id", tid).attr("data-ajax", "false");
 			var listImg = elmImg.clone().attr("src", headerPic);
 			var listH2 = elmH2.clone().text(name);
 			var listP = elmP.clone();
@@ -79,12 +79,12 @@ $(document).on('pagecontainershow', function(e, ui) {
 			listP.append(listSpan4);
 			listP.append(listSpan5);
 			listP.append(listSpan6);
-			//var listSt = elmP.clone().addClass("ui-li-aside").text("服务" + orderCount + "次").css("color", "orange");
+			var listSt = elmP.clone().addClass("ui-li-aside").text("服务" + orderCount + "次").css("color", "orange");
 
 			listA.append(listImg);
 			listA.append(listH2);
 			listA.append(listP);
-			//listA.append(listSt);
+			listA.append(listSt);
 			listLi.append(listA);
 			$(target).append(listLi);
 		}

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="<%=basePath%>">
+
 <%@ include file="meta/meta.jsp"%>
 
 </head>
@@ -50,20 +50,29 @@
 				</div>
 
 			</div>
+			
+			<div class="ui-grid-solo ">
+				<div data-role="tabs" id="technician-tabs" style="padding: 0;">
+					<div data-role="navbar" >
+						<ul>
+							<li><a href="#one" data-ajax="false" class="ui-btn-active">个人简介</a></li>
+							<li><a href="#two" data-ajax="false">服务商圈</a></li>
+						</ul>
+					</div>
+					<div id="one" class="ui-body  ui-content">
+						<p id="technician-selfDesc"></p>
+					</div>
+					<div id="two" class="ui-body  ui-content">
+						<p id="technician-business"></p>
+					</div>
+				</div>
+			</div>
 			<div class="ui-grid-solo ">
 				<ul data-role="listview">
 					<li><a href="#">顾客评价</a></li>
 				</ul>
 			</div>
-			<div class="ui-grid-solo ui-bar">
-				<p>个人信息</p>
-				<p class="ui-body ui-body-a ui-corner-all" id="technician-selfDesc"></p>
-			</div>
-
-			<div class="ui-grid-solo ui-bar">
-				<p>服务商圈</p>
-				<p class="ui-body ui-body-a ui-corner-all" id="technician-business"></p>
-			</div>
+			
 			<div class="ui-grid-solo ui-bar">
 				<p>个人作品</p>
 
