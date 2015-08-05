@@ -78,7 +78,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			var elmP = $(document.createElement("p"));
 
 			var listLi = elmLi.clone();
-			var listA = elmA.clone().attr("href", href).attr("id", pid).addClass("product-item");
+			var listA = elmA.clone().attr("href", href).attr("id", pid).addClass("product-item").attr("data-ajax","false");
 			var listImg = elmImg.clone().attr("src", img).addClass("ui-li-thumb").css("width", "100%").css("height", "100%");
 			var listH2 = elmH2.clone().text(title);
 			var listP = elmP.clone().text(discription);

@@ -130,7 +130,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				// Prevent the usual navigation behavior
 				event.preventDefault();
 				SessionCache.set("customerType", "toShop");				
-				$.mobile.changePage(_ctx + "/mobile/purchase-input-address?pid=" + _pid);
+				$.mobile.changePage(_ctx + "/mobile/purchase-select-shop?pid=" + _pid);
 			});
 			
 			
