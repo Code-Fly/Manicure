@@ -37,7 +37,7 @@ public class MobileService extends BaseService implements IMobileService {
 		} else {
 			basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 		}
-
+		
 		String url = basePath + "/api/keystone/user/sns/oauth";
 		Map<String, String> params = new HashMap();
 		params.put("code", code);

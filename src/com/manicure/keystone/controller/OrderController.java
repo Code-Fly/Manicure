@@ -43,10 +43,10 @@ public class OrderController extends BaseController {
 			endTime = "0";
 		}
 
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 		JSONObject resp = orderService.getOrderList(at, status, beginTime, endTime);
 		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
@@ -61,10 +61,10 @@ public class OrderController extends BaseController {
 	@RequestMapping(value = "/order/query/{orderId}")
 	@ResponseBody
 	public String getShop(HttpServletRequest request, HttpServletResponse response, @PathVariable String orderId) {
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = orderService.getOrder(at, orderId);

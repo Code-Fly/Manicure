@@ -41,10 +41,10 @@ public class MenuController extends BaseController {
 		StringBuffer url = request.getRequestURL();
 		String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append(request.getServletContext().getContextPath()).append("/").toString();
 		// 调用接口获取access_token
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {			
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 		String menuStr = ConfigUtil.getJson("menu.json");
 
@@ -54,7 +54,7 @@ public class MenuController extends BaseController {
 		String urlOrder = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/order")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V3002_ORDER, urlOrder);
-		String urlNewArrived = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/index")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
+		String urlNewArrived = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/list")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V1003_NEW_ARRIVED, urlNewArrived);
 		String urlLottery = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/home")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")

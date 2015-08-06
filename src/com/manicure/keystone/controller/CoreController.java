@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
 import com.manicure.base.helper.FileUtil;
+import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.keystone.service.impl.CoreService;
 
 /**
@@ -45,6 +46,17 @@ public class CoreController extends BaseController {
 			}
 		}
 
+	}
+	@RequestMapping(value = "/token/refresh")
+	@ResponseBody
+	public String refreshToken(HttpServletRequest request, HttpServletResponse response) {
+		return KeystoneUtil.refreshAccessToken();
+	}
+	
+	@RequestMapping(value = "/token/query")
+	@ResponseBody
+	public String queryToken(HttpServletRequest request, HttpServletResponse response) {
+		return KeystoneUtil.getAccessToken();
 	}
 
 	@RequestMapping(value = "/file/image/product")

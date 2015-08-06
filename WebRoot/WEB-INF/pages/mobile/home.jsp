@@ -3,9 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>米兰美甲艺社</title>
 <%@ include file="meta/meta.jsp"%>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 	<div data-role="page" id="home-page" data-title="首页">

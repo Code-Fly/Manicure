@@ -9,28 +9,27 @@
                "url":"V1001_LOTTERY"
             },
             {
-               "type":"click",
-               "name":"优惠券",
-               "key":"V1002_VOUVHER"
-            },
-            {
                "type":"view",
                "name":"当季新品",
                "url":"V1003_NEW_ARRIVED"
             },
             {
-               "type":"click",
+               "type":"media_id",
                "name":"黑板报",
-               "key":"V1004_NEWS"
+               "media_id":"TBDw114J76PhQlR1n9rjBztPRRJdoMds4XBqoUEWRMI"
             }]
       },
       {
            "name":"米宝微店",
            "sub_button":[            
             {
-               "type":"click",
+               "type":"media_id",
+               "name":"美甲小知识",
+               "media_id":"TBDw114J76PhQlR1n9rjBzIPZSJHQrRI95bBV7XdojE"
+            },{
+               "type":"view_limited",
                "name":"使用说明",
-               "key":"V2001_USER_GUID"
+               "media_id":"TBDw114J76PhQlR1n9rjB4hCyKNKJ73kEycG-GziOn4"
             },
             {
                "type":"view",
