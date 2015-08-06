@@ -12,7 +12,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				return;
 			}
 			if (0 != json.errcode) {
-				alert(json.errmsg);
+				alert("商品可能已下架");
 				return;
 			}
 

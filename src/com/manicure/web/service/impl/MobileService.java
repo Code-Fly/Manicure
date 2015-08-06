@@ -37,14 +37,17 @@ public class MobileService extends BaseService implements IMobileService {
 		} else {
 			basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 		}
-
+		
 		String url = basePath + "/api/keystone/user/sns/oauth";
+		System.out.println(url);
+		System.out.println(code);
 		Map<String, String> params = new HashMap();
 		params.put("code", code);
 		String resp = HttpClientUtil.doPost(url, params, "UTF-8");
 		if (null == resp) {
 			logger.error("fail to post");
 		}
+		System.out.println(resp);
 		JSONObject jUserInfo = JSONObject.fromObject(resp);
 		if (!jUserInfo.containsKey("errcode")) {
 			userInfo = (WeChatUserInfo) JSONObject.toBean(jUserInfo, WeChatUserInfo.class);
