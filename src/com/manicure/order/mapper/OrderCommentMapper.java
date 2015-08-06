@@ -85,4 +85,10 @@ public interface OrderCommentMapper {
 	 */
 	HashMap<String,Object> getCommentInfoByTecId(Integer tecId);
 	
+	/**
+	 * ordreCommentList
+	 * @param tecId
+	 * @return orderComment list
+	 */
+	List<OrderComment> getCommentListByTecId(Integer tecId);
 }

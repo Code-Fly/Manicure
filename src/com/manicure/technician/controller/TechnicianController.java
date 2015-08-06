@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.manicure.base.controller.BaseController;
+import com.manicure.commmon.JsonUtil;
 import com.manicure.technician.entity.Technician;
 import com.manicure.technician.iface.TechnicianService;
 
@@ -41,7 +42,7 @@ public class TechnicianController extends BaseController {
 	@RequestMapping(value = "/query", method = RequestMethod.GET)
 	public String getTechByProductId(@RequestParam("productId") String productId){
 		List<Technician> techs = techService.queryTechsByProductId(productId);
-		return JSONArray.fromObject(techs).toString();
+		return JsonUtil.jsonArray2Sting(techs);
 	}
 	
 
@@ -57,7 +58,7 @@ public class TechnicianController extends BaseController {
 		if (null == tech) {
 			return "";
 		}
-		return JSONObject.fromObject(tech).toString();
+		return JsonUtil.json2Sting(tech);
 	}
 	
 	
@@ -70,7 +71,7 @@ public class TechnicianController extends BaseController {
 	@RequestMapping(value = "/query/{productId}/{portalId}", method = RequestMethod.GET)
 	public String getTechByProductIdAndPortalId(@PathVariable("productId") String productId,@PathVariable("portalId") String portalId){
 		List<Technician> techs = techService.queryTechsByProductIdAndPortalId(productId,portalId);
-		return JSONArray.fromObject(techs).toString();
+		return JsonUtil.jsonArray2Sting(techs);
 	}
 	
 	/**

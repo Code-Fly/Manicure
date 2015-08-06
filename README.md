@@ -116,3 +116,5 @@ http://www.mydomain.com/api/technician/query/{tecId}
 http://www.mydomain.com/api/portal/query?productId={productId}
 ###### 查看技师的订单时间
 http://www.mydomain.com/api/technician/{tecId}/orderstime/
+###### 查询对技师的评价
+http://www.mydomain.com/api/order/ordercomment/query?tecId={tecId}
