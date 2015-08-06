@@ -118,3 +118,5 @@ http://www.mydomain.com/api/portal/query?productId={productId}
 http://www.mydomain.com/api/technician/{tecId}/orderstime/
 ###### 查询对技师的评价
 http://www.mydomain.com/api/order/ordercomment/query?tecId={tecId}
+###### 查询对技师能做的所有服务信息
+http://www.mydomain.com/api/technician/{tecId}/products

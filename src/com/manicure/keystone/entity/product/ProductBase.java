@@ -14,7 +14,6 @@ import com.manicure.base.entity.BaseEntity;
 public class ProductBase extends BaseEntity {
 	private String name;
 	private List<Integer> category_id;
-
 	/**
 	 * @return the category_id
 	 */

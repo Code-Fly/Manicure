@@ -114,4 +114,6 @@ public interface TechnicianMapper {
      * @mbggenerated Thu Jul 30 16:33:22 CST 2015
      */
     int updateByPrimaryKey(Technician record);
+    
+    
 }

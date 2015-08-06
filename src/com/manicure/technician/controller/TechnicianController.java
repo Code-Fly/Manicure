@@ -6,8 +6,8 @@ package com.manicure.technician.controller;
 
 import java.util.List;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import javax.servlet.http.HttpServletRequest;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.manicure.base.controller.BaseController;
 import com.manicure.commmon.JsonUtil;
+import com.manicure.keystone.entity.product.ProductInfo;
 import com.manicure.technician.entity.Technician;
 import com.manicure.technician.iface.TechnicianService;
 
@@ -83,6 +84,18 @@ public class TechnicianController extends BaseController {
 	@RequestMapping(value = "/{id}/orderstime", method = RequestMethod.GET)
 	public String getTechOrdersTime(@PathVariable("id")int id){
 		List<String> ordersTime = techService.queryTechOrderTime(id);
-		return JSONArray.fromObject(ordersTime).toString();
+		return  JsonUtil.jsonArray2Sting(ordersTime);
+	}
+	
+	/**
+	 * 查询技师能做的所有服务
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/{id}/products", method = RequestMethod.GET)
+	public String getTechProducts(HttpServletRequest request,@PathVariable("id") int id){
+		List<ProductInfo> productList = techService.queryTechProducts(request, id);
+		return JsonUtil.jsonArray2Sting(productList);
 	}
 }
