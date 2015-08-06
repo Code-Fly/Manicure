@@ -67,10 +67,10 @@ public class ProductController extends BaseController {
 		} else {
 			filter.put("sort", "asc");
 		}
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = productService.getProductList(request, at, status, filter);
@@ -84,10 +84,10 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = "/product/query/{productId}")
 	@ResponseBody
 	public String getProduct(HttpServletRequest request, HttpServletResponse response, @PathVariable String productId) {
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = productService.getProduct(request, at, productId);
@@ -101,10 +101,10 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = "/product/group/list")
 	@ResponseBody
 	public String getProductGroupList(HttpServletRequest request, HttpServletResponse response) {
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = productService.getProductGroupList(at);
@@ -118,10 +118,10 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = "/product/group/query/{groupId}")
 	@ResponseBody
 	public String getProductGroupDetail(HttpServletRequest request, HttpServletResponse response, @PathVariable String groupId) {
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = productService.getProductGroupDetail(at, groupId);

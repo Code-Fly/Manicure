@@ -3,7 +3,11 @@ A WeChat server
 
 ###	Server API
 ##### core
-http://www.mydomain.com/api/keystone/core/
+http://www.mydomain.com/api/keystone/core<br/>
+##### Refresh access token
+http://www.mydomain.com/api/keystone/token/refresh<br/>
+##### Get access token
+http://www.mydomain.com/api/keystone/token/query<br/>
 ##### Get image location on server
 http://www.mydomain.com/api/keystone/file/image/product<br/>
 method: POST<br/>
@@ -12,7 +16,7 @@ param: "pid", required = true<br/>
 
 ###	Menu API
 ##### create
-http://www.mydomain.com/api/keystone/menu/create
+http://www.mydomain.com/api/keystone/menu/create<br/>
 
 ###	User API
 ##### Get SNS user

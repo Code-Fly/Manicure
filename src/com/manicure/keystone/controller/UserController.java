@@ -118,10 +118,10 @@ public class UserController extends BaseController {
 	@ResponseBody
 	public String getWeChatUserInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable String openId) {
 		// 调用接口获取access_token
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = userService.getWeChatUserInfo(at, openId);
@@ -136,10 +136,10 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/user/list/{nextOpenId}")
 	@ResponseBody
 	public String getWeChatUserList(HttpServletRequest request, HttpServletResponse response, @PathVariable String nextOpenId) {
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 		if ("0".equals(nextOpenId))
 			nextOpenId = null;
@@ -155,10 +155,10 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/user/group/list")
 	@ResponseBody
 	public String getWeChatUserGroupList(HttpServletRequest request, HttpServletResponse response) {
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = userService.getWeChatUserGroupList(at);
@@ -172,10 +172,10 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/user/group/query/{openId}")
 	@ResponseBody
 	public String getWeChatUserGroupByOpenId(HttpServletRequest request, HttpServletResponse response, @PathVariable String openId) {
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = userService.getWeChatUserGroupByOpenId(at, openId);

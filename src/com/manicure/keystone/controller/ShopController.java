@@ -36,10 +36,10 @@ public class ShopController extends BaseController {
 	@RequestMapping(value = "/shop/query/{poiId}")
 	@ResponseBody
 	public String getShop(HttpServletRequest request, HttpServletResponse response, @PathVariable String poiId) {
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = shopService.getShop(at, poiId);
@@ -62,10 +62,10 @@ public class ShopController extends BaseController {
 			limit = "50";
 		}
 
-		String at = KeystoneUtil.accessToken;
+		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
-			logger.error(KeystoneUtil.errmsg);
-			return KeystoneUtil.errmsg;
+			logger.error(KeystoneUtil.getErrmsg());
+			return KeystoneUtil.getErrmsg();
 		}
 
 		JSONObject resp = shopService.getShopList(request, at, begin, limit);

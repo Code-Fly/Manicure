@@ -30,14 +30,28 @@ import com.manicure.keystone.service.impl.CoreService;
 public class KeystoneUtil {
 	private static final Logger logger = LoggerFactory.getLogger(KeystoneUtil.class);
 
-	public static String accessToken = null;
-	public static String errmsg = null;
+	private static String accessToken = null;
+	private static String errmsg = null;
 
 	/**
 	 * 
 	 */
 	public KeystoneUtil() {
 		accessTokenKeeper();
+	}
+
+	/**
+	 * @return the accessToken
+	 */
+	public static String getAccessToken() {
+		return accessToken;
+	}
+
+	/**
+	 * @return the errmsg
+	 */
+	public static String getErrmsg() {
+		return errmsg;
 	}
 
 	/**
@@ -157,17 +171,31 @@ public class KeystoneUtil {
 		return sign;
 	}
 
-	public void accessTokenKeeper() {
+	public static void accessTokenKeeper() {
 		CoreService coreService = new CoreService();
 		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
 		if (at.containsKey("errcode")) {
-			KeystoneUtil.accessToken = null;
-			KeystoneUtil.errmsg = at.toString();
+			accessToken = null;
+			errmsg = at.toString();
 			logger.error(at.toString());
 		}
-		KeystoneUtil.accessToken = at.getString("access_token");
-		KeystoneUtil.errmsg = null;
-		logger.info("access token: " + KeystoneUtil.accessToken);
+		accessToken = at.getString("access_token");
+		errmsg = null;
+		logger.info("access token: " + accessToken);
 
+	}
+
+	public static String refreshAccessToken() {
+		CoreService coreService = new CoreService();
+		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
+		if (at.containsKey("errcode")) {
+			accessToken = null;
+			errmsg = at.toString();
+			logger.error(at.toString());
+			return at.toString();
+		}
+		accessToken = at.getString("access_token");
+		errmsg = null;
+		return accessToken;
 	}
 }
