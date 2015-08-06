@@ -92,7 +92,7 @@ public class UserController extends BaseController {
 					return at.toString();
 				}
 
-				JSONObject resp = userService.getWeChatUserInfo(at.getString("access_token"), openId);
+				JSONObject resp = userService.getWeChatUserInfo(request, at.getString("access_token"), openId);
 				if (resp.containsKey("errcode")) {
 					logger.error(resp.toString());
 					return resp.toString();
@@ -124,7 +124,7 @@ public class UserController extends BaseController {
 			return KeystoneUtil.getErrmsg();
 		}
 
-		JSONObject resp = userService.getWeChatUserInfo(at, openId);
+		JSONObject resp = userService.getWeChatUserInfo(request, at, openId);
 		if (resp.containsKey("errcode")) {
 			logger.error(resp.toString());
 			return resp.toString();

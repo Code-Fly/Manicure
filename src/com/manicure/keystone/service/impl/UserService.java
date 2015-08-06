@@ -4,14 +4,18 @@
 package com.manicure.keystone.service.impl;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Service;
 
+import com.manicure.base.helper.Const;
+import com.manicure.base.helper.FileUtil;
 import com.manicure.base.helper.HttpClientUtil;
 import com.manicure.base.service.BaseService;
 import com.manicure.keystone.entity.error.ErrorMsg;
+import com.manicure.keystone.entity.user.WeChatUserInfo;
 import com.manicure.keystone.service.iface.ICoreService;
 import com.manicure.keystone.service.iface.IUserService;
 
@@ -125,6 +129,19 @@ public class UserService extends BaseService implements IUserService {
 			return JSONObject.fromObject(errMsg);
 		}
 		return response;
+	}
+
+	public JSONObject getWeChatUserInfo(HttpServletRequest request, String accessToken, String openId) {
+
+		JSONObject resp = getWeChatUserInfo(accessToken, openId);
+		if (resp.containsKey("errcode")) {
+			logger.error(resp.toString());
+			return resp;
+		}
+		WeChatUserInfo weUserInfo = (WeChatUserInfo) JSONObject.toBean(resp, WeChatUserInfo.class);
+		String headimgurl = Const.getServerUrl(request) + FileUtil.getWeChatImage(weUserInfo.getHeadimgurl() + "?wx_fmt=jpeg", FileUtil.CATEGORY_USER, weUserInfo.getOpenid(), false);
+		weUserInfo.setHeadimgurl(headimgurl);
+		return JSONObject.fromObject(weUserInfo);
 	}
 
 	/**
