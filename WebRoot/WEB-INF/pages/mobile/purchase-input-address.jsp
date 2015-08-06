@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="<%=basePath%>">
+
 <%@ include file="meta/meta.jsp"%>
 <style type="text/css">
 </style>
@@ -42,8 +42,21 @@
 					<p style="color: black;margin-top: 5px;">确认下单</p>
 				</div>
 			</div>
-			<div class="ui-grid-solo"></div>
-			<div class="ui-grid-solo"></div>
+			<div class="ui-grid-solo ui-content">
+				<label for="purchase-input-address-tel">电话号码：</label> <input type="text" data-clear-btn="true" name="purchase-input-address-tel" id="purchase-input-address-tel" value="" placeholder="请填写您的手机号">
+			</div>
+			<div class="ui-grid-solo ui-content">
+				<label for="purchase-input-address-addr">居住地址：</label>
+				<textarea cols="40" rows="8" name="purchase-input-address-addr" id="purchase-input-address-addr" placeholder="请填写并选择地址"></textarea>
+			</div>
+			<div class="ui-grid-solo ui-content">
+				<label for="purchase-input-address-buz">所在商圈：</label>
+				<p id="purchase-input-address-buz"></p>
+			</div>
+			<div class="ui-grid-solo">
+				<input type="hidden" id="purchase-hid-address-point-lng">
+				<input type="hidden" id="purchase-hid-address-point-lat">
+			</div>
 			<div data-role="footer" data-position="fixed" style="text-align: center;">
 				<a href="#" id="purchase-input-address-btn-next" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">选择甲师</a>
 			</div>

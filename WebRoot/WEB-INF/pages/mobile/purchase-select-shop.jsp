@@ -7,9 +7,9 @@
 <%@ include file="meta/meta.jsp"%>
 </head>
 <body>
-	<div data-role="page" id="purchase-select-employee-page">
+	<div data-role="page" id="purchase-select-shop-page">
 		<div data-role="header">
-			<h2>选择甲师</h2>
+			<h2>选择门店</h2>
 		</div>
 		<!-- /header -->
 		<div role="main">
@@ -40,11 +40,10 @@
 					<p style="color:black;margin-top: 5px;">确认下单</p>
 				</div>
 			</div>
-
 			<div class="ui-grid-solo ui-content">
-				<label for="purchase-input-address-addr">选择甲师：</label>
-				<ul data-role="listview" data-inset="true" id="page-purchase-select-employee-list">
-					<%-- <li><a class="purchase-select-employee-btn-next" href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
+				<label for="purchase-input-address-addr">选择店面：</label>
+				<ul data-role="listview" data-inset="true" id="page-purchase-select-shop-list">
+					<%-- <li><a class="purchase-select-shop-btn-next" href="#"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png">
 							<h2>叶海燕</h2>
 							<p>
 								专业:
@@ -59,6 +58,9 @@
 
 				</ul>
 			</div>
+
+
+
 		</div>
 
 		<!-- /footer -->

@@ -12,36 +12,53 @@ import com.manicure.base.entity.BaseEntity;
  *
  */
 public class ShopList extends BaseEntity {
-	private int total_count;
-	private List<Shop> shop_list;
+	private String errcode;
+	private String errmsg;
+	private List<BusinessList> business_list;
 
 	/**
-	 * @return the total_count
+	 * @return the errcode
 	 */
-	public int getTotal_count() {
-		return total_count;
+	public String getErrcode() {
+		return errcode;
 	}
 
 	/**
-	 * @param total_count
-	 *            the total_count to set
+	 * @param errcode
+	 *            the errcode to set
 	 */
-	public void setTotal_count(int total_count) {
-		this.total_count = total_count;
+	public void setErrcode(String errcode) {
+		this.errcode = errcode;
 	}
 
 	/**
-	 * @return the shop_list
+	 * @return the errmsg
 	 */
-	public List<Shop> getShop_list() {
-		return shop_list;
+	public String getErrmsg() {
+		return errmsg;
 	}
 
 	/**
-	 * @param shop_list
-	 *            the shop_list to set
+	 * @param errmsg
+	 *            the errmsg to set
 	 */
-	public void setShop_list(List<Shop> shop_list) {
-		this.shop_list = shop_list;
+	public void setErrmsg(String errmsg) {
+		this.errmsg = errmsg;
 	}
+
+	/**
+	 * @return the business_list
+	 */
+	public List<BusinessList> getBusiness_list() {
+		return business_list;
+	}
+
+	/**
+	 * @param business_list
+	 *            the business_list to set
+	 */
+	public void setBusiness_list(List<BusinessList> business_list) {
+		this.business_list = business_list;
+	}
+
 }

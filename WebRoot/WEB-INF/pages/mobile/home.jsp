@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="<%=basePath%>">
+
 <title>米兰美甲艺社</title>
 <%@ include file="meta/meta.jsp"%>
 </head>

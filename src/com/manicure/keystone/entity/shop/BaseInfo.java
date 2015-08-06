@@ -11,8 +11,8 @@ import com.manicure.base.entity.BaseEntity;
  * @author Barrie
  *
  */
-public class Shop extends BaseEntity {
-	private long sid;
+public class BaseInfo extends BaseEntity {
+	private String sid;
 	private String business_name;
 	private String branch_name;
 	private String address;
@@ -20,24 +20,24 @@ public class Shop extends BaseEntity {
 	private List<String> categories;
 	private String city;
 	private String province;
-	private int offset_type;
+	private String offset_type;
 	private String longitude;
 	private String latitude;
-	private List<String> photo_list;
+	private List<PhotoUrl> photo_list;
 	private String introduction;
 	private String recommend;
 	private String special;
 	private String open_time;
 	private String avg_price;
 	private String poi_id;
-	private int available_state;
+	private String available_state;
 	private String district;
-	private int update_status;
+	private String update_status;
 
 	/**
 	 * @return the sid
 	 */
-	public long getSid() {
+	public String getSid() {
 		return sid;
 	}
 
@@ -45,7 +45,7 @@ public class Shop extends BaseEntity {
 	 * @param sid
 	 *            the sid to set
 	 */
-	public void setSid(long sid) {
+	public void setSid(String sid) {
 		this.sid = sid;
 	}
 
@@ -157,7 +157,7 @@ public class Shop extends BaseEntity {
 	/**
 	 * @return the offset_type
 	 */
-	public int getOffset_type() {
+	public String getOffset_type() {
 		return offset_type;
 	}
 
@@ -165,7 +165,7 @@ public class Shop extends BaseEntity {
 	 * @param offset_type
 	 *            the offset_type to set
 	 */
-	public void setOffset_type(int offset_type) {
+	public void setOffset_type(String offset_type) {
 		this.offset_type = offset_type;
 	}
 
@@ -202,7 +202,7 @@ public class Shop extends BaseEntity {
 	/**
 	 * @return the photo_list
 	 */
-	public List<String> getPhoto_list() {
+	public List<PhotoUrl> getPhoto_list() {
 		return photo_list;
 	}
 
@@ -210,7 +210,7 @@ public class Shop extends BaseEntity {
 	 * @param photo_list
 	 *            the photo_list to set
 	 */
-	public void setPhoto_list(List<String> photo_list) {
+	public void setPhoto_list(List<PhotoUrl> photo_list) {
 		this.photo_list = photo_list;
 	}
 
@@ -307,7 +307,7 @@ public class Shop extends BaseEntity {
 	/**
 	 * @return the available_state
 	 */
-	public int getAvailable_state() {
+	public String getAvailable_state() {
 		return available_state;
 	}
 
@@ -315,7 +315,7 @@ public class Shop extends BaseEntity {
 	 * @param available_state
 	 *            the available_state to set
 	 */
-	public void setAvailable_state(int available_state) {
+	public void setAvailable_state(String available_state) {
 		this.available_state = available_state;
 	}
 
@@ -337,7 +337,7 @@ public class Shop extends BaseEntity {
 	/**
 	 * @return the update_status
 	 */
-	public int getUpdate_status() {
+	public String getUpdate_status() {
 		return update_status;
 	}
 
@@ -345,7 +345,7 @@ public class Shop extends BaseEntity {
 	 * @param update_status
 	 *            the update_status to set
 	 */
-	public void setUpdate_status(int update_status) {
+	public void setUpdate_status(String update_status) {
 		this.update_status = update_status;
 	}
 

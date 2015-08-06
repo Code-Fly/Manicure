@@ -13,7 +13,7 @@
 <script src="${ctx}/mobile/static/js/jquery.sliderPro.min.js"></script>
 <script src="${ctx}/mobile/static/_assets/js/index.js"></script>
 <script src="${ctx}/mobile/static/js/jquery.ui.datepicker.js"></script>
-<script src="${ctx}/mobile/static/js/jquery.mobile.datepicker.js"></script>  
+<script src="${ctx}/mobile/static/js/jquery.mobile.datepicker.js"></script>
 <!-- mobile js  -->
 <script src="${ctx}/mobile/static/js/mobile/global.js"></script>
 <script src="${ctx}/mobile/static/js/mobile/home.js"></script>
@@ -26,6 +26,9 @@
 <script src="${ctx}/mobile/static/js/mobile/purchase-confirm.js"></script>
 <script src="${ctx}/mobile/static/js/mobile/purchase-input-address.js"></script>
 <script src="${ctx}/mobile/static/js/mobile/technician.js"></script>
+<script src="${ctx}/mobile/static/js/mobile/purchase-select-shop.js"></script>
+<script src="http://api.map.baidu.com/api?v=1.2"></script>
+<script src="${ctx}/mobile/static/js/mobile/json2.js"></script>
 
 <link rel="shortcut icon" href="${ctx}/mobile/static/images/favicon.ico">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/themes/default/jquery.mobile-1.4.5.min.css">

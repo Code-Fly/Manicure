@@ -45,7 +45,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				var tid = jList[i].id;
 				var link = _ctx + "/mobile/technician?tid=" + tid;
 
-				AppendListItem("#page-product-list-technician", tid, link, name, moveScore, profnalScore, punctualScore, orderCount, headerPic)
+				AppendListItem("#page-product-list-technician", tid, link, name, moveScore, profnalScore, punctualScore, orderCount, headerPic);
 			}
 
 			$("#page-product-list-technician").listview('refresh');
@@ -61,7 +61,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			var elmSpan = $(document.createElement("span"));
 
 			var listLi = elmLi.clone();
-			var listA = elmA.clone().attr("href", link).attr("id", tid);
+			var listA = elmA.clone().attr("href", link).attr("id", tid).attr("data-ajax", "false");
 			var listImg = elmImg.clone().attr("src", headerPic);
 			var listH2 = elmH2.clone().text(name);
 			var listP = elmP.clone();
@@ -79,12 +79,12 @@ $(document).on('pagecontainershow', function(e, ui) {
 			listP.append(listSpan4);
 			listP.append(listSpan5);
 			listP.append(listSpan6);
-			//var listSt = elmP.clone().addClass("ui-li-aside").text("服务" + orderCount + "次").css("color", "orange");
+			var listSt = elmP.clone().addClass("ui-li-aside").text("服务" + orderCount + "次").css("color", "orange");
 
 			listA.append(listImg);
 			listA.append(listH2);
 			listA.append(listP);
-			//listA.append(listSt);
+			listA.append(listSt);
 			listLi.append(listA);
 			$(target).append(listLi);
 		}
@@ -119,9 +119,21 @@ $(document).on('pagecontainershow', function(e, ui) {
 			$("#product-last").text(last);
 			// $("#product-btn-pay").attr("href", payUrl.replace("PRODUCT_ID",
 			// _pid));
-			$("#product-btn-to-door-service").attr("href", _ctx + "/mobile/purchase-input-address?type=todoor&pid=" + _pid);
-			$("#product-btn-to-shop-service").attr("href", _ctx + "/mobile/purchase-input-address?type=toshop&pid=" + _pid);
-
+			$("#product-btn-to-door-service").on("click", function(event) {
+				// Prevent the usual navigation behavior
+				event.preventDefault();
+				SessionCache.set("customerType", "toDoor");				
+				$.mobile.changePage(_ctx + "/mobile/purchase-input-address?pid=" + _pid);
+			});
+			
+			$("#product-btn-to-shop-service").on("click", function(event) {
+				// Prevent the usual navigation behavior
+				event.preventDefault();
+				SessionCache.set("customerType", "toShop");				
+				$.mobile.changePage(_ctx + "/mobile/purchase-select-shop?pid=" + _pid);
+			});
+			
+			
 			$("#product-slider").sliderPro({
 				width : "100%",
 				aspectRatio : 1.4,
