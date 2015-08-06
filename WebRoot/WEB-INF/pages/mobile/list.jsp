@@ -16,21 +16,21 @@
 		<div role="main">
 			<div class="ui-grid-b" style="font-size: 0.8em;text-align: center;">
 				<div class="ui-block-a typebtn">
-					<a href="#" data-theme="b" data-role="button">美甲</a>
+					<a id="list-btn-meijia" href="#" data-ajax="false" data-theme="b" data-role="button">美甲</a>
 				</div>
 				<div class="ui-block-b typebtn">
-					<a href="#" data-theme="c" data-role="button">美足</a>
+					<a id="list-btn-meizu" href="#" data-ajax="false" data-theme="c" data-role="button">美足</a>
 				</div>
 				<div class="ui-block-c typebtn">
-					<a href="#" data-theme="d" data-role="button">美睫</a>
+					<a id="list-btn-meijie" href="#" data-ajax="false" data-theme="d" data-role="button">美睫</a>
 				</div>
 			</div>
 			<div class="ui-grid-a" style="font-size: 0.8em;text-align: center;">
 				<div class="ui-block-a typebtn">
-					<a data-theme="e" data-role="button">化妆</a>
+					<a id="list-btn-huazhuang" data-theme="e" data-role="button">化妆</a>
 				</div>
 				<div class="ui-block-b typebtn">
-					<a data-theme="f" data-role="button">护理</a>
+					<a id="list-btn-huli" data-theme="f" data-role="button">护理</a>
 				</div>
 			</div>
 			<div class="ui-bar " style="padding: 0px;">
@@ -62,10 +62,35 @@
 				</div>
 			</div>
 			<form style="text-align: center;">
-				<fieldset data-role="controlgroup" data-type="horizontal">
-					<input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked"> <label for="radio-choice-h-2a">简约</label> <input type="radio" name="radio-choice-h-2"
-						id="radio-choice-h-2b" value="off"> <label for="radio-choice-h-2b">彩绘</label> <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2c" value="other"> <label
-						for="radio-choice-h-2c">法式</label> <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2d" value="other"> <label for="radio-choice-h-2d">日韩</label>
+				<fieldset data-role="controlgroup" data-type="horizontal" id="list-radio-group-meijia" style="display: none;">
+					<input type="radio" name="list-radio-group-meijia" id="list-radio-meijia-jianyue" value="on" checked="checked"> 
+					<label for="list-radio-meijia-jianyue">简约</label> 
+					<input type="radio" name="list-radio-group-meijia" id="list-radio-meijia-caihui" value="off"> 
+					<label for="list-radio-meijia-caihui">彩绘</label> 
+					<input type="radio" name="list-radio-group-meijia" id="list-radio-meijia-fashi" value="other"> 
+					<label for="list-radio-meijia-fashi">法式</label> 
+					<input type="radio" name="list-radio-group-meijia" id="list-radio-meijia-rihan" value="other"> 
+					<label for="list-radio-meijia-rihan">日韩</label>
+				</fieldset>
+				<fieldset data-role="controlgroup" data-type="horizontal" id="list-radio-group-meizu" style="display: none;">
+					<input type="radio" name="list-radio-group-meizu" id="list-radio-meizu-jianyue" value="on" checked="checked"> 
+					<label for="list-radio-meizu-jianyue">简约</label> 
+					<input type="radio" name="list-radio-group-meizu" id="list-radio-meizu-caihui" value="off"> 
+					<label for="list-radio-meizu-caihui">彩绘</label> 
+				</fieldset>
+				<fieldset data-role="controlgroup" data-type="horizontal" id="list-radio-group-huazhuang" style="display: none;">
+					<input type="radio" name="list-radio-group-huazhuang" id="list-radio-huazhuang-xinniang" value="on" checked="checked"> 
+					<label for="list-radio-huazhuang-xinniang">新娘妆</label> 
+					<input type="radio" name="list-radio-group-huazhuang" id="list-radio-huazhuang-wutai" value="off"> 
+					<label for="list-radio-huazhuang-wutai">舞台妆</label>
+				</fieldset>
+				<fieldset data-role="controlgroup" data-type="horizontal" id="list-radio-group-huli" style="display: none;">
+					<input type="radio" name="list-radio-group-huli" id="list-radio-huli-shoubu" value="on" checked="checked"> 
+					<label for="list-radio-huli-shoubu">手部</label> 
+					<input type="radio" name="list-radio-group-huli" id="list-radio-huli-zubu" value="off"> 
+					<label for="list-radio-huli-zubu">足部</label> 
+					<input type="radio" name="list-radio-group-huli" id="list-radio-huli-pifu" value="other"> 
+					<label for="list-radio-huli-pifu">皮肤</label>
 				</fieldset>
 			</form>
 

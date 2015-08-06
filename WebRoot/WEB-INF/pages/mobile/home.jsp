@@ -6,7 +6,7 @@
 <title>米兰美甲艺社</title>
 <%@ include file="meta/meta.jsp"%>
 <script type="text/javascript">
-
+	
 </script>
 </head>
 <body>
@@ -45,26 +45,26 @@
 			</div>
 			<div class="ui-grid-b" style="font-size: 0.8em;text-align: center;">
 				<div class="ui-block-a">
-					<a href="${ctx}/mobile/list" data-theme="b" data-role="button" data-icon="check" data-iconpos="top">美甲</a>
+					<a id="home-btn-meijia" href="#" data-theme="b" data-role="button" data-icon="check" data-iconpos="top">美甲</a>
 				</div>
 				<div class="ui-block-b">
-					<a href="${ctx}/mobile/list" data-theme="c" data-role="button" data-icon="cloud" data-iconpos="top">美足</a>
+					<a id="home-btn-meizu" href="#" data-theme="c" data-role="button" data-icon="cloud" data-iconpos="top">美足</a>
 				</div>
 				<div class="ui-block-c">
-					<a href="${ctx}/mobile/list" data-theme="d" data-role="button" data-icon="clock" data-iconpos="top">美睫</a>
+					<a id="home-btn-meijie" href="#" data-theme="d" data-role="button" data-icon="clock" data-iconpos="top">美睫</a>
 				</div>
 			</div>
 			<div class="ui-grid-a" style="font-size: 0.8em;text-align: center;">
 				<div class="ui-block-a">
-					<a href="${ctx}/mobile/list" data-theme="e" data-role="button" data-icon="edit" data-iconpos="top">化妆</a>
+					<a id="home-btn-huazhuang" href="#" data-theme="e" data-role="button" data-icon="edit" data-iconpos="top">化妆</a>
 				</div>
 				<div class="ui-block-b">
-					<a href="${ctx}/mobile/list" data-theme="f" data-role="button" data-icon="eye" data-iconpos="top">护理</a>
+					<a id="home-btn-huli" href="#" data-theme="f" data-role="button" data-icon="eye" data-iconpos="top">护理</a>
 				</div>
 			</div>
 			<div class="ui-grid-solo" style="margin-top: 10px;margin-bottom: 10px;">
 				<ul data-role="listview">
-					<li><a> <img src="${ctx}/mobile/static/_assets/img/apple.png" class="ui-li-thumb">
+					<li><a href="#" id="home-btn-new"> <img src="${ctx}/mobile/static/_assets/img/apple.png" class="ui-li-thumb">
 							<h2>低价热卖</h2>
 							<p>最新的低价商品</p>
 

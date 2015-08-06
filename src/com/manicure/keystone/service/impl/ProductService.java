@@ -135,7 +135,7 @@ public class ProductService extends BaseService implements IProductService {
 		ProductInfo pInfo = p.getProduct_info();
 		ProductBase pBase = pInfo.getProduct_base();
 		String imageUrl = Const.getServerUrl(request) + FileUtil.getWeChatImage(pBase.getMain_img(), FileUtil.CATEGORY_PRODUCT, pInfo.getProduct_id(), false);
-		pBase.setMain_img(imageUrl);		
+		pBase.setMain_img(imageUrl);
 		List<String> detail = new ArrayList<String>();
 		detail.add(Integer.toString(orderService.getOrderCount(oList, pInfo.getProduct_id())));
 		pBase.setDetail(detail);
@@ -201,12 +201,16 @@ public class ProductService extends BaseService implements IProductService {
 					logger.error(respProduct.toString());
 					return respProduct;
 				}
-				Product p = (Product) JSONObject.toBean(respProduct, Product.class);
+				Map<String, Class> classMap = new HashMap<String, Class>();
+				classMap.put("sku_list", SkuList.class);
+				Product p = (Product) JSONObject.toBean(respProduct, Product.class, classMap);
 				ProductInfo pInfo = p.getProduct_info();
 				if (status != pInfo.getStatus()) {
 					continue;
 				}
 				ProductBase pBase = pInfo.getProduct_base();
+				String imageUrl = Const.getServerUrl(request) + FileUtil.getWeChatImage(pBase.getMain_img(), FileUtil.CATEGORY_PRODUCT, pInfo.getProduct_id(), false);
+				pBase.setMain_img(imageUrl);
 				List<String> detail = new ArrayList<String>();
 				detail.add(Integer.toString(orderService.getOrderCount(oList, pInfo.getProduct_id())));
 				pBase.setDetail(detail);

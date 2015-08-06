@@ -57,7 +57,7 @@ public class MenuController extends BaseController {
 		String urlNewArrived = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/list")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V1003_NEW_ARRIVED, urlNewArrived);
-		String urlLottery = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/home")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
+		String urlLottery = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/list?groupId=208216165&orderBy=sales&sort=desc")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
 				.replace("STATE", "STATE");
 		menuStr = menuStr.replace(MenuService.V1001_LOTTERY, urlLottery);
 		String urlAddress = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", UrlUtil.toUTF8(tempContextUrl + "mobile/home")).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
