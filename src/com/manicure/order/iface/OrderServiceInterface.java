@@ -13,4 +13,5 @@ import com.manicure.order.entity.OrderComment;
  */
 public interface OrderServiceInterface {
 	List<OrderComment> queryOrderCommentsByTecId(int tecId);
+	void updateOrderExtendTmp(String orderId,String productId,String openId);
 }
