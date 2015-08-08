@@ -8,28 +8,33 @@
 <SCRIPT type="text/javascript">
 	var _ctx = "${ctx}";
 </SCRIPT>
-<script src="${ctx}/mobile/static/js/jquery.js"></script>
-<script src="${ctx}/mobile/static/js/jquery.mobile-1.4.5.min.js"></script>
-<script src="${ctx}/mobile/static/js/jquery.sliderPro.min.js"></script>
-<script src="${ctx}/mobile/static/_assets/js/index.js"></script>
-<script src="${ctx}/mobile/static/js/jquery.ui.datepicker.js"></script>
-<script src="${ctx}/mobile/static/js/jquery.mobile.datepicker.js"></script>
+<!-- external js -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+<!-- common js -->
+<script type="text/javascript" src="${ctx}/mobile/static/js/jquery.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/jquery.sliderPro.min.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/_assets/js/index.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/jquery.ui.datepicker.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/jquery.mobile.datepicker.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/sha.js"></script>
 <!-- mobile js  -->
-<script src="${ctx}/mobile/static/js/mobile/global.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/home.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/order.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/space.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/list.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/product.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/purchase-select-employee.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/purchase-select-time.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/purchase-confirm.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/purchase-input-address.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/technician.js"></script>
-<script src="${ctx}/mobile/static/js/mobile/purchase-select-shop.js"></script>
-<script src="http://api.map.baidu.com/api?v=1.2"></script>
-<script src="${ctx}/mobile/static/js/mobile/json2.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/global.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/home.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/order.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/space.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/list.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/product.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-select-employee.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-select-time.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-confirm.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-input-address.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/technician.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-select-shop.js"></script>
+<%-- <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/json2.js"></script> --%>
 
+<!--  mobile css -->
 <link rel="shortcut icon" href="${ctx}/mobile/static/images/favicon.ico">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/themes/default/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/themes/manicure/manicure.css" />

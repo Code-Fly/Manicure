@@ -1,26 +1,4 @@
-//$(document)
-//		.on(
-//				"click",
-//				"a",
-//				function() {
-//					// if ($(this).attr("href") != "#") {
-//					var $this = $(this), theme = $this.jqmData("theme")
-//							|| $.mobile.loader.prototype.options.theme, msgText = $this
-//							.jqmData("msgtext")
-//							|| $.mobile.loader.prototype.options.text, textVisible = $this
-//							.jqmData("textvisible")
-//							|| $.mobile.loader.prototype.options.textVisible, textonly = !!$this
-//							.jqmData("textonly");
-//					html = $this.jqmData("html") || "";
-//					$.mobile.loading("show", {
-//						text : msgText,
-//						textVisible : textVisible,
-//						theme : theme,
-//						textonly : textonly,
-//						html : html
-//					});
-//					// }
-//				})
+var APP_ID = "wxed9be34978201242";
 
 var GROUP_ID_MEIJIA_JIANYUE = "208009326";
 var GROUP_ID_MEIJIA_FASHI = "208009315";
@@ -117,3 +95,56 @@ var SessionCache = {
 		return sessionStorage.clear();
 	}
 };
+
+/**
+ * @synopsis 签名算法
+ * 
+ * @param jsapi_ticket
+ *            用于签名的 jsapi_ticket
+ * @param url
+ *            用于签名的 url ，注意必须动态获取，不能 hardcode
+ * 
+ * @returns
+ */
+var wxSign = function(jsapi_ticket, url) {
+	var createNonceStr = function() {
+		return Math.random().toString(36).substr(2, 15);
+	};
+
+	var createTimestamp = function() {
+		return parseInt(new Date().getTime() / 1000) + '';
+	};
+
+	var raw = function(args) {
+		var keys = Object.keys(args);
+		keys = keys.sort()
+		var newArgs = {};
+		keys.forEach(function(key) {
+			newArgs[key.toLowerCase()] = args[key];
+		});
+
+		var string = '';
+		for ( var k in newArgs) {
+			string += '&' + k + '=' + newArgs[k];
+		}
+		string = string.substr(1);
+		return string;
+	};
+	var ret = {
+		jsapi_ticket : jsapi_ticket,
+		nonceStr : createNonceStr(),
+		timestamp : createTimestamp(),
+		url : url
+	};
+
+	var string = raw(ret);	
+	var shaObj = new jsSHA("SHA-1", "TEXT");
+	shaObj.update(string);
+	var hash = shaObj.getHash("HEX")
+	ret.signature = hash;
+	
+	return ret;
+};
+
+module.exports = wxSign;
+

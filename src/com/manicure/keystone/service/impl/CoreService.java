@@ -98,4 +98,21 @@ public class CoreService extends BaseService implements ICoreService {
 		return response;
 	}
 
+	public JSONObject getJsapiTicket(String accessToken) {
+		// WeChatAccessToken accessToken = null;
+
+		String url = URL_JSAPI_TICKET.replace("ACCESS_TOKEN", accessToken);
+
+		JSONObject response = JSONObject.fromObject(HttpClientUtil.doHttpsRequest(url, "GET", null));
+
+		if (null == response) {
+			ErrorMsg errMsg = new ErrorMsg();
+			errMsg.setErrcode("-1");
+			errMsg.setErrmsg("server is busy");
+
+			return JSONObject.fromObject(errMsg);
+		}
+		return response;
+	}
+
 }

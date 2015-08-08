@@ -15,7 +15,6 @@ public class Const {
 	public static final String MERCHANT_NAME = ConfigUtil.getProperty(propertiesFile, "merchant.name");
 	
 	public static final String MERCHANT_DOMAIN = ConfigUtil.getProperty(propertiesFile, "merchant.domain");
-	
 	// 第三方用户唯一凭证
 	public static final String APP_ID = ConfigUtil.getProperty(propertiesFile, "appId");
 	// 第三方用户唯一凭证密钥
@@ -28,8 +27,10 @@ public class Const {
 	public static final String MCH_KEYSTONE = ConfigUtil.getProperty(propertiesFile, "mchKeystone");
 
 	public static final String MCH_KEYSTONE_SECRET = ConfigUtil.getProperty(propertiesFile, "mchKeystoneSecret");
-	// 与接口配置信息中的Token要一致
+	
 	public static final String TOKEN = ConfigUtil.getProperty(propertiesFile, "token");
+	// 与接口配置信息中的Token要一致
+	public static final String URL_JSAPI_TICKET = ConfigUtil.getProperty(propertiesFile, "url.jsapi.ticket");
 	// 获取access_token的接口地址（GET） 限200（次/天）
 	public static final String URL_GET_ACCESS_TOKEN = ConfigUtil.getProperty(propertiesFile, "url.access.token");
 	// 菜单创建（POST） 限100（次/天）

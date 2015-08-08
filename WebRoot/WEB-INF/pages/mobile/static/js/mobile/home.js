@@ -21,6 +21,18 @@ $(document).on('pagecontainershow', function(e, ui) {
 		$("#home-btn-huli").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HULI_SHOUBU);
 		$("#home-btn-new").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_NEW + "&orderBy=" + PRODUCT_LIST_ORDERBY_PRICE + "&sort=" + PRODUCT_LIST_SORT_ASC);
 
+		$("#good-technician").on("click", function(event) {
+			// Prevent the usual navigation behavior
+			event.preventDefault();
+			wx.ready(function() {
+				wx.checkJsApi({
+					jsApiList : [ 'getNetworkType', 'previewImage' ],
+					success : function(res) {
+						alert(JSON.stringify(res));
+					}
+				});
+			});
+		});
 	})();
 
 });

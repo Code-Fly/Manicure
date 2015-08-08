@@ -83,6 +83,7 @@ public class UserController extends BaseController {
 					logger.error(resp.toString());
 					return resp.toString();
 				}
+				logger.info(resp.toString());
 				return resp.toString();
 			} else {
 				// 调用接口获取access_token
@@ -97,8 +98,10 @@ public class UserController extends BaseController {
 					logger.error(resp.toString());
 					return resp.toString();
 				}
+				logger.info(resp.toString());
 				return resp.toString();
 			}
+
 		}
 		ErrorMsg errMsg = new ErrorMsg();
 		errMsg.setErrcode("-1");

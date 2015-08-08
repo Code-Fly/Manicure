@@ -69,7 +69,7 @@
 							<p>最新的低价商品</p>
 
 					</a></li>
-					<li><a> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png" class="ui-li-thumb">
+					<li><a id="good-technician"> <img src="${ctx}/mobile/static/_assets/img/blackberry_10.png" class="ui-li-thumb">
 							<h2>三好学员</h2>
 							<p>本店的优秀学员展示</p>
 
