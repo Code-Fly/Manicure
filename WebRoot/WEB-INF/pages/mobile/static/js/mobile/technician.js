@@ -5,13 +5,14 @@ $(document).on('pagecontainershow', function(e, ui) {
 		 
 
 		var tid = GetQueryString("tid");
+		$.mobile.loading("show");
 		$.getJSON(_ctx + "/api/technician/query/" + tid, function(json) {
 			if (null == json) {
 				alert("null");
 				return;
 			}
 			loadTechnician(json);
-
+			$.mobile.loading( "hide" );
 		});
 
 		function loadTechnician(json) {

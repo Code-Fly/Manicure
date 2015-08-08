@@ -15,85 +15,98 @@
 		</div>
 		<div role="main">
 			<div class="ui-grid-b" style="font-size: 0.8em;text-align: center;">
-				<div class="ui-block-a typebtn">
+				<div class="ui-block-a ">
 					<a id="list-btn-meijia" href="#" data-ajax="false" data-theme="b" data-role="button">美甲</a>
 				</div>
-				<div class="ui-block-b typebtn">
+				<div class="ui-block-b ">
 					<a id="list-btn-meizu" href="#" data-ajax="false" data-theme="c" data-role="button">美足</a>
 				</div>
-				<div class="ui-block-c typebtn">
+				<div class="ui-block-c ">
 					<a id="list-btn-meijie" href="#" data-ajax="false" data-theme="d" data-role="button">美睫</a>
 				</div>
 			</div>
 			<div class="ui-grid-a" style="font-size: 0.8em;text-align: center;">
-				<div class="ui-block-a typebtn">
-					<a id="list-btn-huazhuang" data-theme="e" data-role="button">化妆</a>
+				<div class="ui-block-a ">
+					<a id="list-btn-huazhuang" data-ajax="false" data-theme="e" data-role="button">化妆</a>
 				</div>
-				<div class="ui-block-b typebtn">
-					<a id="list-btn-huli" data-theme="f" data-role="button">护理</a>
+				<div class="ui-block-b ">
+					<a id="list-btn-huli" data-ajax="false" data-theme="f" data-role="button">护理</a>
 				</div>
 			</div>
+
+			<div class="ui-grid-c ui-body-a ui-corner-all" id="list-btn-group-meijia" style="font-size: 0.6em;text-align: center;display: none;margin: 5px;">
+				<div class="ui-block-a">
+					<a href="#" id="list-btn-meijia-jianyue" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">简约</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" id="list-btn-meijia-caihui" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">彩绘</a>
+				</div>
+				<div class="ui-block-c">
+					<a href="#" id="list-btn-meijia-fashi" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">法式</a>
+				</div>
+				<div class="ui-block-d">
+					<a href="#" id="list-btn-meijia-rihan" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">日韩</a>
+				</div>
+			</div>
+			<div class="ui-grid-a  ui-body-a ui-corner-all" id="list-btn-group-meizu" style="font-size: 0.6em;text-align: center;display: none;margin: 5px;">
+				<div class="ui-block-a">
+					<a href="#" id="list-btn-meizu-jianyue" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">简约</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" id="list-btn-meizu-caihui" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">彩绘</a>
+				</div>
+			</div>
+
+			<div class="ui-grid-a  ui-body-a ui-corner-all" id="list-btn-group-huazhuang" style="font-size: 0.6em;text-align: center;display: none;margin: 5px;">
+				<div class="ui-block-a">
+					<a href="#" id="list-btn-huazhuang-xinniang" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">新娘妆</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" id="list-btn-huazhuang-wutai" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">舞台妆</a>
+				</div>
+			</div>
+			<div class="ui-grid-b ui-body-a ui-corner-all" id="list-btn-group-huli" style="font-size: 0.6em;text-align: center;display: none;margin: 5px;">
+				<div class="ui-block-a">
+					<a href="#" id="list-btn-huli-shoubu" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">手部</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" id="list-btn-huli-zubu" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">足部</a>
+				</div>
+				<div class="ui-block-c">
+					<a href="#" id="list-btn-huli-pifu" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">皮肤</a>
+				</div>
+			</div>
+
+
+
 			<div class="ui-bar " style="padding: 0px;">
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
-						<select name="select-native-1" id="select-native-1" data-mini="true" data-theme="a">
-							<option>-综合-</option>
-							<option value="1">升序</option>
-							<option value="2">降序</option>
+						<select name="select-native-1" id="list-select-sort" data-mini="true" data-theme="a">
+							<option value="null">-综合-</option>
+							<option value="asc">升序</option>
+							<option value="desc">降序</option>
 						</select>
 					</div>
 					<div class="ui-block-b">
-						<select name="select-native-2" id="select-native-2" data-mini="true" data-theme="a">
-							<option>-价格-</option>
-							<option value="1">价格优先</option>
-							<option value="2">销量优先</option>
+						<select name="select-native-2" id="list-select-orderBy" data-mini="true" data-theme="a">
+							<option value="null">-价格-</option>
+							<option value="price">价格优先</option>
+							<option value="sales">销量优先</option>
 						</select>
 					</div>
 					<div class="ui-block-c">
-						<select name="select-native-3" id="select-native-3" data-mini="true" data-theme="a">
-							<option>-筛选-</option>
-							<option value="1">0-100</option>
-							<option value="2">101-200</option>
-							<option value="3">201-400</option>
-							<option value="4">401-1000</option>
-							<option value="4">1000+</option>
+						<select name="select-native-3" id="list-select-price" data-mini="true" data-theme="a">
+							<option value="null">-筛选-</option>
+							<option value="0-100">0-100</option>
+							<option value="101-200">101-200</option>
+							<option value="201-400">201-400</option>
+							<option value="401-1000">401-1000</option>
+							<option value="1000-?">1000+</option>
 						</select>
 					</div>
 				</div>
 			</div>
-			<form style="text-align: center;">
-				<fieldset data-role="controlgroup" data-type="horizontal" id="list-radio-group-meijia" style="display: none;">
-					<input type="radio" name="list-radio-group-meijia" id="list-radio-meijia-jianyue" value="on" checked="checked"> 
-					<label for="list-radio-meijia-jianyue">简约</label> 
-					<input type="radio" name="list-radio-group-meijia" id="list-radio-meijia-caihui" value="off"> 
-					<label for="list-radio-meijia-caihui">彩绘</label> 
-					<input type="radio" name="list-radio-group-meijia" id="list-radio-meijia-fashi" value="other"> 
-					<label for="list-radio-meijia-fashi">法式</label> 
-					<input type="radio" name="list-radio-group-meijia" id="list-radio-meijia-rihan" value="other"> 
-					<label for="list-radio-meijia-rihan">日韩</label>
-				</fieldset>
-				<fieldset data-role="controlgroup" data-type="horizontal" id="list-radio-group-meizu" style="display: none;">
-					<input type="radio" name="list-radio-group-meizu" id="list-radio-meizu-jianyue" value="on" checked="checked"> 
-					<label for="list-radio-meizu-jianyue">简约</label> 
-					<input type="radio" name="list-radio-group-meizu" id="list-radio-meizu-caihui" value="off"> 
-					<label for="list-radio-meizu-caihui">彩绘</label> 
-				</fieldset>
-				<fieldset data-role="controlgroup" data-type="horizontal" id="list-radio-group-huazhuang" style="display: none;">
-					<input type="radio" name="list-radio-group-huazhuang" id="list-radio-huazhuang-xinniang" value="on" checked="checked"> 
-					<label for="list-radio-huazhuang-xinniang">新娘妆</label> 
-					<input type="radio" name="list-radio-group-huazhuang" id="list-radio-huazhuang-wutai" value="off"> 
-					<label for="list-radio-huazhuang-wutai">舞台妆</label>
-				</fieldset>
-				<fieldset data-role="controlgroup" data-type="horizontal" id="list-radio-group-huli" style="display: none;">
-					<input type="radio" name="list-radio-group-huli" id="list-radio-huli-shoubu" value="on" checked="checked"> 
-					<label for="list-radio-huli-shoubu">手部</label> 
-					<input type="radio" name="list-radio-group-huli" id="list-radio-huli-zubu" value="off"> 
-					<label for="list-radio-huli-zubu">足部</label> 
-					<input type="radio" name="list-radio-group-huli" id="list-radio-huli-pifu" value="other"> 
-					<label for="list-radio-huli-pifu">皮肤</label>
-				</fieldset>
-			</form>
-
 
 			<div class="ui-grid-solo">
 				<ul data-role="listview" data-inset="true" id="page-list-list-service">

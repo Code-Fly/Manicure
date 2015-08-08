@@ -2,7 +2,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 	(function() {
 		if (ui.toPage[0].id != "purchase-select-shop-page")
 			return;
-
+		$.mobile.loading("show");
 		$.getJSON(_ctx + "/api/keystone/shop/list", function(json) {
 			if (null == json) {
 				alert("null");
@@ -14,7 +14,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 			// alert(JSON.stringify(json));
 			loadShop(json.business_list);
-
+			$.mobile.loading( "hide" );
 		});
 
 		function loadShop(json) {

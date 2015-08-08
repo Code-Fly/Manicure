@@ -5,7 +5,8 @@ $(document).on('pagecontainershow', function(e, ui) {
 
 		var _pid = window.location.href.replace(_ctx + "/mobile/product/", "")
 		var payUrl = "http://mp.weixin.qq.com/bizmall/malldetail?id=&pid=PRODUCT_ID&biz=MzI5MjAwNjA4Ng==&scene=&action=show_detail&showwxpaytitle=1#wechat_redirect";
-
+		
+		$.mobile.loading("show");
 		$.getJSON(_ctx + "/api/keystone/product/query/" + _pid, function(json) {
 			if (null == json) {
 				alert("null");
@@ -17,9 +18,9 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 
 			loadProduct(json.product_info);
-
+			$.mobile.loading( "hide" );
 		});
-
+		$.mobile.loading("show");
 		$.getJSON(_ctx + "/api/technician/query", {
 			productId : _pid
 		}, function(json) {
@@ -29,6 +30,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 
 			loadTechnician(json);
+			$.mobile.loading( "hide" );
 		});
 
 		function loadTechnician(json) {

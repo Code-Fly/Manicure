@@ -102,7 +102,6 @@ public class MobileController extends BaseController {
 	public String index(HttpServletRequest request, HttpServletResponse response) {
 
 		mobileService.setUser(request);
-
 		return "/mobile/home";
 	}
 }

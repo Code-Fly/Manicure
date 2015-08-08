@@ -20,6 +20,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 		$("#home-btn-huazhuang").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HUAZHUANG_XINNIANG);
 		$("#home-btn-huli").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HULI_SHOUBU);
 		$("#home-btn-new").attr("href", _ctx + "/mobile/list?orderBy=" + PRODUCT_LIST_ORDERBY_PRICE + "&sort=" + PRODUCT_LIST_SORT_ASC);
+		
 	})();
 
 });

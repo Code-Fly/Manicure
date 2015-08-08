@@ -13,6 +13,9 @@ public class Const {
 	public static final String propertiesFile = "wechat.properties";
 
 	public static final String MERCHANT_NAME = ConfigUtil.getProperty(propertiesFile, "merchant.name");
+	
+	public static final String MERCHANT_DOMAIN = ConfigUtil.getProperty(propertiesFile, "merchant.domain");
+	
 	// 第三方用户唯一凭证
 	public static final String APP_ID = ConfigUtil.getProperty(propertiesFile, "appId");
 	// 第三方用户唯一凭证密钥

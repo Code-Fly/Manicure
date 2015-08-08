@@ -4,7 +4,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			return;
 		var pid = GetQueryString("pid");
 		var poiId = SessionCache.get("customerShopId");
-
+		$.mobile.loading("show");
 		$.getJSON(_ctx + "/api/technician/query/" + pid + "/" + poiId, function(json) {
 			if (null == json) {
 				alert("null");
@@ -12,7 +12,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 			// alert(JSON.stringify(json));
 			loadEmployee(json);
-
+			$.mobile.loading( "hide" );
 		});
 		
 		function loadEmployee(json){
