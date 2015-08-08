@@ -120,12 +120,12 @@ $(document).on(
 							alert(json.errmsg);
 							return;
 						}
-						loadAllProduct(json.products_info);
+						loadProductList(json.products_info);
 						$.mobile.loading("hide");
 					});
 				}
 
-				function loadAllProduct(json) {
+				function loadProductList(json) {
 					// var descLen = $(".ui-li-has-thumb a p").width() / 15;
 					var descLen = $("#page-list-list-service").width() / 2 / 25
 					// alert(descLen);

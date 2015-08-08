@@ -108,7 +108,7 @@
 				</div>
 			</div>
 
-			<div class="ui-grid-solo">
+			<div class="ui-grid-solo product-square-list">
 				<ul data-role="listview" data-inset="true" id="page-list-list-service">
 					<%-- 
 					<li><a href="#"> <img src="${ctx}/mobile/_assets/img/apple.png" class="ui-li-thumb">
