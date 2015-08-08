@@ -14,7 +14,7 @@
 			<h2 id="list-header">米宝服务</h2>
 		</div>
 		<div role="main">
-			<div class="ui-grid-b" style="font-size: 0.8em;text-align: center;">
+			<div class="ui-grid-b" style="font-size: 1em;text-align: center;">
 				<div class="ui-block-a ">
 					<a id="list-btn-meijia" href="#" data-ajax="false" data-theme="b" data-role="button">美甲</a>
 				</div>
@@ -25,7 +25,7 @@
 					<a id="list-btn-meijie" href="#" data-ajax="false" data-theme="d" data-role="button">美睫</a>
 				</div>
 			</div>
-			<div class="ui-grid-a" style="font-size: 0.8em;text-align: center;">
+			<div class="ui-grid-a" style="font-size: 1em;text-align: center;">
 				<div class="ui-block-a ">
 					<a id="list-btn-huazhuang" data-ajax="false" data-theme="e" data-role="button">化妆</a>
 				</div>
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 
-			<div class="ui-grid-c ui-body-a ui-corner-all" id="list-btn-group-meijia" style="font-size: 0.6em;text-align: center;display: none;margin: 5px;">
+			<div class="ui-grid-c ui-body-a ui-corner-all" id="list-btn-group-meijia" style="font-size: 0.8em;text-align: center;display: none;margin: 5px;">
 				<div class="ui-block-a">
 					<a href="#" id="list-btn-meijia-jianyue" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">简约</a>
 				</div>
@@ -48,7 +48,7 @@
 					<a href="#" id="list-btn-meijia-rihan" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">日韩</a>
 				</div>
 			</div>
-			<div class="ui-grid-a  ui-body-a ui-corner-all" id="list-btn-group-meizu" style="font-size: 0.6em;text-align: center;display: none;margin: 5px;">
+			<div class="ui-grid-a  ui-body-a ui-corner-all" id="list-btn-group-meizu" style="font-size: 0.8em;text-align: center;display: none;margin: 5px;">
 				<div class="ui-block-a">
 					<a href="#" id="list-btn-meizu-jianyue" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">简约</a>
 				</div>
@@ -57,7 +57,7 @@
 				</div>
 			</div>
 
-			<div class="ui-grid-a  ui-body-a ui-corner-all" id="list-btn-group-huazhuang" style="font-size: 0.6em;text-align: center;display: none;margin: 5px;">
+			<div class="ui-grid-a  ui-body-a ui-corner-all" id="list-btn-group-huazhuang" style="font-size: 0.8em;text-align: center;display: none;margin: 5px;">
 				<div class="ui-block-a">
 					<a href="#" id="list-btn-huazhuang-xinniang" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">新娘妆</a>
 				</div>
@@ -65,7 +65,7 @@
 					<a href="#" id="list-btn-huazhuang-wutai" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">舞台妆</a>
 				</div>
 			</div>
-			<div class="ui-grid-b ui-body-a ui-corner-all" id="list-btn-group-huli" style="font-size: 0.6em;text-align: center;display: none;margin: 5px;">
+			<div class="ui-grid-b ui-body-a ui-corner-all" id="list-btn-group-huli" style="font-size: 0.8em;text-align: center;display: none;margin: 5px;">
 				<div class="ui-block-a">
 					<a href="#" id="list-btn-huli-shoubu" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">手部</a>
 				</div>
