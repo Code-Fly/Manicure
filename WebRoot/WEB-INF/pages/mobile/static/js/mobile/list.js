@@ -58,7 +58,7 @@ $(document).on(
 						GROUP_ID_MEIJIA_FASHI).addClass(GROUP_ID_MEIJIA_RIHAN);
 
 				$("#list-btn-meijia-jianyue").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_JIANYUE).addClass(GROUP_ID_MEIJIA_JIANYUE);
-				$("#list-btn-meijia-caihui").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_CAIZHUANG).addClass(GROUP_ID_MEIJIA_CAIZHUANG);
+				$("#list-btn-meijia-caizhuang").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_CAIZHUANG).addClass(GROUP_ID_MEIJIA_CAIZHUANG);
 				$("#list-btn-meijia-fashi").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_FASHI).addClass(GROUP_ID_MEIJIA_FASHI);
 				$("#list-btn-meijia-rihan").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_RIHAN).addClass(GROUP_ID_MEIJIA_RIHAN);
 				// meizu

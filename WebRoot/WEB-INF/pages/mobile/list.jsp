@@ -39,7 +39,7 @@
 					<a href="#" id="list-btn-meijia-jianyue" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">简约</a>
 				</div>
 				<div class="ui-block-b">
-					<a href="#" id="list-btn-meijia-caihui" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">彩绘</a>
+					<a href="#" id="list-btn-meijia-caizhuang" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">彩妆</a>
 				</div>
 				<div class="ui-block-c">
 					<a href="#" id="list-btn-meijia-fashi" class="ui-btn ui-mini ui-shadow ui-corner-all" data-ajax="false">法式</a>
