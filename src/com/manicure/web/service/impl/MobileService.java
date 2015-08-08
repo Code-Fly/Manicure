@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
@@ -25,8 +26,7 @@ import com.manicure.web.service.iface.IMobileService;
  */
 @Service
 public class MobileService extends BaseService implements IMobileService {
-	public void setUser(HttpServletRequest request) {
-		HttpSession session = request.getSession();
+	public void setUser(HttpServletRequest request, HttpSession session) {
 		WeChatUserInfo userInfo = new WeChatUserInfo();
 
 		String code = request.getParameter("code");
@@ -44,13 +44,12 @@ public class MobileService extends BaseService implements IMobileService {
 			JSONObject jUserInfo = JSONObject.fromObject(resp);
 			if (!jUserInfo.containsKey("errcode")) {
 				userInfo = (WeChatUserInfo) JSONObject.toBean(jUserInfo, WeChatUserInfo.class);
-
+				session.setMaxInactiveInterval(-1);
+				session.setAttribute("user", userInfo);
 			} else {
 				logger.error(jUserInfo.toString());
 			}
-			logger.info(jUserInfo.toString());
-
-			session.setAttribute("user", userInfo);
+			
 		}
 
 	}
