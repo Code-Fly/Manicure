@@ -164,9 +164,21 @@ $(document).on(
 						url : _ctx + "/api/keystone/jsapi/ticket/query",
 						async : false
 					}).responseText;
+
+					var urlEncoded = $.ajax({
+						type : "POST",
+						url : _ctx + "/api/keystone/url/encode",
+						data : {
+							"url" : shareLink
+						},
+						async : false
+					}).responseText;
+					
+					var shareLink = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", urlEncoded).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
+					
 					var currentUrl = window.location.href;
 					var sign = wxSign(jsapiTicket, currentUrl);
-					
+
 					wx.config({
 						debug : false,
 						appId : APP_ID,

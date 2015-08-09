@@ -15,13 +15,13 @@
 		<div role="main">
 			<div class="ui-grid-a ui-bar ui-bar-b">
 				<div class="ui-block-a" style="text-align: center;">
-					<img height="100px" width="100px" src="<%=u.getHeadimgurl()%>">
+					<img id="space-user-headimgurl" height="100px" width="100px" src="">
 				</div>
 				<div class="ui-block-b">
-					<p><%=u.getNickname()%></p>
-					<p style="font-size: 10px;font-weight: normal;"><%=u.getCountry()%>
-						<%=u.getProvince()%>
-						<%=u.getCity()%></p>
+					<p id="space-user-nickname"></p>
+					<p style="font-size: 10px;font-weight: normal;">
+						<span id="space-user-country"></span>&nbsp;<span id="space-user-province"></span>&nbsp;<span id="space-user-city"></span>
+					</p>
 				</div>
 			</div>
 			<ul data-role="listview" style="margin-top: 10px;">

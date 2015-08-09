@@ -25,6 +25,8 @@ var PRODUCT_LIST_ORDERBY_SALES = "sales";
 var PRODUCT_LIST_SORT_ASC = "asc";
 var PRODUCT_LIST_SORT_DESC = "desc";
 
+var URL_SNS_OAUTH2_REDIRECT = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
+
 $(function() {
 	$("[data-role='navbar']").navbar();
 	$("[data-role='header'], [data-role='footer']").toolbar();

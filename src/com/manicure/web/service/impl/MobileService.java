@@ -51,6 +51,8 @@ public class MobileService extends BaseService implements IMobileService {
 			}
 			
 		}
-
+		//session.removeAttribute("user");
+		//session.setAttribute("user", new WeChatUserInfo());
+		//System.out.println(new WeChatUserInfo());
 	}
 }

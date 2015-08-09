@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.manicure.base.controller.BaseController;
 import com.manicure.base.helper.FileUtil;
 import com.manicure.base.helper.KeystoneUtil;
+import com.manicure.base.helper.UrlUtil;
 import com.manicure.keystone.service.impl.CoreService;
 
 /**
@@ -80,6 +81,17 @@ public class CoreController extends BaseController {
 		String pid = request.getParameter("pid");
 		if (null != url || null == pid) {
 			url = FileUtil.getWeChatImage(url, FileUtil.CATEGORY_PRODUCT, pid, false);
+		}
+		return url;
+
+	}
+
+	@RequestMapping(value = "/url/encode")
+	@ResponseBody
+	public String urlEncoder(HttpServletRequest request, HttpServletResponse response) {
+		String url = request.getParameter("url");
+		if (null != url) {
+			url = UrlUtil.toUTF8(url);
 		}
 		return url;
 
