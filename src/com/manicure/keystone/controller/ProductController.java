@@ -48,9 +48,13 @@ public class ProductController extends BaseController {
 		Map<String, String> filter = new HashMap<String, String>();
 		if (null != minPrice) {
 			filter.put("minPrice", minPrice);
+		}else{
+			filter.put("minPrice", "?");
 		}
 		if (null != maxPrice) {
 			filter.put("maxPrice", maxPrice);
+		}else{
+			filter.put("maxPrice", "?");
 		}
 		if (null != groupId) {
 			filter.put("groupId", groupId);
