@@ -27,6 +27,11 @@ var PRODUCT_LIST_SORT_DESC = "desc";
 
 var URL_SNS_OAUTH2_REDIRECT = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
 
+$(document).on("click", "a", function() {
+	// if ($(this).attr("href") != "#") {
+	$.mobile.loading("show");
+	// }
+})
 $(function() {
 	$("[data-role='navbar']").navbar();
 	$("[data-role='header'], [data-role='footer']").toolbar();
@@ -139,14 +144,13 @@ var wxSign = function(jsapi_ticket, url) {
 		url : url
 	};
 
-	var string = raw(ret);	
+	var string = raw(ret);
 	var shaObj = new jsSHA("SHA-1", "TEXT");
 	shaObj.update(string);
 	var hash = shaObj.getHash("HEX")
 	ret.signature = hash;
-	
+
 	return ret;
 };
 
 module.exports = wxSign;
-
