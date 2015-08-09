@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="ui-grid-solo">
-				<input id="purchase-select-time-datapicker" type="hidden" data-role="date" data-inline="true">
+				<input id="purchase-select-time-datapicker" type="hidden" data-role="date" data-inline="true" >
 			</div>
 			<div class="ui-grid-solo" id="purchase-select-time-grid">
 

@@ -17,7 +17,6 @@
 <script type="text/javascript" src="${ctx}/mobile/static/js/jquery.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/jquery.sliderPro.min.js"></script>
-<script type="text/javascript" src="${ctx}/mobile/static/_assets/js/index.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/jquery.mobile.datepicker.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/sha.js"></script>

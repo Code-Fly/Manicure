@@ -19,7 +19,7 @@
 				</div>
 				<div class="ui-block-b">
 					<p id="space-user-nickname"></p>
-					<p style="font-size: 10px;font-weight: normal;">
+					<p style="font-size: 0.8em;font-weight: normal;">
 						<span id="space-user-country"></span>&nbsp;<span id="space-user-province"></span>&nbsp;<span id="space-user-city"></span>
 					</p>
 				</div>
