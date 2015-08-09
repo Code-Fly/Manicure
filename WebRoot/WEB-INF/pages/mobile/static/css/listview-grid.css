@@ -14,7 +14,7 @@
 	.product-square-list .ui-listview li {
 		float: left;
 		width: 46.77%; /* 33.3333% incl. 2 x 1.2% margin */
-		height: 8em; /* 232p */
+		height: 9em; /* 232p */
 		margin: .5625em 1.2%;
 	}
 	.product-square-list .ui-listview li>.ui-btn {
