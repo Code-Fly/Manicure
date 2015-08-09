@@ -13,6 +13,10 @@ http://www.mydomain.com/api/keystone/file/image/product<br/>
 method: POST<br/>
 param: "url", required = true<br/>
 param: "pid", required = true<br/>
+##### Get UTF-8 encoded url
+http://www.mydomain.com/api/keystone/url/encode<br/>
+method: POST<br/>
+param: "url", required = true<br/>
 
 ###	Menu API
 ##### create
