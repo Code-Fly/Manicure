@@ -131,12 +131,12 @@ public class ProductList extends BaseEntity {
 		List<ProductInfo> new_products_info = new ArrayList<ProductInfo>();
 		int size = products_info.size(); // 数组大小
 		for (int i = 0; i < size; i++) {
-			if (!"?".equals(minPrice)) {
+			if (!"-".equals(minPrice)) {
 				if (products_info.get(i).getSku_list().get(0).getPrice() < Integer.parseInt(minPrice) * 100) {
 					continue;
 				}
 			}
-			if (!"?".equals(maxPrice)) {
+			if (!"-".equals(maxPrice)) {
 				if (products_info.get(i).getSku_list().get(0).getPrice() > Integer.parseInt(maxPrice) * 100) {
 					continue;
 				}

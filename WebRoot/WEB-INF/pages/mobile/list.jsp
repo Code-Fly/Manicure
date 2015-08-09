@@ -98,12 +98,12 @@
 					<div class="ui-block-c">
 						<select name="select-native-3" id="list-select-price" data-mini="true" data-theme="a">
 							<option value="null">-筛选-</option>
-							<option value="?-?">全部</option>
-							<option value="0-100">0-100</option>
-							<option value="101-200">101-200</option>
-							<option value="201-400">201-400</option>
-							<option value="401-1000">401-1000</option>
-							<option value="1000-?">1000+</option>
+							<option value="-!-">全部</option>
+							<option value="0!100">0-100</option>
+							<option value="101!200">101-200</option>
+							<option value="201!400">201-400</option>
+							<option value="401!1000">401-1000</option>
+							<option value="1000!-">1000+</option>
 						</select>
 					</div>
 				</div>

@@ -22,11 +22,11 @@ $(document).on(
 				}
 				var minPrice = GetQueryString("minPrice");
 				if (null == minPrice) {
-					minPrice = "?";
+					minPrice = "-";
 				}
 				var maxPrice = GetQueryString("maxPrice");
 				if (null == maxPrice) {
-					maxPrice = "?";
+					maxPrice = "-";
 				}
 
 				$("#list-select-sort").change(function() {
@@ -47,8 +47,8 @@ $(document).on(
 				$("#list-select-price").change(function() {
 					selected = $(this).children("option:selected").val();
 					if ("null" != selected) {
-						var selected_0 = selected.split("-")[0];
-						var selected_1 = selected.split("-")[1];
+						var selected_0 = selected.split("!")[0];
+						var selected_1 = selected.split("!")[1];
 						var pageUrl = window.location.href.split("?")[0];
 						window.location.href = pageUrl + "?groupId=" + groupId + "&orderBy=" + orderBy + "&sort=" + sort + "&minPrice=" + selected_0 + "&maxPrice=" + selected_1;
 					}
