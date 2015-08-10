@@ -27,11 +27,11 @@ var PRODUCT_LIST_SORT_DESC = "desc";
 
 var URL_SNS_OAUTH2_REDIRECT = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
 
-$(document).on("click", "a", function() {
-	// if ($(this).attr("href") != "#") {
-	$.mobile.loading("show");
-	// }
-})
+// $(document).on("click", "a", function() {
+// // if ($(this).attr("href") != "#") {
+// $.mobile.loading("show");
+// // }
+// })
 $(function() {
 	$("[data-role='navbar']").navbar();
 	$("[data-role='header'], [data-role='footer']").toolbar();
