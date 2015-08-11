@@ -47,22 +47,22 @@
 				<form>
 					<ul data-role="listview" data-inset="true" id="page-confirm-detail-list">
 						<li class="ui-field-contain"><img id="confirm-product-img">
-							<h2 id="confirm-product-name">服务名</h2>
-							<p id="confirm-product-description">简介</p></li>
+							<h2 id="confirm-product-name"></h2>
+							<p id="confirm-product-description"></p></li>
 						<li class="ui-field-contain">
 							<label>甲师：</label>
 							<p>
-								<span id="confirm-shop-name">店面。。</span>
+								<span id="confirm-shop-name"></span>
 								&nbsp;
-								<span id="confirm-technician-name">甲师。。</span>
+								<span id="confirm-technician-name"></span>
 							</p>
 						</li>
 						<li class="ui-field-contain">
 							<label>预约时间：</label>
 							<p>
-								<span id="confirm-date">日期。。</span>
+								<span id="confirm-date"></span>
 								&nbsp;
-								<span id="confirm-time">时间。。</span>
+								<span id="confirm-time"></span>
 							</p>
 						</li>
 						<li class="ui-field-contain">
@@ -75,19 +75,19 @@
 							<label>我的信息:</label>
 							<p>
 								<span>姓名：</span>
-								<span id="confirm-my-name">xx</span>
+								<span id="confirm-my-name"></span>
 							</p>
 							<p>
 								<span>电话号码：</span>
-								<span id="confirm-my-tel">xx</span>
+								<span id="confirm-my-tel"></span>
 							</p>
 							<p>
 								<span>居住地址：</span>
-								<span id="confirm-my-address">xx</span>
+								<span id="confirm-my-address"></span>
 							</p>
 							<p>
 								<span>所在商圈：</span>
-								<span id="confirm-my-business">xx</span>
+								<span id="confirm-my-business"></span>
 							</p>						
 						</li>
 					</ul>
