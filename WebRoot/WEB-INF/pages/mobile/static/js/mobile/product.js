@@ -97,15 +97,17 @@ $(document).on(
 					$("#product-btn-to-door-service").on("click", function(event) {
 						// Prevent the usual navigation behavior
 						event.preventDefault();
-						SessionCache.set("customerType", "toDoor");
-						$.mobile.changePage(_ctx + "/mobile/purchase-input-address?pid=" + _pid);
+						SessionCache.set("customerServiceType", "上门服务");
+						SessionCache.set("customerProduct", JSON.stringify(json));
+						$.mobile.changePage(_ctx + "/mobile/purchase-input-address");
 					});
 
 					$("#product-btn-to-shop-service").on("click", function(event) {
 						// Prevent the usual navigation behavior
 						event.preventDefault();
-						SessionCache.set("customerType", "toShop");
-						$.mobile.changePage(_ctx + "/mobile/purchase-select-shop?pid=" + _pid);
+						SessionCache.set("customerServiceType", "到店服务");
+						SessionCache.set("customerProduct", JSON.stringify(json));
+						$.mobile.changePage(_ctx + "/mobile/purchase-select-shop");
 					});
 
 					$("#product-slider").sliderPro({

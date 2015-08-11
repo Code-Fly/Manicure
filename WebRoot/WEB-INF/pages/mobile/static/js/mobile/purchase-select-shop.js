@@ -44,7 +44,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				SessionCache.set("customerShopId", $(this).attr("poi-id"));
 				SessionCache.set("customerShopName", $(this).attr("poi-name"));
 
-				$.mobile.changePage(_ctx + "/mobile/purchase-select-employee?pid=" + GetQueryString("pid"));
+				$.mobile.changePage(_ctx + "/mobile/purchase-select-employee");
 			});
 		}
 

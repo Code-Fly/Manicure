@@ -42,7 +42,57 @@
 					<p style="color: orange;margin-top: 5px;">确认下单</p>
 				</div>
 			</div>
-			<div class="ui-grid-solo"></div>
+			<div class="ui-grid-solo ui-content">
+				<label>请确认订单：</label>
+				<form>
+					<ul data-role="listview" data-inset="true" id="page-confirm-detail-list">
+						<li class="ui-field-contain"><img id="confirm-product-img">
+							<h2 id="confirm-product-name">服务名</h2>
+							<p id="confirm-product-description">简介</p></li>
+						<li class="ui-field-contain">
+							<label>甲师：</label>
+							<p>
+								<span id="confirm-shop-name">店面。。</span>
+								&nbsp;
+								<span id="confirm-technician-name">甲师。。</span>
+							</p>
+						</li>
+						<li class="ui-field-contain">
+							<label>预约时间：</label>
+							<p>
+								<span id="confirm-date">日期。。</span>
+								&nbsp;
+								<span id="confirm-time">时间。。</span>
+							</p>
+						</li>
+						<li class="ui-field-contain">
+							<label>预约方式：</label>
+							<p>
+								<span id="confirm-type"></span>
+							</p>
+						</li>
+						<li class="ui-field-contain" id="confirm-list-my-info" style="display: none;">
+							<label>我的信息:</label>
+							<p>
+								<span>姓名：</span>
+								<span id="confirm-my-name">xx</span>
+							</p>
+							<p>
+								<span>电话号码：</span>
+								<span id="confirm-my-tel">xx</span>
+							</p>
+							<p>
+								<span>居住地址：</span>
+								<span id="confirm-my-address">xx</span>
+							</p>
+							<p>
+								<span>所在商圈：</span>
+								<span id="confirm-my-business">xx</span>
+							</p>						
+						</li>
+					</ul>
+				</form>
+			</div>
 			<div class="ui-grid-solo"></div>
 			<div data-role="footer" data-position="fixed" style="text-align: center;">
 				<a href="#" id="purchase-select-confirm-btn-next" data-ajax="false" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">付款</a>
