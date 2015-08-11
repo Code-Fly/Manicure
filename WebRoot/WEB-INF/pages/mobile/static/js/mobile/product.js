@@ -26,7 +26,7 @@ $(document).on(
 						loadProduct(json.product_info);
 						$.mobile.loading("hide");
 					});
-					$.mobile.loading("show");
+
 				}
 
 				function queryTechnician() {
@@ -38,8 +38,7 @@ $(document).on(
 							return;
 						}
 
-						loadTechnician(json);
-						$.mobile.loading("hide");
+						loadTechnician(json);						
 					});
 				}
 
@@ -175,9 +174,9 @@ $(document).on(
 						},
 						async : false
 					}).responseText;
-					
+
 					var shareLink = URL_SNS_OAUTH2_REDIRECT.replace("REDIRECT_URI", urlEncoded).replace("APPID", APP_ID).replace("SCOPE", "snsapi_base")
-					
+
 					var currentUrl = window.location.href;
 					var sign = wxSign(jsapiTicket, currentUrl);
 
