@@ -66,7 +66,7 @@
 							</p>
 						</li>
 						<li class="ui-field-contain">
-							<label>预约方式：</label>
+							<label>服务方式：</label>
 							<p>
 								<span id="confirm-type"></span>
 							</p>

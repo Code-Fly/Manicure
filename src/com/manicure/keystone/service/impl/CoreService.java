@@ -5,6 +5,10 @@ package com.manicure.keystone.service.impl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -19,6 +23,13 @@ import com.manicure.base.helper.HttpClientUtil;
 import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.base.service.BaseService;
 import com.manicure.keystone.entity.error.ErrorMsg;
+import com.manicure.keystone.entity.response.Article;
+import com.manicure.keystone.entity.response.NewsMessage;
+import com.manicure.keystone.entity.response.TextMessage;
+import com.manicure.keystone.event.ClickEvent;
+import com.manicure.keystone.event.Event;
+import com.manicure.keystone.event.MerchantOrderEvent;
+import com.manicure.keystone.event.SubscribeEvent;
 import com.manicure.keystone.service.iface.ICoreService;
 
 /**
@@ -64,7 +75,7 @@ public class CoreService extends BaseService implements ICoreService {
 		response.setCharacterEncoding("UTF-8");
 
 		// 调用核心业务类接收消息、处理消息
-		String respMessage = menuService.processRequest(request);
+		String respMessage = processRequest(request);
 
 		// 响应消息
 		PrintWriter out = response.getWriter();
@@ -113,6 +124,55 @@ public class CoreService extends BaseService implements ICoreService {
 			return JSONObject.fromObject(errMsg);
 		}
 		return response;
+	}
+
+	/**
+	 * 处理微信发来的请求
+	 * 
+	 * @param request
+	 * @return xml
+	 */
+	private String processRequest(HttpServletRequest request) {
+		// xml格式的消息数据
+		String respXml = null;
+		try {
+			// 调用parseXml方法解析请求消息
+			Map<String, String> requestMap = MessageService.parseXml(request);
+			// 消息类型
+			String msgType = requestMap.get("MsgType");
+
+			// 事件推送
+			if (msgType.equals(MessageService.REQ_MESSAGE_TYPE_EVENT)) {
+				// 事件类型
+				String eventType = requestMap.get("Event");
+				// 订阅
+				if (eventType.equals(MessageService.EVENT_TYPE_SUBSCRIBE)) {
+					Event event = new SubscribeEvent();
+					respXml = event.execute(requestMap);
+				}
+				// 取消订阅
+				else if (eventType.equals(MessageService.EVENT_TYPE_UNSUBSCRIBE)) {
+					// TODO 暂不做处理
+				} else if (eventType.equals(MessageService.EVENT_MERCHANT_ORDER)) {
+					Event event = new MerchantOrderEvent();
+					respXml = event.execute(requestMap);
+
+				}
+				// 自定义菜单点击事件
+				else if (eventType.equals(MessageService.EVENT_TYPE_CLICK)) {
+					Event event = new ClickEvent();
+					respXml = event.execute(requestMap);
+				}
+			}
+			// 当用户发消息时
+			else {
+				Event event = new SubscribeEvent();
+				respXml = event.execute(requestMap);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return respXml;
 	}
 
 }

@@ -84,6 +84,8 @@ public class Const {
 
 	public static final String URL_MERCHANT_PAY_REFUND = ConfigUtil.getProperty(propertiesFile, "url.merchant.pay.refund");
 
+	public static final String URL_CUSTOMER_SERVICE_MESSAGE_SEND = ConfigUtil.getProperty(propertiesFile, "url.customer.service.message.send");
+
 	public static String getServerPath() {
 		String path = Thread.currentThread().getContextClassLoader().getResource("/").getPath();
 		path = "/" + path.substring(1, path.indexOf("/classes"));

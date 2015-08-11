@@ -8,6 +8,8 @@ http://www.mydomain.com/api/keystone/core<br/>
 http://www.mydomain.com/api/keystone/token/refresh<br/>
 ##### Get access token
 http://www.mydomain.com/api/keystone/token/query<br/>
+##### Get JS API ticket
+http://www.mydomain.com/api/keystone/jsapi/ticket/query<br/>
 ##### Get image location on server
 http://www.mydomain.com/api/keystone/file/image/product<br/>
 method: POST<br/>
