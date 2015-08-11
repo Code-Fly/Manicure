@@ -27,9 +27,12 @@ import com.manicure.keystone.entity.response.Article;
 import com.manicure.keystone.entity.response.NewsMessage;
 import com.manicure.keystone.entity.response.TextMessage;
 import com.manicure.keystone.event.ClickEvent;
+import com.manicure.keystone.event.CustomerServiceCloseSessionEvent;
+import com.manicure.keystone.event.CustomerServiceCreateSessionEvent;
 import com.manicure.keystone.event.Event;
 import com.manicure.keystone.event.MerchantOrderEvent;
 import com.manicure.keystone.event.SubscribeEvent;
+import com.manicure.keystone.event.CustomerServiceTransferEvent;
 import com.manicure.keystone.service.iface.ICoreService;
 
 /**
@@ -140,7 +143,8 @@ public class CoreService extends BaseService implements ICoreService {
 			Map<String, String> requestMap = MessageService.parseXml(request);
 			// 消息类型
 			String msgType = requestMap.get("MsgType");
-
+			
+			logger.info(requestMap.toString());
 			// 事件推送
 			if (msgType.equals(MessageService.REQ_MESSAGE_TYPE_EVENT)) {
 				// 事件类型
@@ -153,11 +157,21 @@ public class CoreService extends BaseService implements ICoreService {
 				// 取消订阅
 				else if (eventType.equals(MessageService.EVENT_TYPE_UNSUBSCRIBE)) {
 					// TODO 暂不做处理
+					// 收到订单
 				} else if (eventType.equals(MessageService.EVENT_MERCHANT_ORDER)) {
 					Event event = new MerchantOrderEvent();
 					respXml = event.execute(requestMap);
+					// 开始客服会话
+				} else if (eventType.equals(MessageService.EVENT_CUSTOMER_SERVICE_CREATE_SESSION)) {
+					Event event = new CustomerServiceCreateSessionEvent();
+					respXml = event.execute(requestMap);
+					// 关闭客服会话
+				} else if (eventType.equals(MessageService.EVENT_CUSTOMER_SERVICE_CLOSE_SESSION)) {
+					Event event = new CustomerServiceCloseSessionEvent();
+					respXml = event.execute(requestMap);
 
 				}
+
 				// 自定义菜单点击事件
 				else if (eventType.equals(MessageService.EVENT_TYPE_CLICK)) {
 					Event event = new ClickEvent();
@@ -166,7 +180,7 @@ public class CoreService extends BaseService implements ICoreService {
 			}
 			// 当用户发消息时
 			else {
-				Event event = new SubscribeEvent();
+				Event event = new CustomerServiceTransferEvent();
 				respXml = event.execute(requestMap);
 			}
 		} catch (Exception e) {

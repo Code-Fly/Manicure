@@ -32,7 +32,6 @@ public class CustomerService extends BaseService implements ICustomerService {
 	public JSONObject sendTextMessage(String accessToken, TextMessage message) {
 
 		JSONObject response = sendMessage(accessToken, JSONObject.fromObject(message));
-
 		return response;
 	}
 
