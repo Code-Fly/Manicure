@@ -98,7 +98,7 @@ $(document).on(
 						event.preventDefault();
 						SessionCache.set("customerServiceType", "上门服务");
 						SessionCache.set("customerProduct", JSON.stringify(json));
-						$.mobile.changePage(_ctx + "/mobile/purchase-input-address");
+						$.mobile.changePage(_ctx + "/mobile/purchase-select-shop");
 					});
 
 					$("#product-btn-to-shop-service").on("click", function(event) {

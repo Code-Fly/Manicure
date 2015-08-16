@@ -39,7 +39,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 
 				SessionCache.set("customerTecId", $(this).attr("t-id"));
 				SessionCache.set("customerTecName", $(this).attr("t-name"));
-				$.mobile.changePage(_ctx + "/mobile/purchase-select-time");
+				$.mobile.changePage(_ctx + "/mobile/purchase-input-address");
 			});
 		}
 		

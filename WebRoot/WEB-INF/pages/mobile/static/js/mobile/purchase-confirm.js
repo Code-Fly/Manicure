@@ -16,21 +16,30 @@ $(document).on('pagecontainershow', function(e, ui) {
 		var oTime = SessionCache.get("customerTime");
 		var oType = SessionCache.get("customerServiceType");
 		var pInfo = eval("(" + SessionCache.get("customerProduct") + ")");
-
+		var uId = null;
+		var uName = null;
+		
 		loadOrderConfirmation();
-		
-		$("#purchase-select-confirm-btn-next").attr("href", payUrl.replace("PRODUCT_ID", pInfo.product_id));
-		
-		
-		function loadOrderConfirmation(){
-			$.mobile.loading("show");
-			if (null != _user) {
-				var uId = SessionCache.get(_user.openid);
-				var uName = SessionCache.get(_user.nickname);
-			} else {
-				var uId = SessionCache.get("null");
-				var uName = SessionCache.get("null");
+
+		$("#purchase-select-confirm-btn-next").click(function() {
+			if (null == uId) {
+				$("#purchase-confirm-pop-alert .pop-alert-header").text("提示");
+				$("#purchase-confirm-pop-alert .pop-alert-content").text("用户未登录");
+				$("#purchase-confirm-pop-alert").popup("open");
+			}else{
+				window.location.href=payUrl.replace("PRODUCT_ID", pInfo.product_id);
 			}
+		});
+		//$("#purchase-select-confirm-btn-next").attr("href", payUrl.replace("PRODUCT_ID", pInfo.product_id));
+
+		function loadOrderConfirmation() {
+			$.mobile.loading("show");
+			
+			if (null != _user) {
+				uId = _user.openid;
+				uName = _user.nickname;
+			}
+
 			$("#confirm-my-name").text(uName);
 			$("#confirm-my-business").text(myBiz);
 			$("#confirm-my-address").text(myAddr);
