@@ -6,20 +6,47 @@ $(document).on('pagecontainershow', function(e, ui) {
 		if (ui.toPage[0].id != "order-page")
 			return;
 		$("#order-header").text("我的米宝");
-		var openId = "oxgY4xDnXebndNr-B6r5fRDXrHFo";
+		var uId = null;
+		var uName = null;
+
+		if (null != _user) {
+			uId = _user.openid;
+			uName = _user.nickname;
+		}
+		
+
 		$(document).on("click", "#page-order-btn-list-all", function() {
-			queryOrder(0);
+			if (null == uId) {
+				$("#order-pop-alert .pop-alert-header").text("提示");
+				$("#order-pop-alert .pop-alert-content").text("用户未登录");
+				$("#order-pop-alert").popup("open");
+			}else{
+				queryOrder(0);
+			}
 		});
 		$(document).on("click", "#page-order-btn-list-processing", function() {
-			queryOrder(2);
+			if (null == uId) {
+				$("#order-pop-alert .pop-alert-header").text("提示");
+				$("#order-pop-alert .pop-alert-content").text("用户未登录");
+				$("#order-pop-alert").popup("open");
+			}else{
+				queryOrder(2);
+			}
 		});
-		$(document).on("click", "#page-order-btn-list-not-evaluated", function() {			
-			queryOrder(3);
+		$(document).on("click", "#page-order-btn-list-not-evaluated", function() {
+			if (null == uId) {
+				$("#order-pop-alert .pop-alert-header").text("提示");
+				$("#order-pop-alert .pop-alert-content").text("用户未登录");
+				$("#order-pop-alert").popup("open");
+			}else{
+				queryOrder(3);
+			}
 		});
 
 		$("#page-order-btn-list-all").click();
 
 		function queryOrder(status) {
+
 			$("#page-order-list-orders").hide();
 			$.mobile.loading("show");
 			$.getJSON(_ctx + "/api/keystone/order/list/" + status, function(json) {
@@ -33,8 +60,9 @@ $(document).on('pagecontainershow', function(e, ui) {
 				}
 				loadOrderList(json.order_list);
 				$.mobile.loading("hide");
-				$("#page-order-list-orders").fadeIn();				
+				$("#page-order-list-orders").fadeIn();
 			});
+
 		}
 
 		function loadOrderList(json) {
@@ -42,7 +70,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			var jList = json;
 			for (var i = 0; i < jList.length; i++) {
 				var bId = jList[i].buyer_openid;
-				if(bId != openId){
+				if (bId != uId) {
 					continue;
 				}
 				var pName = jList[i].product_name;
@@ -50,12 +78,11 @@ $(document).on('pagecontainershow', function(e, ui) {
 				var pImage = jList[i].product_img;
 				var oId = jList[i].order_id;
 				var status = jList[i].order_status;
-				if("2"==status){
+				if ("2" == status) {
 					status = "进行中";
-				}else if("3"==status){
+				} else if ("3" == status) {
 					status = "待评价"
-				}
-				else if("4"==status){
+				} else if ("4" == status) {
 					status = "已完成"
 				}
 				var link = "#";
@@ -64,7 +91,6 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 			$("#page-order-list-orders").listview('refresh');
 		}
-
 
 		function AppendListItem(target, oId, link, pid, pName, pImage, status) {
 			var elmLi = $(document.createElement("li"));

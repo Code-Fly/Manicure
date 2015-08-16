@@ -32,10 +32,20 @@
 					--%>
 
 				</ul>
-
 			</div>
-
+			<div data-role="popup" id="order-pop-alert" data-dismissible="false" style="max-width:400px;">
+				<div data-role="header">
+					<h1 class="pop-alert-header"></h1>
+				</div>
+				<div role="main" class="ui-content">
+					<p class="pop-alert-content"></p>
+					<div class="ui-grid-solo" style="text-align: center;">
+						<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-mini " data-rel="back">确定</a>
+					</div>
+				</div>
+			</div>
 		</div>
+
 		<%@ include file="meta/footer.jsp"%>
 		<!-- /footer -->
 	</div>

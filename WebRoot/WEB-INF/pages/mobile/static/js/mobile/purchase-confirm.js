@@ -19,6 +19,11 @@ $(document).on('pagecontainershow', function(e, ui) {
 		var uId = null;
 		var uName = null;
 		
+		if (null != _user) {
+			uId = _user.openid;
+			uName = _user.nickname;
+		}
+		
 		loadOrderConfirmation();
 
 		$("#purchase-select-confirm-btn-next").click(function() {
@@ -34,11 +39,6 @@ $(document).on('pagecontainershow', function(e, ui) {
 
 		function loadOrderConfirmation() {
 			$.mobile.loading("show");
-			
-			if (null != _user) {
-				uId = _user.openid;
-				uName = _user.nickname;
-			}
 
 			$("#confirm-my-name").text(uName);
 			$("#confirm-my-business").text(myBiz);

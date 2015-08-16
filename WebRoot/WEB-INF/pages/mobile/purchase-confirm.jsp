@@ -63,7 +63,7 @@
 							</p></li>
 						<li class="ui-field-contain" id="confirm-list-my-info" style="display: none;"><label>我的信息:</label>
 							<p>
-								<span>姓名：</span> <span id="confirm-my-name"></span>
+								<span>微信号：</span> <span id="confirm-my-name"></span>
 							</p>
 							<p>
 								<span>电话号码：</span> <span id="confirm-my-tel"></span>
