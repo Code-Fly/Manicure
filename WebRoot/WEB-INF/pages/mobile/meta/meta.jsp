@@ -21,6 +21,7 @@
 <script type="text/javascript" src="${ctx}/mobile/static/js/jquery.mobile.datepicker.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/sha.js"></script>
 <!-- mobile js  -->
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/const-mlmjwys.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/global.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/home.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/order.js"></script>

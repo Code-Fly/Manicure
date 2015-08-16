@@ -2,7 +2,6 @@ $(document).on('pagecontainershow', function(e, ui) {
 	(function() {
 		if (ui.toPage[0].id != "purchase-confirm-page")
 			return;
-		var payUrl = "http://mp.weixin.qq.com/bizmall/malldetail?id=&pid=PRODUCT_ID&biz=MzI5MjAwNjA4Ng==&scene=&action=show_detail&showwxpaytitle=1#wechat_redirect";
 		var myAddr = SessionCache.get("customerAddr");
 		var myBiz = SessionCache.get("customerBiz");
 		var myTel = SessionCache.get("customerTel");
@@ -18,12 +17,12 @@ $(document).on('pagecontainershow', function(e, ui) {
 		var pInfo = eval("(" + SessionCache.get("customerProduct") + ")");
 		var uId = null;
 		var uName = null;
-		
+
 		if (null != _user) {
 			uId = _user.openid;
 			uName = _user.nickname;
 		}
-		
+
 		loadOrderConfirmation();
 
 		$("#purchase-select-confirm-btn-next").click(function() {
@@ -31,11 +30,12 @@ $(document).on('pagecontainershow', function(e, ui) {
 				$("#purchase-confirm-pop-alert .pop-alert-header").text("提示");
 				$("#purchase-confirm-pop-alert .pop-alert-content").text("用户未登录");
 				$("#purchase-confirm-pop-alert").popup("open");
-			}else{
-				window.location.href=payUrl.replace("PRODUCT_ID", pInfo.product_id);
+			} else {
+				window.location.href = URL_PRODUCT_PAY_REDIRECT.replace("PRODUCT_ID", pInfo.product_id);
 			}
 		});
-		//$("#purchase-select-confirm-btn-next").attr("href", payUrl.replace("PRODUCT_ID", pInfo.product_id));
+		// $("#purchase-select-confirm-btn-next").attr("href",
+		// payUrl.replace("PRODUCT_ID", pInfo.product_id));
 
 		function loadOrderConfirmation() {
 			$.mobile.loading("show");

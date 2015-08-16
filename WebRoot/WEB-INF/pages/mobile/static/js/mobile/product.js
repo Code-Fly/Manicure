@@ -6,7 +6,6 @@ $(document).on(
 					return;
 
 				var _pid = window.location.href.replace(_ctx + "/mobile/product/", "")
-				var payUrl = "http://mp.weixin.qq.com/bizmall/malldetail?id=&pid=PRODUCT_ID&biz=MzI5MjAwNjA4Ng==&scene=&action=show_detail&showwxpaytitle=1#wechat_redirect";
 
 				queryProduct();
 				queryTechnician();
@@ -90,9 +89,7 @@ $(document).on(
 					$("#product-description").text(description);
 					$("#product-cost").text(cost);
 					$("#product-last").text(last);
-					// $("#product-btn-pay").attr("href",
-					// payUrl.replace("PRODUCT_ID",
-					// _pid));
+
 					$("#product-btn-to-door-service").on("click", function(event) {
 						// Prevent the usual navigation behavior
 						event.preventDefault();
@@ -211,7 +208,7 @@ $(document).on(
 									},
 									async : false
 								}).responseText;
-								//alert('已分享');
+								// alert('已分享');
 							},
 							cancel : function(res) {
 								// alert('已取消');
@@ -240,7 +237,7 @@ $(document).on(
 									},
 									async : false
 								}).responseText;
-								//alert('已分享');
+								// alert('已分享');
 							},
 							cancel : function(res) {
 								// alert('已取消');
@@ -271,7 +268,7 @@ $(document).on(
 									},
 									async : false
 								}).responseText;
-								//alert('已分享');
+								// alert('已分享');
 							},
 							cancel : function(res) {
 								// alert('已取消');
@@ -302,7 +299,7 @@ $(document).on(
 									},
 									async : false
 								}).responseText;
-								//alert('已分享');
+								// alert('已分享');
 							},
 							cancel : function(res) {
 								// alert('已取消');
@@ -333,7 +330,7 @@ $(document).on(
 									},
 									async : false
 								}).responseText;
-								//alert('已分享');
+								// alert('已分享');
 							},
 							cancel : function(res) {
 								// alert('已取消');
