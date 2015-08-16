@@ -3,8 +3,6 @@
  */
 package com.manicure.keystone.controller;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +33,7 @@ public class MerchantController extends BaseController {
 	@Resource
 	MerchantService merchantService;
 
-	@RequestMapping(value = "/redpack/send/{openId}")
+	@RequestMapping(value = "/merchant/redpack/send/{openId}")
 	@ResponseBody
 	public String sendRedpack(HttpServletRequest request, HttpServletResponse response, @PathVariable String openId) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -66,7 +64,7 @@ public class MerchantController extends BaseController {
 
 	}
 
-	@RequestMapping(value = "/coupon/send/{couponStockId}/{openId}")
+	@RequestMapping(value = "/merchant/coupon/send/{couponStockId}/{openId}")
 	@ResponseBody
 	public String sendCoupon(HttpServletRequest request, HttpServletResponse response, @PathVariable String couponStockId, @PathVariable String openId) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -86,7 +84,7 @@ public class MerchantController extends BaseController {
 
 	}
 
-	@RequestMapping(value = "/pay/refund/{tradeId}")
+	@RequestMapping(value = "/merchant/pay/refund/{tradeId}")
 	@ResponseBody
 	public String payRefund(HttpServletRequest request, HttpServletResponse response, @PathVariable String tradeId) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();

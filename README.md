@@ -93,28 +93,35 @@ param: "endTime", required = false<br/>
 
 ###	Merchant API
 ##### Send redpack
-http://www.mydomain.com/api/keystone/redpack/send/{openId}
+http://www.mydomain.com/api/keystone/merchant/redpack/send/{openId}<br/>
 ##### Send coupon (doesn't work)
-http://www.mydomain.com/api/keystone/coupon/send/{couponStockId}/{openId}
+http://www.mydomain.com/api/keystone/merchant/coupon/send/{couponStockId}/{openId}<br/>
 ##### Pay refund (doesn't work)
-http://www.mydomain.com/api/keystone/pay/refund/{tradeId}
+http://www.mydomain.com/api/keystone/merchant/pay/refund/{tradeId}<br/>
+
+###	CustomerService API
+##### Send coupon
+http://www.mydomain.com/api/keystone/customerservice/coupon/send<br/>
+method: POST<br/>
+param: "touser", required = true<br/>
+param: "cardId", required = true<br/>
 
 ###	Mobile web page
 ##### Index
-http://www.mydomain.com/mobile/
-http://www.mydomain.com/mobile/index
+http://www.mydomain.com/mobile/<br/>
+http://www.mydomain.com/mobile/index<br/>
 ##### Home
-http://www.mydomain.com/mobile/home
+http://www.mydomain.com/mobile/home<br/>
 ##### Service choose
-http://www.mydomain.com/mobile/service
+http://www.mydomain.com/mobile/service<br/>
 ##### Order list
-http://www.mydomain.com/mobile/order
+http://www.mydomain.com/mobile/order<br/>
 ##### Product list
-http://www.mydomain.com/mobile/list
+http://www.mydomain.com/mobile/list<br/>
 ##### Space list
-http://www.mydomain.com/mobile/space
+http://www.mydomain.com/mobile/space<br/>
 ##### Product detail
-http://www.mydomain.com/mobile/product/{productId}
+http://www.mydomain.com/mobile/product/{productId}<br/>
 
 ###### 查询a服务在b店里可选的技师列表
 http://www.mydomain.com/api/technician/query/productId/portalId
