@@ -56,4 +56,9 @@ public class OrderServiceImp implements OrderServiceInterface {
 		return ocmapper.selectByPrimaryKey(orderId);
 	}
 
+	@Override
+	public int insertSelective(OrderExtendTmp record) {
+		return oetmapper.insertSelective(record);
+	}
+
 }

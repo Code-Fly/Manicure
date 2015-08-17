@@ -23,17 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.manicure.base.controller.BaseController;
-import com.manicure.base.helper.Const;
-import com.manicure.base.helper.FileUtil;
 import com.manicure.base.helper.HttpClientUtil;
-import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.commmon.JsonUtil;
 import com.manicure.keystone.entity.order.OrderBase;
 import com.manicure.keystone.entity.order.OrderList;
 import com.manicure.keystone.service.impl.OrderService;
+import com.manicure.order.entity.OrderExtendTmp;
 import com.manicure.order.iface.OrderServiceInterface;
-
-import freemarker.template.utility.StringUtil;
 
 /**
  * @author zhangqw
@@ -68,6 +64,17 @@ public class OrdersController extends BaseController {
 		ordersService.updateOrderExtendTmp(orderId, productId, openId);
 	}
 	
+	/**
+	 * 接收微信支付完成后的信息，获得订单id 插入到order_extend表
+	 * @param params
+	 */
+	@RequestMapping(value = "/orderextend/add", method = RequestMethod.POST)
+	public void addOrderExtend(@RequestBody String requestBody){
+		JSONObject orderExtendJson = JSONObject.fromObject(requestBody);
+		OrderExtendTmp orderExtend =  (OrderExtendTmp)JSONObject.toBean(orderExtendJson);
+		ordersService.insertSelective(orderExtend);
+	}
+	
 	/***
 	 * 处理下订单状态 增加已经评价状态
 	 * 当评价表中有评价记录则该订单状态改成已经评价（前提是该订单已经在微信里是发货 （3）状态）
@@ -91,7 +98,7 @@ public class OrdersController extends BaseController {
 			basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 		}
 		String url = basePath + "/api/keystone/order/list/"+ status;
-		Map<String,String>    params =  new HashMap<String,String>();  
+		Map<String,String>  params =  new HashMap<String,String>();  
 		params.put("beginTime", beginTime);
 		params.put("endTime", endTime);
 		String resp = HttpClientUtil.doGet(url, params, "UTF-8");
