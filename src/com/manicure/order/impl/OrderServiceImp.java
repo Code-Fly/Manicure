@@ -3,12 +3,11 @@
  */
 package com.manicure.order.impl;
 
-import java.util.List;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.manicure.order.entity.OrderComment;
 import com.manicure.order.entity.OrderExtendTmp;
 import com.manicure.order.entity.OrderExtendTmpKey;
 import com.manicure.order.iface.OrderServiceInterface;
@@ -32,7 +31,7 @@ public class OrderServiceImp implements OrderServiceInterface {
 	 * @see com.manicure.order.iface.OrderServiceInterface#queryOrderCommentsByTecId(int)
 	 */
 	@Override
-	public List<OrderComment> queryOrderCommentsByTecId(int tecId) {
+	public HashMap<String,Object> queryOrderCommentsByTecId(int tecId) {
 		return ocmapper.getCommentListByTecId(tecId);
 	}
 

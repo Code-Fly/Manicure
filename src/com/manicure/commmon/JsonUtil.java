@@ -4,8 +4,13 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import com.manicure.commmon.JsonDateValueProcessor;
 /**
@@ -28,4 +33,38 @@ public class JsonUtil {
 		//Array 转JSON  
 		return JSONArray.fromObject(o, jsonConfig).toString();
 	}
+	
+	 /**
+     * 
+    * map转换json.
+    * <br>详细说明
+    * @param map 集合
+    * @return
+    * @return String json字符串
+    * @throws
+    * @author slj
+     */
+    public static String mapToJson(Map<String, Object> map) {
+        Set<String> keys = map.keySet();
+        String key = "";
+        Object value;
+        StringBuffer jsonBuffer = new StringBuffer();
+        jsonBuffer.append("{");
+        for (Iterator<String> it = keys.iterator(); it.hasNext();) {
+            key = (String) it.next();
+            value = map.get(key);
+            if(value instanceof Date){  
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.CHINA);  
+                jsonBuffer.append(key + ":" +"\""+ sdf.format(value)+"\"");
+            } else {
+            	 jsonBuffer.append(key + ":" +"\""+ value+"\"");
+            }
+           
+            if (it.hasNext()) {
+                jsonBuffer.append(",");
+            }
+        }
+        jsonBuffer.append("}");
+        return jsonBuffer.toString();
+    }
 }
