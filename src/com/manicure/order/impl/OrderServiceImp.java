@@ -8,6 +8,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.manicure.order.entity.OrderComment;
 import com.manicure.order.entity.OrderExtendTmp;
 import com.manicure.order.entity.OrderExtendTmpKey;
 import com.manicure.order.iface.OrderServiceInterface;
@@ -48,6 +49,11 @@ public class OrderServiceImp implements OrderServiceInterface {
 		oetmapper.updateByPrimaryKeySelective(record);
 		// 更新成功删除临时数据
 		oetmapper.deleteByPrimaryKey(oetKey);
+	}
+
+	@Override
+	public OrderComment selectByPrimaryKey(String orderId) {
+		return ocmapper.selectByPrimaryKey(orderId);
 	}
 
 }

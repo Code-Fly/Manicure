@@ -138,10 +138,10 @@ http://www.mydomain.com/api/order/ordercomment/query?tecId={tecId}
 ###### 查询对技师能做的所有服务信息
 http://www.mydomain.com/api/technician/{tecId}/products
 ###### 微信支付完成后 回调改接口 关联微信订单表和本服务订单扩展表
-http://localhost:8080/Manicure//api/order/orderextend/update
+http://http://www.mydomain.com/api/order/orderextend/update
 method:put
 param:orderId required=true
 param:openId required=true
 param:productId required=true
-
-
+####### 处理下订单状态 增加已经评价状态
+http://www.mydomain.com/api/order/list/{status}?beginTime={beginTime}&&endTime={endTime}
