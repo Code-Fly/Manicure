@@ -124,3 +124,11 @@ http://www.mydomain.com/api/technician/{tecId}/orderstime/
 http://www.mydomain.com/api/order/ordercomment/query?tecId={tecId}
 ###### 查询对技师能做的所有服务信息
 http://www.mydomain.com/api/technician/{tecId}/products
+###### 微信支付完成后 回调改接口 关联微信订单表和本服务订单扩展表
+http://localhost:8080/Manicure//api/order/orderextend/update
+method:put
+param:orderId required=true
+param:openId required=true
+param:productId required=true
+
+
