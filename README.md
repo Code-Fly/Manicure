@@ -145,3 +145,20 @@ param:openId required=true
 param:productId required=true
 ####### 处理下订单状态 增加已经评价状态
 http://www.mydomain.com/api/order/list/{status}?beginTime={beginTime}&&endTime={endTime}
+##### 添加订单扩展信息
+http://www.mydomain.com/api/order/orderextend/add
+method:post
+{
+"buyerOpenid"：buyerOpenid,required=true
+"productId":productId,required=true
+"tecId":tecId,required=false
+"buyerNick":buyerNick,required=false
+"name":name,required=false
+"orderTime":orderTime,required=true
+"orderType":orderType,required=false
+"address":address,required=false
+"tel":tel required=false
+}
+
+
+
