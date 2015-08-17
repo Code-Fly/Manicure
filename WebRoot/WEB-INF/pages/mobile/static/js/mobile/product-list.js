@@ -54,34 +54,34 @@ $(document).on(
 					}
 				});
 				// meijia
-				$("#list-btn-meijia").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_JIANYUE).addClass(GROUP_ID_MEIJIA_JIANYUE).addClass(GROUP_ID_MEIJIA_CAIZHUANG).addClass(
+				$("#list-btn-meijia").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIJIA_JIANYUE).addClass(GROUP_ID_MEIJIA_JIANYUE).addClass(GROUP_ID_MEIJIA_CAIZHUANG).addClass(
 						GROUP_ID_MEIJIA_FASHI).addClass(GROUP_ID_MEIJIA_RIHAN);
 
-				$("#list-btn-meijia-jianyue").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_JIANYUE).addClass(GROUP_ID_MEIJIA_JIANYUE);
-				$("#list-btn-meijia-caizhuang").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_CAIZHUANG).addClass(GROUP_ID_MEIJIA_CAIZHUANG);
-				$("#list-btn-meijia-fashi").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_FASHI).addClass(GROUP_ID_MEIJIA_FASHI);
-				$("#list-btn-meijia-rihan").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_RIHAN).addClass(GROUP_ID_MEIJIA_RIHAN);
+				$("#list-btn-meijia-jianyue").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIJIA_JIANYUE).addClass(GROUP_ID_MEIJIA_JIANYUE);
+				$("#list-btn-meijia-caizhuang").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIJIA_CAIZHUANG).addClass(GROUP_ID_MEIJIA_CAIZHUANG);
+				$("#list-btn-meijia-fashi").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIJIA_FASHI).addClass(GROUP_ID_MEIJIA_FASHI);
+				$("#list-btn-meijia-rihan").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIJIA_RIHAN).addClass(GROUP_ID_MEIJIA_RIHAN);
 				// meizu
-				$("#list-btn-meizu").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIZU_JIANYUE).addClass(GROUP_ID_MEIZU_JIANYUE).addClass(GROUP_ID_MEIZU_CAIHUI);
+				$("#list-btn-meizu").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIZU_JIANYUE).addClass(GROUP_ID_MEIZU_JIANYUE).addClass(GROUP_ID_MEIZU_CAIHUI);
 
-				$("#list-btn-meizu-jianyue").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIZU_JIANYUE).addClass(GROUP_ID_MEIZU_JIANYUE);
-				$("#list-btn-meizu-caihui").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIZU_CAIHUI).addClass(GROUP_ID_MEIZU_CAIHUI);
+				$("#list-btn-meizu-jianyue").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIZU_JIANYUE).addClass(GROUP_ID_MEIZU_JIANYUE);
+				$("#list-btn-meizu-caihui").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIZU_CAIHUI).addClass(GROUP_ID_MEIZU_CAIHUI);
 
 				// meijie
-				$("#list-btn-meijie").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIE).addClass(GROUP_ID_MEIJIE);
+				$("#list-btn-meijie").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIJIE).addClass(GROUP_ID_MEIJIE);
 
 				// huazhuang
-				$("#list-btn-huazhuang").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HUAZHUANG_XINNIANG).addClass(GROUP_ID_HUAZHUANG_XINNIANG).addClass(GROUP_ID_HUAZHUANG_WUTAI);
+				$("#list-btn-huazhuang").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HUAZHUANG_XINNIANG).addClass(GROUP_ID_HUAZHUANG_XINNIANG).addClass(GROUP_ID_HUAZHUANG_WUTAI);
 
-				$("#list-btn-huazhuang-xinniang").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HUAZHUANG_XINNIANG).addClass(GROUP_ID_HUAZHUANG_XINNIANG);
-				$("#list-btn-huazhuang-wutai").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HUAZHUANG_WUTAI).addClass(GROUP_ID_HUAZHUANG_WUTAI);
+				$("#list-btn-huazhuang-xinniang").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HUAZHUANG_XINNIANG).addClass(GROUP_ID_HUAZHUANG_XINNIANG);
+				$("#list-btn-huazhuang-wutai").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HUAZHUANG_WUTAI).addClass(GROUP_ID_HUAZHUANG_WUTAI);
 
 				// huli
-				$("#list-btn-huli").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HULI_SHOUBU).addClass(GROUP_ID_HULI_SHOUBU).addClass(GROUP_ID_HULI_ZUBU).addClass(GROUP_ID_HULI_PIFU);
+				$("#list-btn-huli").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HULI_SHOUBU).addClass(GROUP_ID_HULI_SHOUBU).addClass(GROUP_ID_HULI_ZUBU).addClass(GROUP_ID_HULI_PIFU);
 
-				$("#list-btn-huli-shoubu").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HULI_SHOUBU).addClass(GROUP_ID_HULI_SHOUBU);
-				$("#list-btn-huli-zubu").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HULI_ZUBU).addClass(GROUP_ID_HULI_ZUBU);
-				$("#list-btn-huli-pifu").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HULI_PIFU).addClass(GROUP_ID_HULI_PIFU);
+				$("#list-btn-huli-shoubu").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HULI_SHOUBU).addClass(GROUP_ID_HULI_SHOUBU);
+				$("#list-btn-huli-zubu").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HULI_ZUBU).addClass(GROUP_ID_HULI_ZUBU);
+				$("#list-btn-huli-pifu").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HULI_PIFU).addClass(GROUP_ID_HULI_PIFU);
 
 				$("." + groupId).addClass("ui-btn-active");
 

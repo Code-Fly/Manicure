@@ -14,12 +14,12 @@ $(document).on('pagecontainershow', function(e, ui) {
 			shuffle : true,
 		});
 
-		$("#home-btn-meijia").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIA_JIANYUE);
-		$("#home-btn-meizu").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIZU_JIANYUE);
-		$("#home-btn-meijie").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIE);
-		$("#home-btn-huazhuang").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HUAZHUANG_XINNIANG);
-		$("#home-btn-huli").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HULI_SHOUBU);
-		$("#home-btn-new").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_NEW + "&orderBy=" + PRODUCT_LIST_ORDERBY_PRICE + "&sort=" + PRODUCT_LIST_SORT_ASC);
+		$("#home-btn-meijia").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIJIA_JIANYUE);
+		$("#home-btn-meizu").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIZU_JIANYUE);
+		$("#home-btn-meijie").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_MEIJIE);
+		$("#home-btn-huazhuang").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HUAZHUANG_XINNIANG);
+		$("#home-btn-huli").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_HULI_SHOUBU);
+		$("#home-btn-new").attr("href", _ctx + "/mobile/product-list?groupId=" + GROUP_ID_NEW + "&orderBy=" + PRODUCT_LIST_ORDERBY_PRICE + "&sort=" + PRODUCT_LIST_SORT_ASC);
 
 		$("#good-technician").on("click", function(event) {
 			// Prevent the usual navigation behavior

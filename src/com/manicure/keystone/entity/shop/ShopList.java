@@ -14,7 +14,7 @@ import com.manicure.base.entity.BaseEntity;
 public class ShopList extends BaseEntity {
 	private String errcode;
 	private String errmsg;
-	private List<BusinessList> business_list;
+	private List<Business> business_list;
 	private int total_count;
 
 	/**
@@ -50,7 +50,7 @@ public class ShopList extends BaseEntity {
 	/**
 	 * @return the business_list
 	 */
-	public List<BusinessList> getBusiness_list() {
+	public List<Business> getBusiness_list() {
 		return business_list;
 	}
 
@@ -58,7 +58,7 @@ public class ShopList extends BaseEntity {
 	 * @param business_list
 	 *            the business_list to set
 	 */
-	public void setBusiness_list(List<BusinessList> business_list) {
+	public void setBusiness_list(List<Business> business_list) {
 		this.business_list = business_list;
 	}
 

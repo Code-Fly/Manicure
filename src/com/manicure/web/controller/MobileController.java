@@ -32,10 +32,10 @@ public class MobileController extends BaseController {
 		return "/mobile/home";
 	}
 
-	@RequestMapping(value = "/order")
+	@RequestMapping(value = "/order-list")
 	public String order(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		mobileService.setUser(request, session);
-		return "/mobile/order";
+		return "/mobile/order-list";
 	}
 
 	@RequestMapping(value = "/service")
@@ -44,10 +44,10 @@ public class MobileController extends BaseController {
 		return "/mobile/service";
 	}
 
-	@RequestMapping(value = "/list")
-	public String list(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	@RequestMapping(value = "/product-list")
+	public String productList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		mobileService.setUser(request, session);
-		return "/mobile/list";
+		return "/mobile/product-list";
 	}
 
 	@RequestMapping(value = "/space")
@@ -57,10 +57,10 @@ public class MobileController extends BaseController {
 	}
 
 	@RequestMapping(value = "/product/{productId}")
-	public String item(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap model, @PathVariable String productId) {
+	public String productDetail(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap model, @PathVariable String productId) {
 		model.addAttribute("pid", productId);
 		mobileService.setUser(request, session);
-		return "/mobile/product";
+		return "/mobile/product-detail";
 	}
 
 	@RequestMapping(value = "/purchase-input-address")
@@ -97,6 +97,18 @@ public class MobileController extends BaseController {
 	public String technicion(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		mobileService.setUser(request, session);
 		return "/mobile/technician";
+	}
+	
+	@RequestMapping(value = "/shop-list")
+	public String shopList(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
+		return "/mobile/shop-list";
+	}
+	
+	@RequestMapping(value = "/shop-detail")
+	public String shopDetail(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
+		return "/mobile/shop-detail";
 	}
 
 	@RequestMapping(value = { "/", "/index" })

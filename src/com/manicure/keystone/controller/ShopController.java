@@ -42,7 +42,7 @@ public class ShopController extends BaseController {
 			return KeystoneUtil.getErrmsg();
 		}
 
-		JSONObject resp = shopService.getShop(at, poiId);
+		JSONObject resp = shopService.getShop(request, at, poiId);
 		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
 			logger.error(resp.toString());
 			return resp.toString();

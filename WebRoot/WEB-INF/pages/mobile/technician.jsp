@@ -50,10 +50,10 @@
 				</div>
 
 			</div>
-			
+
 			<div class="ui-grid-solo ">
 				<div data-role="tabs" id="technician-tabs" style="padding: 0;">
-					<div data-role="navbar" >
+					<div data-role="navbar">
 						<ul>
 							<li><a href="#one" data-ajax="false" class="ui-btn-active">个人简介</a></li>
 							<li><a href="#two" data-ajax="false">服务商圈</a></li>
@@ -69,10 +69,10 @@
 			</div>
 			<div class="ui-grid-solo ">
 				<ul data-role="listview">
-					<li><a href="#">顾客评价</a></li>
+					<li><a href="#">顾客评价<span class="ui-li-count">0</span></a></li>
 				</ul>
 			</div>
-			
+
 			<div class="ui-grid-solo ui-bar product-square-list">
 				<p>个人作品</p>
 
@@ -87,11 +87,13 @@
 				</ul>
 
 			</div>
-			<div data-role="footer" data-position="fixed" style="text-align: center;">
-				<a href="#" id="technicion-back" data-rel="back" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">返回</a>
-			</div>
+
 		</div>
+
 		<!-- /footer -->
+		<div data-role="footer" data-position="fixed" style="text-align: center;">
+			<a href="#" id="technicion-back" data-rel="back" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width: 200px;">返回</a>
+		</div>
 	</div>
 </body>
 </html>
