@@ -12,18 +12,5 @@ import com.manicure.keystone.entity.response.VideoMessage;
 import com.manicure.keystone.entity.response.VoiceMessage;
 
 public interface IMessageService {
-	public Map<String, String> parseXml(HttpServletRequest request) throws Exception;
-
-	public String messageToXml(TextMessage textMessage);
-
-	public String messageToXml(ImageMessage imageMessage);
-
-	public String messageToXml(VoiceMessage voiceMessage);
-
-	public String messageToXml(VideoMessage videoMessage);
-
-	public String messageToXml(MusicMessage musicMessage);
-
-	public String messageToXml(NewsMessage newsMessage);
-
+	
 }

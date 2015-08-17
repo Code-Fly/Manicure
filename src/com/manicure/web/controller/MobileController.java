@@ -6,6 +6,7 @@ package com.manicure.web.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,83 +27,82 @@ public class MobileController extends BaseController {
 	MobileService mobileService;
 
 	@RequestMapping(value = "/home")
-	public String home(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String home(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/home";
 	}
 
 	@RequestMapping(value = "/order")
-	public String order(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String order(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/order";
 	}
 
 	@RequestMapping(value = "/service")
-	public String service(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String service(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/service";
 	}
 
 	@RequestMapping(value = "/list")
-	public String list(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String list(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/list";
 	}
 
 	@RequestMapping(value = "/space")
-	public String space(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String space(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/space";
 	}
 
 	@RequestMapping(value = "/product/{productId}")
-	public String item(HttpServletRequest request, HttpServletResponse response, ModelMap model, @PathVariable String productId) {
+	public String item(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap model, @PathVariable String productId) {
 		model.addAttribute("pid", productId);
-		mobileService.setUser(request);
+		mobileService.setUser(request, session);
 		return "/mobile/product";
 	}
 
 	@RequestMapping(value = "/purchase-input-address")
-	public String purchaseInputAddress(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String purchaseInputAddress(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/purchase-input-address";
 	}
 
 	@RequestMapping(value = "/purchase-select-shop")
-	public String purchaseSelectShop(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String purchaseSelectShop(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/purchase-select-shop";
 	}
 
 	@RequestMapping(value = "/purchase-select-employee")
-	public String purchaseSelectEmployee(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String purchaseSelectEmployee(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/purchase-select-employee";
 	}
 
 	@RequestMapping(value = "/purchase-select-time")
-	public String purchaseSelectTime(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String purchaseSelectTime(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/purchase-select-time";
 	}
 
 	@RequestMapping(value = "/purchase-confirm")
-	public String purchaseConfirm(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String purchaseConfirm(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/purchase-confirm";
 	}
 
 	@RequestMapping(value = "/technician")
-	public String technicion(HttpServletRequest request, HttpServletResponse response) {
-		mobileService.setUser(request);
+	public String technicion(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
 		return "/mobile/technician";
 	}
 
 	@RequestMapping(value = { "/", "/index" })
-	public String index(HttpServletRequest request, HttpServletResponse response) {
+	public String index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 
-		mobileService.setUser(request);
-
+		mobileService.setUser(request, session);
 		return "/mobile/home";
 	}
 }

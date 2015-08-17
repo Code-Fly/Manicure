@@ -15,6 +15,7 @@ public class ShopList extends BaseEntity {
 	private String errcode;
 	private String errmsg;
 	private List<BusinessList> business_list;
+	private int total_count;
 
 	/**
 	 * @return the errcode
@@ -59,6 +60,21 @@ public class ShopList extends BaseEntity {
 	 */
 	public void setBusiness_list(List<BusinessList> business_list) {
 		this.business_list = business_list;
+	}
+
+	/**
+	 * @return the total_count
+	 */
+	public int getTotal_count() {
+		return total_count;
+	}
+
+	/**
+	 * @param total_count
+	 *            the total_count to set
+	 */
+	public void setTotal_count(int total_count) {
+		this.total_count = total_count;
 	}
 
 }

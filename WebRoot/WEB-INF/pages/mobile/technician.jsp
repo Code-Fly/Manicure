@@ -73,16 +73,16 @@
 				</ul>
 			</div>
 			
-			<div class="ui-grid-solo ui-bar">
+			<div class="ui-grid-solo ui-bar product-square-list">
 				<p>个人作品</p>
 
-				<ul data-role="listview" data-inset="true" id="page-list-list-service">
+				<ul data-role="listview" data-inset="true" id="page-technician-list-product">
 
-					<li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/apple.png" class="ui-li-thumb">
+					<%-- <li><a href="#"> <img src="${ctx}/mobile/static/_assets/img/apple.png" class="ui-li-thumb">
 							<h2>无商品</h2>
 							<p>没有商品</p>
 							<p class="ui-li-aside">¥0</p>
-					</a></li>
+					</a></li> --%>
 
 				</ul>
 

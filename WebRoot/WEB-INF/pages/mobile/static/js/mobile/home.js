@@ -19,7 +19,20 @@ $(document).on('pagecontainershow', function(e, ui) {
 		$("#home-btn-meijie").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_MEIJIE);
 		$("#home-btn-huazhuang").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HUAZHUANG_XINNIANG);
 		$("#home-btn-huli").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_HULI_SHOUBU);
-		$("#home-btn-new").attr("href", _ctx + "/mobile/list?orderBy=" + PRODUCT_LIST_ORDERBY_PRICE + "&sort=" + PRODUCT_LIST_SORT_ASC);
+		$("#home-btn-new").attr("href", _ctx + "/mobile/list?groupId=" + GROUP_ID_NEW + "&orderBy=" + PRODUCT_LIST_ORDERBY_PRICE + "&sort=" + PRODUCT_LIST_SORT_ASC);
+
+		$("#good-technician").on("click", function(event) {
+			// Prevent the usual navigation behavior
+			event.preventDefault();
+			wx.ready(function() {
+				wx.checkJsApi({
+					jsApiList : [ 'getNetworkType', 'previewImage' ],
+					success : function(res) {
+						alert(JSON.stringify(res));
+					}
+				});
+			});
+		});
 	})();
 
 });

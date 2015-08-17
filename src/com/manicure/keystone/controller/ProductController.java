@@ -19,12 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.manicure.base.controller.BaseController;
-import com.manicure.base.helper.Const;
-import com.manicure.base.helper.FileUtil;
 import com.manicure.base.helper.KeystoneUtil;
-import com.manicure.keystone.entity.product.Product;
-import com.manicure.keystone.entity.product.ProductBase;
-import com.manicure.keystone.entity.product.ProductInfo;
 import com.manicure.keystone.service.impl.CoreService;
 import com.manicure.keystone.service.impl.ProductService;
 
@@ -48,9 +43,13 @@ public class ProductController extends BaseController {
 		Map<String, String> filter = new HashMap<String, String>();
 		if (null != minPrice) {
 			filter.put("minPrice", minPrice);
+		}else{
+			filter.put("minPrice", "?");
 		}
 		if (null != maxPrice) {
 			filter.put("maxPrice", maxPrice);
+		}else{
+			filter.put("maxPrice", "?");
 		}
 		if (null != groupId) {
 			filter.put("groupId", groupId);

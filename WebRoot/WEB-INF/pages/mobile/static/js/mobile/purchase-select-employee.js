@@ -2,9 +2,9 @@ $(document).on('pagecontainershow', function(e, ui) {
 	(function() {
 		if (ui.toPage[0].id != "purchase-select-employee-page")
 			return;
-		var pid = GetQueryString("pid");
+		var pid = eval("(" + SessionCache.get("customerProduct") + ")").product_id;
 		var poiId = SessionCache.get("customerShopId");
-
+		$.mobile.loading("show");
 		$.getJSON(_ctx + "/api/technician/query/" + pid + "/" + poiId, function(json) {
 			if (null == json) {
 				alert("null");
@@ -12,7 +12,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 			// alert(JSON.stringify(json));
 			loadEmployee(json);
-
+			$.mobile.loading( "hide" );
 		});
 		
 		function loadEmployee(json){
@@ -38,8 +38,8 @@ $(document).on('pagecontainershow', function(e, ui) {
 				event.preventDefault();
 
 				SessionCache.set("customerTecId", $(this).attr("t-id"));
-
-				$.mobile.changePage(_ctx + "/mobile/purchase-select-time?pid=" + pid);
+				SessionCache.set("customerTecName", $(this).attr("t-name"));
+				$.mobile.changePage(_ctx + "/mobile/purchase-input-address");
 			});
 		}
 		
@@ -53,7 +53,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			var elmSpan = $(document.createElement("span"));
 
 			var listLi = elmLi.clone();
-			var listA = elmA.clone().attr("href", link).attr("t-id", tid).addClass("purchase-select-employee-btn-next");
+			var listA = elmA.clone().attr("href", link).attr("t-name", name).attr("t-id", tid).addClass("purchase-select-employee-btn-next");
 			var listImg = elmImg.clone().attr("src", headerPic);
 			var listH2 = elmH2.clone().text(name);
 			var listP = elmP.clone();

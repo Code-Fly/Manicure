@@ -19,7 +19,7 @@
 					<p style="color: orange;margin: 0;">•</p>
 				</div>
 				<div class="ui-block-b">
-					<p style="color: orange;margin: 0;">•</p>
+					<p style="color: black;margin: 0;">•</p>
 				</div>
 				<div class="ui-block-c">
 					<p style="color: black;margin: 0;">•</p>
@@ -28,10 +28,10 @@
 					<p style="color: black;margin: 0;">•</p>
 				</div>
 				<div class="ui-block-a">
-					<p style="color: orange;margin-top: 5px;">填写信息</p>
+					<p style="color: orange;margin-top: 5px;">选择甲师</p>
 				</div>
 				<div class="ui-block-b ">
-					<p style="color: orange;margin-top: 5px;">选择甲师</p>
+					<p style="color: black;margin-top: 5px;">填写信息</p>
 				</div>
 				<div class="ui-block-c ">
 					<p style="color: black;margin-top: 5px;">选择时间</p>

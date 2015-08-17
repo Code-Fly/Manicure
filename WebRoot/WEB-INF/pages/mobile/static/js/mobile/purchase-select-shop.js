@@ -2,7 +2,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 	(function() {
 		if (ui.toPage[0].id != "purchase-select-shop-page")
 			return;
-
+		$.mobile.loading("show");
 		$.getJSON(_ctx + "/api/keystone/shop/list", function(json) {
 			if (null == json) {
 				alert("null");
@@ -14,7 +14,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 			// alert(JSON.stringify(json));
 			loadShop(json.business_list);
-
+			$.mobile.loading( "hide" );
 		});
 
 		function loadShop(json) {
@@ -44,7 +44,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				SessionCache.set("customerShopId", $(this).attr("poi-id"));
 				SessionCache.set("customerShopName", $(this).attr("poi-name"));
 
-				$.mobile.changePage(_ctx + "/mobile/purchase-select-employee?pid=" + GetQueryString("pid"));
+				$.mobile.changePage(_ctx + "/mobile/purchase-select-employee");
 			});
 		}
 

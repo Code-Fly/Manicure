@@ -3,6 +3,7 @@
  */
 package com.manicure.keystone.entity.product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -63,6 +64,7 @@ public class ProductList extends BaseEntity {
 	}
 
 	public void sort(Map<String, String> filter) {
+		filter(filter);
 		String orderBy = filter.get("orderBy");
 		if ("price".equals(orderBy)) {
 			sortByPrice(filter);
@@ -74,7 +76,6 @@ public class ProductList extends BaseEntity {
 
 	private void sortByPrice(Map<String, String> filter) {
 		String sort = filter.get("sort");
-
 		ProductInfo temp; // 记录临时中间值
 		int size = products_info.size(); // 数组大小
 		for (int i = 0; i < size - 1; i++) {
@@ -97,7 +98,7 @@ public class ProductList extends BaseEntity {
 			}
 		}
 	}
-	
+
 	private void sortBySales(Map<String, String> filter) {
 		String sort = filter.get("sort");
 
@@ -122,5 +123,26 @@ public class ProductList extends BaseEntity {
 
 			}
 		}
+	}
+
+	private void filter(Map<String, String> filter) {
+		String minPrice = filter.get("minPrice");
+		String maxPrice = filter.get("maxPrice");
+		List<ProductInfo> new_products_info = new ArrayList<ProductInfo>();
+		int size = products_info.size(); // 数组大小
+		for (int i = 0; i < size; i++) {
+			if (!"-".equals(minPrice)) {
+				if (products_info.get(i).getSku_list().get(0).getPrice() < Integer.parseInt(minPrice) * 100) {
+					continue;
+				}
+			}
+			if (!"-".equals(maxPrice)) {
+				if (products_info.get(i).getSku_list().get(0).getPrice() > Integer.parseInt(maxPrice) * 100) {
+					continue;
+				}
+			}
+			new_products_info.add(products_info.get(i));
+		}
+		products_info = new_products_info;
 	}
 }

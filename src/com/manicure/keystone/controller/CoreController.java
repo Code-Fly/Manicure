@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.manicure.base.controller.BaseController;
 import com.manicure.base.helper.FileUtil;
 import com.manicure.base.helper.KeystoneUtil;
+import com.manicure.base.helper.UrlUtil;
 import com.manicure.keystone.service.impl.CoreService;
 
 /**
@@ -47,16 +50,28 @@ public class CoreController extends BaseController {
 		}
 
 	}
+
 	@RequestMapping(value = "/token/refresh")
 	@ResponseBody
 	public String refreshToken(HttpServletRequest request, HttpServletResponse response) {
 		return KeystoneUtil.refreshAccessToken();
 	}
-	
+
 	@RequestMapping(value = "/token/query")
 	@ResponseBody
 	public String queryToken(HttpServletRequest request, HttpServletResponse response) {
 		return KeystoneUtil.getAccessToken();
+	}
+
+	@RequestMapping(value = "/jsapi/ticket/query")
+	@ResponseBody
+	public String queryJsapiTicket(HttpServletRequest request, HttpServletResponse response) {
+		JSONObject resp = coreService.getJsapiTicket(KeystoneUtil.getAccessToken());
+		if (resp.containsKey("errcode") && !resp.getString("errcode").equals("0")) {
+			logger.error(resp.toString());
+			return resp.toString();
+		}
+		return resp.getString("ticket");
 	}
 
 	@RequestMapping(value = "/file/image/product")
@@ -66,6 +81,17 @@ public class CoreController extends BaseController {
 		String pid = request.getParameter("pid");
 		if (null != url || null == pid) {
 			url = FileUtil.getWeChatImage(url, FileUtil.CATEGORY_PRODUCT, pid, false);
+		}
+		return url;
+
+	}
+
+	@RequestMapping(value = "/url/encode")
+	@ResponseBody
+	public String urlEncoder(HttpServletRequest request, HttpServletResponse response) {
+		String url = request.getParameter("url");
+		if (null != url) {
+			url = UrlUtil.toUTF8(url);
 		}
 		return url;
 

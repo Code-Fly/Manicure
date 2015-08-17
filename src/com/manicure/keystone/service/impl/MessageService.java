@@ -21,6 +21,7 @@ import com.manicure.keystone.entity.response.ImageMessage;
 import com.manicure.keystone.entity.response.MusicMessage;
 import com.manicure.keystone.entity.response.NewsMessage;
 import com.manicure.keystone.entity.response.TextMessage;
+import com.manicure.keystone.entity.response.TransferCustomerService;
 import com.manicure.keystone.entity.response.VideoMessage;
 import com.manicure.keystone.entity.response.VoiceMessage;
 import com.manicure.keystone.service.iface.IMessageService;
@@ -64,7 +65,14 @@ public class MessageService implements IMessageService {
 	// 事件类型：CLICK(自定义菜单)
 	public static final String EVENT_TYPE_CLICK = "CLICK";
 
-	// 响应消息类型：文本
+	public static final String EVENT_MERCHANT_ORDER = "merchant_order";
+	
+	public static final String EVENT_CUSTOMER_SERVICE_CREATE_SESSION = "kf_create_session";
+	
+	public static final String EVENT_CUSTOMER_SERVICE_CLOSE_SESSION  = "kf_close_session";
+
+	public static final String RESP_MESSAGE_TYPE_TRANSFER_CUSTOMER_SERVICE = "transfer_customer_service";
+// 响应消息类型：文本
 	public static final String RESP_MESSAGE_TYPE_TEXT = "text";
 	// 响应消息类型：图片
 	public static final String RESP_MESSAGE_TYPE_IMAGE = "image";
@@ -85,7 +93,7 @@ public class MessageService implements IMessageService {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	public Map<String, String> parseXml(HttpServletRequest request) throws Exception {
+	public static Map<String, String> parseXml(HttpServletRequest request) throws Exception {
 		// 将解析结果存储在HashMap中
 		Map<String, String> map = new HashMap<String, String>();
 
@@ -113,7 +121,7 @@ public class MessageService implements IMessageService {
 	/**
 	 * 扩展xstream使其支持CDATA
 	 */
-	private XStream xstream = new XStream(new XppDriver() {
+	private static XStream xstream = new XStream(new XppDriver() {
 		public HierarchicalStreamWriter createWriter(Writer out) {
 			return new PrettyPrintWriter(out) {
 				// 对所有xml节点的转换都增加CDATA标记
@@ -143,7 +151,7 @@ public class MessageService implements IMessageService {
 	 *            文本消息对象
 	 * @return xml
 	 */
-	public String messageToXml(TextMessage textMessage) {
+	public static String messageToXml(TextMessage textMessage) {
 		xstream.alias("xml", textMessage.getClass());
 		return xstream.toXML(textMessage);
 	}
@@ -155,7 +163,7 @@ public class MessageService implements IMessageService {
 	 *            图片消息对象
 	 * @return xml
 	 */
-	public String messageToXml(ImageMessage imageMessage) {
+	public static String messageToXml(ImageMessage imageMessage) {
 		xstream.alias("xml", imageMessage.getClass());
 		return xstream.toXML(imageMessage);
 	}
@@ -167,7 +175,7 @@ public class MessageService implements IMessageService {
 	 *            语音消息对象
 	 * @return xml
 	 */
-	public String messageToXml(VoiceMessage voiceMessage) {
+	public static String messageToXml(VoiceMessage voiceMessage) {
 		xstream.alias("xml", voiceMessage.getClass());
 		return xstream.toXML(voiceMessage);
 	}
@@ -179,7 +187,7 @@ public class MessageService implements IMessageService {
 	 *            视频消息对象
 	 * @return xml
 	 */
-	public String messageToXml(VideoMessage videoMessage) {
+	public static String messageToXml(VideoMessage videoMessage) {
 		xstream.alias("xml", videoMessage.getClass());
 		return xstream.toXML(videoMessage);
 	}
@@ -191,7 +199,7 @@ public class MessageService implements IMessageService {
 	 *            音乐消息对象
 	 * @return xml
 	 */
-	public String messageToXml(MusicMessage musicMessage) {
+	public static String messageToXml(MusicMessage musicMessage) {
 		xstream.alias("xml", musicMessage.getClass());
 		return xstream.toXML(musicMessage);
 	}
@@ -203,10 +211,15 @@ public class MessageService implements IMessageService {
 	 *            图文消息对象
 	 * @return xml
 	 */
-	public String messageToXml(NewsMessage newsMessage) {
+	public static String messageToXml(NewsMessage newsMessage) {
 		xstream.alias("xml", newsMessage.getClass());
 		xstream.alias("item", new Article().getClass());
 		return xstream.toXML(newsMessage);
+	}
+	
+	public static String messageToXml(TransferCustomerService transferMessage) {
+		xstream.alias("xml", transferMessage.getClass());
+		return xstream.toXML(transferMessage);
 	}
 
 }
