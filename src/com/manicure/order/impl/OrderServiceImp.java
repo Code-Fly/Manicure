@@ -57,8 +57,13 @@ public class OrderServiceImp implements OrderServiceInterface {
 	}
 
 	@Override
-	public int insertSelective(OrderExtendTmp record) {
+	public int insertExtendSelective(OrderExtendTmp record) {
 		return oetmapper.insertSelective(record);
+	}
+
+	@Override
+	public int insertCommentSelective(OrderComment record) {
+		return ocmapper.insertSelective(record);
 	}
 
 }
