@@ -36,6 +36,7 @@
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-select-shop.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/shop-list.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/shop-detail.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/technician-comment-list.js"></script>
 <%-- <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/json2.js"></script> --%>
 
 <!--  mobile css -->

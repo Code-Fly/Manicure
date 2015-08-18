@@ -4,8 +4,30 @@ $(document).on('pagecontainershow', function(e, ui) {
 			return;
 
 		var tid = GetQueryString("tid");
+
+		$(document).on("click", "#technician-comment-list-btn", function() {
+			$.mobile.changePage(_ctx + "/mobile/technician-comment-list?tid=" + tid);
+
+		});
 		queryTechnician();
 		queryProductList();
+		queryComment();
+
+		function queryComment() {
+
+			$.get(_ctx + "/api/order/ordercomment/query", {
+				tecId : tid
+			}, function(json) {
+
+				if (null == json) {
+					return;
+				}
+
+				loadComment(eval("(" + json + ")"));
+
+			});
+		}
+
 		function queryProductList() {
 			$.mobile.loading("show");
 			$.getJSON(_ctx + "/api/technician/" + tid + "/products", function(json) {
@@ -13,21 +35,22 @@ $(document).on('pagecontainershow', function(e, ui) {
 					alert("null");
 					return;
 				}
-				//alert(JSON.stringify(json))
 				loadProductList(json);
 				$.mobile.loading("hide");
 			});
 		}
 		function queryTechnician() {
-			$.mobile.loading("show");
 			$.getJSON(_ctx + "/api/technician/query/" + tid, function(json) {
 				if (null == json) {
 					alert("null");
 					return;
 				}
 				loadTechnician(json);
-				$.mobile.loading("hide");
 			});
+		}
+
+		function loadComment(json) {
+			$("#technician-comment-count").text(json.length);
 		}
 
 		function loadTechnician(json) {
@@ -54,7 +77,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				selected : 1
 			});
 		}
-		
+
 		function loadProductList(json) {
 			// var descLen = $(".ui-li-has-thumb a p").width() / 15;
 			var descLen = $("#page-technician-list-product").width() / 2 / 25
@@ -79,7 +102,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 			$("#page-technician-list-product").listview('refresh');
 		}
-		
+
 		function AppendListItem(target, pid, href, img, title, discription, status) {
 			var elmLi = $(document.createElement("li"));
 			var elmImg = $(document.createElement("img"));

@@ -44,12 +44,12 @@ public class ProductController extends BaseController {
 		if (null != minPrice) {
 			filter.put("minPrice", minPrice);
 		}else{
-			filter.put("minPrice", "?");
+			filter.put("minPrice", "-");
 		}
 		if (null != maxPrice) {
 			filter.put("maxPrice", maxPrice);
 		}else{
-			filter.put("maxPrice", "?");
+			filter.put("maxPrice", "-");
 		}
 		if (null != groupId) {
 			filter.put("groupId", groupId);

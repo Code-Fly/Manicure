@@ -69,7 +69,7 @@
 			</div>
 			<div class="ui-grid-solo ">
 				<ul data-role="listview">
-					<li><a href="#">顾客评价<span class="ui-li-count">0</span></a></li>
+					<li><a href="#" id="technician-comment-list-btn">顾客评价<span class="ui-li-count" id="technician-comment-count">0</span></a></li>
 				</ul>
 			</div>
 
