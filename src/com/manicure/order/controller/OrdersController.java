@@ -28,6 +28,7 @@ import com.manicure.commmon.JsonUtil;
 import com.manicure.keystone.entity.order.OrderBase;
 import com.manicure.keystone.entity.order.OrderList;
 import com.manicure.keystone.service.impl.OrderService;
+import com.manicure.order.entity.OrderComment;
 import com.manicure.order.entity.OrderExtendTmp;
 import com.manicure.order.iface.OrderServiceInterface;
 
@@ -65,15 +66,26 @@ public class OrdersController extends BaseController {
 	}
 	
 	/**
-	 * 接收微信支付完成后的信息，获得订单id 插入到order_extend表
+	 * 订单支付之前先把订单扩展信息存入临时表
 	 * @param params
 	 */
 	@RequestMapping(value = "/orderextend/add", method = RequestMethod.POST)
 	public void addOrderExtend(@RequestBody String requestBody){
 		JSONObject orderExtendJson = JSONObject.fromObject(requestBody);
-		OrderExtendTmp orderExtend =  (OrderExtendTmp)JSONObject.toBean(orderExtendJson);
-		ordersService.insertSelective(orderExtend);
+		OrderExtendTmp orderExtend =  (OrderExtendTmp)JSONObject.toBean(or		ordersService.insertExtendSelective(orderExtend);
 	}
+	
+	/**
+	 * 保存订单评价信息
+	 * @param params
+	 */
+	@RequestMapping(value = "/ordercomment/add", method = RequestMethod.POST)
+	public void addOrderComment(@RequestBody String requestBody){
+		JSONObject orderCommentJson = JSONObject.fromObject(requestBody);
+		OrderComment orderExtend =  (OrderComment)JSONObject.toBean(orderCommentJson);
+		ordersService.insertCommentSelective(orderExtend);
+	}
+
 	
 	/***
 	 * 处理下订单状态 增加已经评价状态

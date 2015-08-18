@@ -17,5 +17,6 @@ public interface OrderServiceInterface {
 	List<HashMap<String,Object>> queryOrderCommentsByTecId(int tecId);
 	void updateOrderExtendTmp(String orderId,String productId,String openId);
 	OrderComment selectByPrimaryKey(String orderId);
-	int insertSelective(OrderExtendTmp record);
+	int insertExtendSelective(OrderExtendTmp record);
+	int insertCommentSelective(OrderComment record);
 }
