@@ -5,17 +5,11 @@
 <head>
 
 <%@ include file="meta/meta.jsp"%>
-<script type="text/javascript">
-	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-		WeixinJSBridge.call('hideOptionMenu');
-	});
-	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-		WeixinJSBridge.call('hideToolbar');
-	});
-</script>
+<link rel="stylesheet" href="${ctx}/mobile/static/css/scratch-card.css" />
+
 </head>
 
-<body data-role="page" class="activity-scratch-card-winning" id="scratch-card-page">
+<body data-role="page" class="scratch-card activity-scratch-card-winning" id="scratch-card-page" style="margin: 0;padding: 0;">
 	<div class="main">
 		<div class="cover">
 			<img src="${ctx}/mobile/static/images/scratchCard/activity-scratch-card-bannerbg.png">
@@ -54,9 +48,8 @@
 						</p>
 						<p>参与方式</p>
 						<p>第一步：关注微信公众账号</p>
-						<p>第二步：点击菜单进入刮奖页面</p>
-						<p>第三步：刮掉涂层查看中奖结果</p>
-						<p>第四步：等待系统发放奖品</p>
+						<p>第二步：刮掉涂层查看中奖结果</p>
+						<p>第三步：等待系统发放奖品</p>
 					</div>
 				</div>
 			</div>

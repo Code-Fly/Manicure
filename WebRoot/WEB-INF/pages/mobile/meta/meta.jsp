@@ -49,5 +49,5 @@
 <link rel="stylesheet" href="${ctx}/mobile/static/css/slider-pro.min.css">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/listview-grid.css">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/jquery.mobile.datepicker.css" />
-<link rel="stylesheet" href="${ctx}/mobile/static/css/scratch-card.css" />
+
 <link rel="stylesheet" href="${ctx}/mobile/static/css/mobile/global.css" />
