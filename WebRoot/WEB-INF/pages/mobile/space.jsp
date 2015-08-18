@@ -27,7 +27,7 @@
 			<ul data-role="listview" style="margin-top: 10px;">
 				<li><a href="#">我的收藏<span class="ui-li-count">0</span></a></li>
 				<li><a href="#">刮刮卡</a></li>
-				<li><a href="#">门店地址</a></li>
+				<li><a href="${ctx}/mobile/shop-list">门店地址</a></li>
 			</ul>
 		</div>
 		<%@ include file="meta/footer.jsp"%>

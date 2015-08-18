@@ -72,7 +72,8 @@ public class OrdersController extends BaseController {
 	@RequestMapping(value = "/orderextend/add", method = RequestMethod.POST)
 	public void addOrderExtend(@RequestBody String requestBody){
 		JSONObject orderExtendJson = JSONObject.fromObject(requestBody);
-		OrderExtendTmp orderExtend =  (OrderExtendTmp)JSONObject.toBean(or		ordersService.insertExtendSelective(orderExtend);
+		OrderExtendTmp orderExtend =  (OrderExtendTmp)JSONObject.toBean(orderExtendJson);
+		ordersService.insertExtendSelective(orderExtend);
 	}
 	
 	/**
@@ -85,6 +86,7 @@ public class OrdersController extends BaseController {
 		OrderComment orderExtend =  (OrderComment)JSONObject.toBean(orderCommentJson);
 		ordersService.insertCommentSelective(orderExtend);
 	}
+	
 
 	
 	/***

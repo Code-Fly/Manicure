@@ -24,16 +24,18 @@
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/const-mlmjwys.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/global.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/home.js"></script>
-<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/order.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/order-list.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/space.js"></script>
-<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/list.js"></script>
-<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/product.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/product-list.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/product-detail.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-select-employee.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-select-time.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-confirm.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-input-address.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/technician.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/purchase-select-shop.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/shop-list.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/shop-detail.js"></script>
 <%-- <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/json2.js"></script> --%>
 
 <!--  mobile css -->

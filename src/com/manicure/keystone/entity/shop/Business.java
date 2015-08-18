@@ -9,7 +9,7 @@ import com.manicure.base.entity.BaseEntity;
  * @author Barrie
  *
  */
-public class BusinessList extends BaseEntity {
+public class Business extends BaseEntity {
 	private BaseInfo base_info;
 
 	/**
