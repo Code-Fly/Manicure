@@ -7,7 +7,9 @@ import net.sf.json.JsonConfig;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -32,6 +34,19 @@ public class JsonUtil {
 		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateValueProcessor()); 
 		//Array 转JSON  
 		return JSONArray.fromObject(o, jsonConfig).toString();
+	}
+	
+	public static String jsonMap2Sting(List<HashMap<String, Object>> list){
+		StringBuffer  buffer = new StringBuffer();
+		buffer.append("[");
+		for(int i=0;i<list.size();i++){
+			buffer.append(mapToJson(list.get(i)));
+			if(i != list.size() -1 )
+				buffer.append(",");
+		}
+		buffer.append("]");
+		//Array 转JSON  
+		return buffer.toString();
 	}
 	
 	 /**

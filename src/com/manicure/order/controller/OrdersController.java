@@ -48,7 +48,7 @@ public class OrdersController extends BaseController {
 	@ResponseBody
 	@RequestMapping(value = "/ordercomment/query", method = RequestMethod.GET)
 	public String getOrderCommentsByTecId(@RequestParam("tecId") int tecId) {
-		return JsonUtil.mapToJson(ordersService.queryOrderCommentsByTecId(tecId));
+		return JsonUtil.jsonMap2Sting(ordersService.queryOrderCommentsByTecId(tecId));
 	}
 	
 	/**

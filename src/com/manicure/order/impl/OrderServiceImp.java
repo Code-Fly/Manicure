@@ -4,6 +4,7 @@
 package com.manicure.order.impl;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class OrderServiceImp implements OrderServiceInterface {
 	 * @see com.manicure.order.iface.OrderServiceInterface#queryOrderCommentsByTecId(int)
 	 */
 	@Override
-	public HashMap<String,Object> queryOrderCommentsByTecId(int tecId) {
+	public List<HashMap<String,Object>> queryOrderCommentsByTecId(int tecId) {
 		return ocmapper.getCommentListByTecId(tecId);
 	}
 

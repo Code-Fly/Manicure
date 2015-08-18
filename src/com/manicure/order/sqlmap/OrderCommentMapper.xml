@@ -391,7 +391,7 @@
 	    and oe.tec_id = #{tecId,jdbcType=INTEGER};
   </select>
   
-   <select id="getCommentListByTecId" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+   <select id="getCommentListByTecId" parameterType="java.lang.Integer" resultType="java.util.HashMap" >
   	select oc.*,oe.buyer_nick,oe.buyer_openid
 		from order_comment oc, order_extend oe 
   	where oc.order_id = oe.order_id 
