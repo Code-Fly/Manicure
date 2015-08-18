@@ -141,7 +141,7 @@
   </select>
   
   <select id="selectTecOrdersTime" resultType="java.lang.String" parameterType="java.lang.Integer" >
-	select DATE_FORMAT(oe.order_time,'%Y-%m-%d %h:%i:%s') from order_extend oe,technician tec where
+	select DATE_FORMAT(oe.order_time,'%Y-%m-%d %H:%i:%s') from order_extend oe,technician tec where
 	oe.tec_id = tec.id
 	and oe.tec_id =  #{id,jdbcType=INTEGER}
 	and oe.order_time &lt;  subString(date_add(now(), interval 7 day),1,10)
