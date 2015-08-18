@@ -37,6 +37,8 @@
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/shop-list.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/shop-detail.js"></script>
 <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/technician-comment-list.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/scratch-card.js"></script>
+<script type="text/javascript" src="${ctx}/mobile/static/js/mobile/wScratchPad.js"></script>
 <%-- <script type="text/javascript" src="${ctx}/mobile/static/js/mobile/json2.js"></script> --%>
 
 <!--  mobile css -->
@@ -47,4 +49,5 @@
 <link rel="stylesheet" href="${ctx}/mobile/static/css/slider-pro.min.css">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/listview-grid.css">
 <link rel="stylesheet" href="${ctx}/mobile/static/css/jquery.mobile.datepicker.css" />
+<link rel="stylesheet" href="${ctx}/mobile/static/css/scratch-card.css" />
 <link rel="stylesheet" href="${ctx}/mobile/static/css/mobile/global.css" />

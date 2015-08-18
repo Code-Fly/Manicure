@@ -116,6 +116,12 @@ public class MobileController extends BaseController {
 		mobileService.setUser(request, session);
 		return "/mobile/technician-comment-list";
 	}
+	
+	@RequestMapping(value = "/scratch-card")
+	public String scratchCard(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		mobileService.setUser(request, session);
+		return "/mobile/scratch-card";
+	}
 
 	@RequestMapping(value = { "/", "/index" })
 	public String index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
