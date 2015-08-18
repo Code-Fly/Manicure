@@ -59,12 +59,19 @@ public class OrderServiceImp implements OrderServiceInterface {
 
 	@Override
 	public int insertExtendSelective(OrderExtendTmp record) {
-		return oetmapper.insertSelective(record);
+		if (null == oetmapper.selectByPrimaryKey(record)){
+			return oetmapper.insertSelective(record);
+		} else {
+			return oetmapper.updateByPrimaryKeySelective(record);
+		}
 	}
 
 	@Override
 	public int insertCommentSelective(OrderComment record) {
-		return ocmapper.insertSelective(record);
+		if(null == ocmapper.selectByPrimaryKey(record.getOrderId())){
+			return ocmapper.insertSelective(record);
+		} else {
+			return ocmapper.updateByPrimaryKeySelective(record);
+		}
 	}
-
 }

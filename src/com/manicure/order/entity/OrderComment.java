@@ -3,6 +3,8 @@ package com.manicure.order.entity;
 import java.util.Date;
 import java.math.BigDecimal;
 
+
+
 public class OrderComment {
 
 	/**

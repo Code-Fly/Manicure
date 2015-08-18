@@ -67,12 +67,10 @@ public class OrdersController extends BaseController {
 	
 	/**
 	 * 订单支付之前先把订单扩展信息存入临时表
-	 * @param params
+	 * @param orderExtend
 	 */
-	@RequestMapping(value = "/orderextend/add", method = RequestMethod.POST)
-	public void addOrderExtend(@RequestBody String requestBody){
-		JSONObject orderExtendJson = JSONObject.fromObject(requestBody);
-		OrderExtendTmp orderExtend =  (OrderExtendTmp)JSONObject.toBean(orderExtendJson);
+	@RequestMapping(value = "/orderextend/add", method = RequestMethod.POST ,headers = "Content-Type=application/json")
+	public @ResponseBody void addOrderExtend(@RequestBody OrderExtendTmp orderExtend){
 		ordersService.insertExtendSelective(orderExtend);
 	}
 	
@@ -80,11 +78,9 @@ public class OrdersController extends BaseController {
 	 * 保存订单评价信息
 	 * @param params
 	 */
-	@RequestMapping(value = "/ordercomment/add", method = RequestMethod.POST)
-	public void addOrderComment(@RequestBody String requestBody){
-		JSONObject orderCommentJson = JSONObject.fromObject(requestBody);
-		OrderComment orderExtend =  (OrderComment)JSONObject.toBean(orderCommentJson);
-		ordersService.insertCommentSelective(orderExtend);
+	@RequestMapping(value = "/ordercomment/add", method = RequestMethod.POST,headers = "Content-Type=application/json")
+	public @ResponseBody void addOrderComment(@RequestBody OrderComment orderComment){
+		ordersService.insertCommentSelective(orderComment);
 	}
 	
 
