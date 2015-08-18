@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `order_comment` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单评价表，一个订单一个评价';
 
--- 正在导出表  test.order_comment 的数据：~0 rows (大约)
+-- 正在导出表  test.order_comment 的数据：~2 rows (大约)
 /*!40000 ALTER TABLE `order_comment` DISABLE KEYS */;
 INSERT INTO `order_comment` (`order_id`, `evaluation`, `stars`, `profnal_score`, `move_score`, `punctual_score`, `description`, `time`, `pic1`, `pic2`, `pic3`) VALUES
 	('14139058477811107682', 1, 5.0, 5.0, 5.0, 5.0, '我觉得太牛逼了啊', '2015-08-18 10:30:05', 'http://img3.imgtn.bdimg.com/it/u=3213189824,882695731&fm=21&gp=0.jpg', 'http://img3.imgtn.bdimg.com/it/u=3213189824,882695731&fm=21&gp=0.jpg', 'http://www.wed114.cn/jiehun/uploads/allimg/150117/44_150117112200_1.jpg'),
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `order_extend` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单扩展表，主表信息微信提供14139058477811179908';
 
--- 正在导出表  test.order_extend 的数据：~2 rows (大约)
+-- 正在导出表  test.order_extend 的数据：~3 rows (大约)
 /*!40000 ALTER TABLE `order_extend` DISABLE KEYS */;
 INSERT INTO `order_extend` (`order_id`, `tec_id`, `product_id`, `buyer_openid`, `buyer_nick`, `name`, `order_time`, `order_type`, `address`, `tel`) VALUES
 	('14139058477811107682', 1, 'pxgY4xCJRaYAnLCXqqa9zYJzAw5k', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'zhangqw', '张权威', '2015-08-18 10:00:00', 1, ' 南京花花世界', NULL),
@@ -164,6 +164,21 @@ INSERT INTO `tec_service` (`id`, `tec_id`, `product_id`) VALUES
 	(1, 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68'),
 	(2, 1, 'pxgY4xCJRaYAnLCXqqa9zYJzAw5k');
 /*!40000 ALTER TABLE `tec_service` ENABLE KEYS */;
+
+
+-- 导出  触发器 test.copy_to_orderextend 结构
+SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION';
+DELIMITER //
+CREATE TRIGGER `copy_to_orderextend` AFTER UPDATE ON `order_extend_tmp` FOR EACH ROW BEGIN
+	if new.order_id is not null then
+		INSERT INTO order_extend (order_id, buyer_openid, product_id,buyer_nick,tec_id,name,order_time,order_type,address,tel) 
+				values (new.order_id, new.buyer_openid, new.product_id,new.buyer_nick,new.tec_id,new.name,new.order_time,new.order_type,new.address,new.tel)
+				  ON DUPLICATE KEY UPDATE buyer_openid=new.buyer_openid,product_id=new.product_id, buyer_nick = new.buyer_nick,tec_id=new.tec_id,name=new.name,order_time=new.order_time,order_type=new.order_type,address=new.address,
+				  tel = new.tel;
+	end if;
+END//
+DELIMITER ;
+SET SQL_MODE=@OLDTMP_SQL_MODE;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
