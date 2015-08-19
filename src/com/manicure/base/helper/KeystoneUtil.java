@@ -8,6 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
@@ -30,8 +31,7 @@ import com.manicure.keystone.service.impl.CoreService;
 public class KeystoneUtil {
 	private static final Logger logger = LoggerFactory.getLogger(KeystoneUtil.class);
 
-	private static String accessToken = null;
-	private static String errmsg = null;
+	private static JSONObject accessToken = null;
 
 	/**
 	 * 
@@ -44,14 +44,21 @@ public class KeystoneUtil {
 	 * @return the accessToken
 	 */
 	public static String getAccessToken() {
-		return accessToken;
+		JSONObject at = getRemoteAccessToken();
+		if (at.containsKey("access_token")) {
+			return at.getString("access_token");
+		} else {
+			return null;
+		}
 	}
 
-	/**
-	 * @return the errmsg
-	 */
 	public static String getErrmsg() {
-		return errmsg;
+		JSONObject at = getRemoteAccessToken();
+		if (at.containsKey("errmsg")) {
+			return at.getString("errmsg");
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -172,30 +179,50 @@ public class KeystoneUtil {
 	}
 
 	public static void accessTokenKeeper() {
-		CoreService coreService = new CoreService();
-		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
-		if (at.containsKey("errcode")) {
-			accessToken = null;
-			errmsg = at.toString();
+		JSONObject at = refreshRemoteAccessToken();
+		if (null == at) {
+			logger.error("fail to refresh");
+			return;
+		} else if (at.containsKey("errcode")) {
 			logger.error(at.toString());
+			return;
 		}
-		accessToken = at.getString("access_token");
-		errmsg = null;
+		accessToken = at;
 		logger.info("access token: " + accessToken);
-
 	}
 
-	public static String refreshAccessToken() {
-		CoreService coreService = new CoreService();
-		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
-		if (at.containsKey("errcode")) {
-			accessToken = null;
-			errmsg = at.toString();
-			logger.error(at.toString());
-			return at.toString();
-		}
-		accessToken = at.getString("access_token");
-		errmsg = null;
+	public static JSONObject getLocalAccessToken() {
 		return accessToken;
 	}
+
+	public static JSONObject getRemoteAccessToken() {
+		String url = Const.MERCHANT_DOMAIN + "/api/keystone/token/query";
+		String resp = HttpClientUtil.doGet(url, null, "UTF-8");
+		if (null == resp) {
+			logger.error("fail to post");
+			return null;
+		}
+		return JSONObject.fromObject(resp);
+	}
+
+	public static JSONObject refreshLocalAccessToken() {
+		CoreService coreService = new CoreService();
+		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
+		if (at.containsKey("errcode")) {
+			logger.error(at.toString());
+		}
+		accessToken = at;
+		return at;
+	}
+
+	public static JSONObject refreshRemoteAccessToken() {
+		String url = Const.MERCHANT_DOMAIN + "/api/keystone/token/refresh";
+		String resp = HttpClientUtil.doGet(url, null, "UTF-8");
+		if (null == resp) {
+			logger.error("fail to post");
+			return null;
+		}
+		return JSONObject.fromObject(resp);
+	}
+
 }

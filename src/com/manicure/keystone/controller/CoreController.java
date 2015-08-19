@@ -54,13 +54,13 @@ public class CoreController extends BaseController {
 	@RequestMapping(value = "/token/refresh")
 	@ResponseBody
 	public String refreshToken(HttpServletRequest request, HttpServletResponse response) {
-		return KeystoneUtil.refreshAccessToken();
+		return KeystoneUtil.refreshLocalAccessToken().toString();
 	}
 
 	@RequestMapping(value = "/token/query")
 	@ResponseBody
 	public String queryToken(HttpServletRequest request, HttpServletResponse response) {
-		return KeystoneUtil.getAccessToken();
+		return KeystoneUtil.getLocalAccessToken().toString();
 	}
 
 	@RequestMapping(value = "/jsapi/ticket/query")
