@@ -12,10 +12,10 @@ $(document).on('pagecontainershow', function(e, ui) {
 			}
 			// alert(JSON.stringify(json));
 			loadEmployee(json);
-			$.mobile.loading( "hide" );
+			$.mobile.loading("hide");
 		});
-		
-		function loadEmployee(json){
+
+		function loadEmployee(json) {
 			$("#page-purchase-select-employee-list").empty();
 			var jList = json;
 			for (var i = 0; i < jList.length; i++) {
@@ -27,22 +27,23 @@ $(document).on('pagecontainershow', function(e, ui) {
 				var headerPic = jList[i].headerPic;
 				var tid = jList[i].id;
 				var link = "";
-				
+
 				AppendListItem("#page-purchase-select-employee-list", tid, link, name, moveScore, profnalScore, punctualScore, orderCount, headerPic)
-			
+
 			}
 			$("#page-purchase-select-employee-list").listview('refresh');
-			
+
 			$(".purchase-select-employee-btn-next").on("click", function(event) {
 				// Prevent the usual navigation behavior
 				event.preventDefault();
 
 				SessionCache.set("customerTecId", $(this).attr("t-id"));
 				SessionCache.set("customerTecName", $(this).attr("t-name"));
-				$.mobile.changePage(_ctx + "/mobile/purchase-input-address");
+				window.location.href = _ctx + "/mobile/purchase-input-address";
+				// $.mobile.changePage(_ctx + "/mobile/purchase-input-address");
 			});
 		}
-		
+
 		function AppendListItem(target, tid, link, name, moveScore, profnalScore, punctualScore, orderCount, headerPic) {
 
 			var elmLi = $(document.createElement("li"));

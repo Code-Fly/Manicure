@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="ui-grid-solo ui-content">
-				<label for="purchase-input-address-tel">电话号码：</label> <input type="text" data-clear-btn="true" name="purchase-input-address-tel" id="purchase-input-address-tel" value="" placeholder="请填写您的手机号">
+				<label for="purchase-input-address-tel">电话号码：</label> <input type="tel"  name="purchase-input-address-tel" id="purchase-input-address-tel" value="" placeholder="请填写您的手机号">
 			</div>
 			<div class="ui-grid-solo ui-content">
 				<label for="purchase-input-address-addr">居住地址：</label>
