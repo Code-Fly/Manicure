@@ -149,7 +149,7 @@ http://www.mydomain.com/api/order/list/{status}?beginTime={beginTime}&&endTime={
 http://www.mydomain.com/api/order/orderextend/add
 method:post
 {
-"buyerOpenid"：buyerOpenid,required=true
+"buyerOpenid": buyerOpenid,required=true
 "productId":productId,required=true
 "tecId":tecId,required=false
 "buyerNick":buyerNick,required=false
@@ -176,6 +176,17 @@ method:post
 "pic2":pic2, required=false
 "pic3":pic3 required=false
 }
+##### 添加收藏
+http://www.mydomain.com/api/favorite/add
+method:post
+{
+"buyerOpenid":buyerOpenid,required=true
+"productId":productId required=true
+}
+
+
+##### 查询收藏
+http://www.mydomain.com/api/favorite/query?buyerOpenid={buyerOpenid}
 
 
 
