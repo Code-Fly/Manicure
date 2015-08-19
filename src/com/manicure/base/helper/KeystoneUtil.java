@@ -34,13 +34,6 @@ public class KeystoneUtil {
 	private static JSONObject accessToken = null;
 
 	/**
-	 * 
-	 */
-	public KeystoneUtil() {
-		refreshLocalAccessToken();
-	}
-
-	/**
 	 * @return the accessToken
 	 */
 	public static String getAccessToken() {
@@ -192,7 +185,11 @@ public class KeystoneUtil {
 	}
 
 	public static JSONObject getLocalAccessToken() {
-		return accessToken;
+		if (null == accessToken) {
+			return refreshLocalAccessToken();
+		} else {
+			return accessToken;
+		}
 	}
 
 	public static JSONObject getRemoteAccessToken() {
