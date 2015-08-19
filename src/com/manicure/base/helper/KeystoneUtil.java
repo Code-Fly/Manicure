@@ -37,7 +37,7 @@ public class KeystoneUtil {
 	 * 
 	 */
 	public KeystoneUtil() {
-		accessTokenKeeper();
+		refreshLocalAccessToken();
 	}
 
 	/**

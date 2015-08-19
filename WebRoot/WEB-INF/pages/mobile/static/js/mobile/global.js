@@ -47,6 +47,7 @@ $.datepicker.regional["zh-CN"] = {
 
 $.datepicker.setDefaults($.datepicker.regional["zh-CN"]);
 
+
 function GetQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 	var r = window.location.search.substr(1).match(reg);

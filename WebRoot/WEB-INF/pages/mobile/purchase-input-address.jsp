@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" style="text-align: center;">
-			<a href="#" id="purchase-input-address-btn-next" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width:200px;">选择甲师</a>
+			<a href="#" id="purchase-input-address-btn-next" class="ui-btn ui-btn-d ui-shadow ui-corner-all" style="width:200px;">选择时间</a>
 		</div>
 		<!-- /footer -->
 	</div>
