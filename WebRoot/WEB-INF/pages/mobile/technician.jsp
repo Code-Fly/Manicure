@@ -28,7 +28,7 @@
 					</p>
 					<p style="color: orange;" id="technician-stars"></p>
 					<p style="font-size: 0.8em;">
-						<span id="technician-avg">均价：¥130</span>&nbsp;&nbsp;<span id="technician-orderCount"></span>
+						<span id="technician-orderCount"></span>
 					</p>
 				</div>
 			</div>
