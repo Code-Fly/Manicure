@@ -200,4 +200,9 @@ public class TechnicianServiceImp extends BaseService implements TechnicianServi
 		return tecProducts;
 	}
 
+	@Override
+	public List<Technician> query3GoodTechs() {
+		return tecMapper.select3GoodTechs();
+	}
+
 }

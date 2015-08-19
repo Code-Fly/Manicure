@@ -21,6 +21,18 @@
     <result column="self_pic2" property="selfPic2" jdbcType="VARCHAR" />
     <result column="self_pic3" property="selfPic3" jdbcType="VARCHAR" />
   </resultMap>
+  
+   <resultMap id="3GoodTechResultMap" type="com.manicure.technician.entity.Technician" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="header_pic" property="headerPic" jdbcType="VARCHAR" />
+    <result column="job_title" property="jobTitle" jdbcType="VARCHAR" />
+     <result column="evaluation" property="evaluation" jdbcType="INTEGER"/>
+     <result column="stars" property="stars" jdbcType="DECIMAL"/>
+     <result column="profnal_score" property="profnalScore" jdbcType="DECIMAL"/>
+     <result column="move_score" property="moveScore" jdbcType="DECIMAL"/>
+     <result column="punctual_score" property="punctualScore" jdbcType="DECIMAL"/>
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated
@@ -162,6 +174,18 @@
     where tec_id = technician.id 
     and product_id = #{productId,jdbcType=VARCHAR}
     and protal_id = #{portalId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="select3GoodTechs" resultMap="3GoodTechResultMap">
+ select te.id,te.name,te.header_pic,te.job_title,sum(oc.evaluation) evaluation,
+avg(oc.stars) stars,avg(oc.profnal_score) profnal_score,
+avg(oc.move_score) move_score,avg(oc.punctual_score) punctual_score
+from order_comment oc ,technician te,order_extend oe 
+where oc.order_id = oe.order_id
+and oe.tec_id = te.id  
+group by te.id
+order by sum(oc.evaluation)  desc,avg(oc.stars)  desc,avg(oc.profnal_score)  desc ,avg(oc.move_score)  desc,avg(oc.punctual_score)  desc
+ limit 10
   </select>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

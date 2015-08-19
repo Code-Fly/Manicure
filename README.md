@@ -189,5 +189,6 @@ method:post
 ##### 查询收藏
 http://www.mydomain.com/api/favorite/query?buyerOpenid={buyerOpenid}
 
-
+##### 查询三好学员
+http://www.mydomain.com/api/technician/query3good
 

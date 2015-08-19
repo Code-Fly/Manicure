@@ -8,7 +8,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.manicure.keystone.entity.product.ProductInfo;
-import com.manicure.keystone.entity.product.ProductList;
 import com.manicure.technician.entity.Technician;
 
 /**
@@ -21,4 +20,5 @@ public interface TechnicianService {
 	Technician queryTechInfoById(int id);
 	List<String> queryTechOrderTime(int id);
 	List<ProductInfo> queryTechProducts(HttpServletRequest request,int id);
+	List<Technician> query3GoodTechs();
 }

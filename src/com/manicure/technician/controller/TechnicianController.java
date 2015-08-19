@@ -98,4 +98,18 @@ public class TechnicianController extends BaseController {
 		List<ProductInfo> productList = techService.queryTechProducts(request, id);
 		return JsonUtil.jsonArray2Sting(productList);
 	}
+	
+
+	/**
+	 * 查询三好学员
+	 * 好评分数最高的前十名技师
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/query3good", method = RequestMethod.GET)
+	public String get3GoodTechs(){
+		List<Technician> tecs = techService.query3GoodTechs();
+		return JsonUtil.jsonArray2Sting(tecs);
+	}
 }
