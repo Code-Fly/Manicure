@@ -34,7 +34,17 @@ public class FavoriteServiceImp extends BaseService implements FavoriteService {
 	private FavoriteMapper favoriteMapper;
 	@Override
 	public int insertSelective(Favorite record) {
-		return favoriteMapper.insertSelective(record);
+		FavoriteExample fe = new FavoriteExample();
+		fe.or().andBuyerOpenidEqualTo(record.getBuyerOpenid()).andProductIdEqualTo(record.getProductId());
+		// 同一个商品不能收藏两次
+		if (null == favoriteMapper.selectByExample(fe)){
+			return favoriteMapper.insertSelective(record);
+		} 
+		else
+		{
+			return favoriteMapper.updateByExampleSelective(record, fe);
+		}
+		
 	}
 	@Override
 	public List<ProductInfo> queryFavoriteProductByOpenId(
