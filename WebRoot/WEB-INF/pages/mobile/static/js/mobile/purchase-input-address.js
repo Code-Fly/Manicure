@@ -52,8 +52,6 @@ $(document).on(
 								$("#purchase-input-address-biz").text(rs.business);
 								$("#purchase-input-address-point-lng").val(rs.point.lng);
 								$("#purchase-input-address-point-lat").val(rs.point.lat);
-								// $("#test").text(JSON.stringify(rs));
-
 							});
 						}
 					}, "全国");
