@@ -28,7 +28,17 @@
 					</li> -->
 
 				</ul>
+				<!-- <ul data-role="listview" data-inset="true"  >
 
+					<li>
+						<h2>无商品</h2>
+						<p style="white-space: normal;">没有商品没有商品没有商品没有商品没有商品没有商品没有商品没有商品没有商品没有商品没有商品没有商品没有商品没有商品没有商品</p>
+						<p class="ui-li-aside"></p>
+						<p></p>
+						
+					</li>
+
+				</ul> -->
 			</div>
 
 		</div>
