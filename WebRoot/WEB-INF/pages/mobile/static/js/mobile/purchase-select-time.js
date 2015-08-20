@@ -53,11 +53,11 @@ $(document).on('pagecontainershow', function(e, ui) {
 		}
 
 		function verityTime(json, selectDate, selectTime) {
-
+			
 			var jList = json;
 			avail = 0;
 			for (var i = 0; i < jList.length; i++) {
-				if (jList[i] == (selectDate + " " + selectTime)) {
+				if (jList[i].replace(/-/g,"/") == (selectDate + " " + selectTime)) {
 					avail = 1;
 				}
 			}
