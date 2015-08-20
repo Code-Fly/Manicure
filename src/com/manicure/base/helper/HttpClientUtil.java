@@ -84,6 +84,28 @@ public class HttpClientUtil {
 		}
 	}
 
+	public static String doPostJson(String url, String jsonStr, String charset) {
+		try {
+			HttpPost httpPost = new HttpPost(url);
+			HttpClient client = new DefaultHttpClient();
+			StringEntity reqEntity = new StringEntity(jsonStr);
+			reqEntity.setContentType("application/json; charset=utf-8");
+			httpPost.setEntity(reqEntity);
+			HttpResponse resp = client.execute(httpPost);
+
+			HttpEntity entity = resp.getEntity();
+			String respContent = EntityUtils.toString(entity, charset).trim();
+			httpPost.abort();
+			client.getConnectionManager().shutdown();
+
+			return respContent;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	public static String doGet(String url, Map<String, String> params, String charset) {
 		try {
 			HttpGet httpGet = null;

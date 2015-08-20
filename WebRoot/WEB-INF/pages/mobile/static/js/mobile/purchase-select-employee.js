@@ -39,7 +39,13 @@ $(document).on('pagecontainershow', function(e, ui) {
 
 				SessionCache.set("customerTecId", $(this).attr("t-id"));
 				SessionCache.set("customerTecName", $(this).attr("t-name"));
-				window.location.href = _ctx + "/mobile/purchase-input-address";
+				var oType = SessionCache.get("customerServiceType");
+				if ("上门服务" == oType) {
+					window.location.href = _ctx + "/mobile/purchase-input-address";
+				}else{
+					window.location.href = _ctx + "/mobile/purchase-confirm";
+				}
+				
 				// $.mobile.changePage(_ctx + "/mobile/purchase-input-address");
 			});
 		}

@@ -14,6 +14,10 @@ $(document).on('pagecontainershow', function(e, ui) {
 		var oDate = SessionCache.get("customerDate");
 		var oTime = SessionCache.get("customerTime");
 		var oType = SessionCache.get("customerServiceType");
+		var oTypeInt = 0
+		if ("上门服务" == oType) {
+			oTypeInt = 1;
+		}
 		var pInfo = eval("(" + SessionCache.get("customerProduct") + ")");
 		var uId = null;
 		var uName = null;
@@ -26,12 +30,37 @@ $(document).on('pagecontainershow', function(e, ui) {
 		loadOrderConfirmation();
 
 		$("#purchase-select-confirm-btn-next").click(function() {
-			if (null == uId) {
+			if (null != uId) {
 				$("#purchase-confirm-pop-alert .pop-alert-header").text("提示");
 				$("#purchase-confirm-pop-alert .pop-alert-content").text("用户未登录");
 				$("#purchase-confirm-pop-alert").popup("open");
 			} else {
-				window.location.href = URL_PRODUCT_PAY_REDIRECT.replace("PRODUCT_ID", pInfo.product_id);
+				var rst = $.ajax({
+					type : "POST",
+					url : _ctx + "/api/order/orderextend/add",
+					data : JSON.stringify({
+						"buyerOpenid" : uId,
+						"productId" : pInfo.product_id,
+						"tecId" : tId,
+						"buyerNick" : uName,
+						"orderTime" : new Date(oDate + " " + oTime),
+						"orderType" : oTypeInt,
+						"address" : myAddr,
+						"tel" : myTel
+					}),
+					contentType : "application/json; charset=utf-8",
+					dataType : "json",
+					async : false,
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						$("#purchase-confirm-pop-alert .pop-alert-header").text("提示");
+						$("#purchase-confirm-pop-alert .pop-alert-content").text(XMLHttpRequest.status);
+						$("#purchase-confirm-pop-alert").popup("open");
+					},
+					success : function(data, textStatus, jqXHR) {
+						window.location.href = URL_PRODUCT_PAY_REDIRECT.replace("PRODUCT_ID", pInfo.product_id);
+					}
+				}).responseText;
+
 			}
 		});
 		// $("#purchase-select-confirm-btn-next").attr("href",
