@@ -72,7 +72,7 @@ public class OrdersController extends BaseController {
 	@RequestMapping(value = "/orderextend/add", method = RequestMethod.POST ,headers = "Content-Type=application/json")
 	public @ResponseBody String addOrderExtend(@RequestBody OrderExtendTmp orderExtend){
 		ordersService.insertExtendSelective(orderExtend);
-		return "success";
+		return "0";
 	}
 	
 	/**
@@ -82,7 +82,7 @@ public class OrdersController extends BaseController {
 	@RequestMapping(value = "/ordercomment/add", method = RequestMethod.POST,headers = "Content-Type=application/json")
 	public @ResponseBody String addOrderComment(@RequestBody OrderComment orderComment){
 		ordersService.insertCommentSelective(orderComment);
-		return "success";
+		return "0";
 	}
 	
 

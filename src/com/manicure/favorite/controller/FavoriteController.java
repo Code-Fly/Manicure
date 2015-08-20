@@ -34,7 +34,7 @@ public class FavoriteController extends BaseController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST ,headers = "Content-Type=application/json")
 	public @ResponseBody String addFavorite(@RequestBody Favorite record){
 		favoriteService.insertSelective(record);
-		return "success";
+		return "0";
 	}
 	
 	
