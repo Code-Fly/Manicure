@@ -26,11 +26,11 @@ $(document).on('pagecontainershow', function(e, ui) {
 			uId = _user.openid;
 			uName = _user.nickname;
 		}
-
+		
 		loadOrderConfirmation();
 
 		$("#purchase-select-confirm-btn-next").click(function() {
-			if (null != uId) {
+			if (null == uId) {
 				$("#purchase-confirm-pop-alert .pop-alert-header").text("提示");
 				$("#purchase-confirm-pop-alert .pop-alert-content").text("用户未登录");
 				$("#purchase-confirm-pop-alert").popup("open");
@@ -53,7 +53,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 					async : false,
 					error : function(XMLHttpRequest, textStatus, errorThrown) {
 						$("#purchase-confirm-pop-alert .pop-alert-header").text("提示");
-						$("#purchase-confirm-pop-alert .pop-alert-content").text(XMLHttpRequest.status);
+						$("#purchase-confirm-pop-alert .pop-alert-content").text("提交失败");
 						$("#purchase-confirm-pop-alert").popup("open");
 					},
 					success : function(data, textStatus, jqXHR) {

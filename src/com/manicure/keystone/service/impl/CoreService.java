@@ -143,7 +143,7 @@ public class CoreService extends BaseService implements ICoreService {
 			Map<String, String> requestMap = MessageService.parseXml(request);
 			// 消息类型
 			String msgType = requestMap.get("MsgType");
-			
+
 			logger.info(requestMap.toString());
 			// 事件推送
 			if (msgType.equals(MessageService.REQ_MESSAGE_TYPE_EVENT)) {
@@ -152,7 +152,7 @@ public class CoreService extends BaseService implements ICoreService {
 				// 订阅
 				if (eventType.equals(MessageService.EVENT_TYPE_SUBSCRIBE)) {
 					Event event = new SubscribeEvent();
-					respXml = event.execute(requestMap);
+					respXml = event.execute(request, requestMap);
 				}
 				// 取消订阅
 				else if (eventType.equals(MessageService.EVENT_TYPE_UNSUBSCRIBE)) {
@@ -160,28 +160,28 @@ public class CoreService extends BaseService implements ICoreService {
 					// 收到订单
 				} else if (eventType.equals(MessageService.EVENT_MERCHANT_ORDER)) {
 					Event event = new MerchantOrderEvent();
-					respXml = event.execute(requestMap);
+					respXml = event.execute(request, requestMap);
 					// 开始客服会话
 				} else if (eventType.equals(MessageService.EVENT_CUSTOMER_SERVICE_CREATE_SESSION)) {
 					Event event = new CustomerServiceCreateSessionEvent();
-					respXml = event.execute(requestMap);
+					respXml = event.execute(request, requestMap);
 					// 关闭客服会话
 				} else if (eventType.equals(MessageService.EVENT_CUSTOMER_SERVICE_CLOSE_SESSION)) {
 					Event event = new CustomerServiceCloseSessionEvent();
-					respXml = event.execute(requestMap);
+					respXml = event.execute(request, requestMap);
 
 				}
 
 				// 自定义菜单点击事件
 				else if (eventType.equals(MessageService.EVENT_TYPE_CLICK)) {
 					Event event = new ClickEvent();
-					respXml = event.execute(requestMap);
+					respXml = event.execute(request, requestMap);
 				}
 			}
 			// 当用户发消息时
 			else {
 				Event event = new CustomerServiceTransferEvent();
-				respXml = event.execute(requestMap);
+				respXml = event.execute(request, requestMap);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

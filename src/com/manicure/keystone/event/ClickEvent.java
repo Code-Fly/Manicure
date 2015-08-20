@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.manicure.keystone.entity.response.Article;
 import com.manicure.keystone.entity.response.NewsMessage;
 import com.manicure.keystone.entity.response.TextMessage;
@@ -26,7 +28,7 @@ public class ClickEvent extends Event {
 	 * @see com.manicure.keystone.event.Event#execute(java.util.Map)
 	 */
 	@Override
-	public String execute(Map<String, String> requestMap) {
+	public String execute(HttpServletRequest request, Map<String, String> requestMap) {
 		String respXml = null;
 		// 发送方帐号
 		String fromUserName = requestMap.get("FromUserName");

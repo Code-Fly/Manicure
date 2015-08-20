@@ -43,7 +43,7 @@ $(document).on('pagecontainershow', function(e, ui) {
 				if ("上门服务" == oType) {
 					window.location.href = _ctx + "/mobile/purchase-input-address";
 				}else{
-					window.location.href = _ctx + "/mobile/purchase-confirm";
+					window.location.href = _ctx + "/mobile/purchase-select-time";
 				}
 				
 				// $.mobile.changePage(_ctx + "/mobile/purchase-input-address");

@@ -4,15 +4,19 @@
 package com.manicure.keystone.event;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Service;
 
+import com.manicure.base.helper.HttpClientUtil;
 import com.manicure.base.helper.KeystoneUtil;
+import com.manicure.base.helper.UrlUtil;
 import com.manicure.keystone.entity.customer.message.Text;
 import com.manicure.keystone.entity.customer.message.TextMessage;
 import com.manicure.keystone.entity.product.Product;
@@ -31,16 +35,15 @@ public class MerchantOrderEvent extends Event {
 	 * @see com.manicure.keystone.event.Event#execute(java.util.Map)
 	 */
 	@Override
-	public String execute(Map<String, String> requestMap) {		
+	public String execute(HttpServletRequest request, Map<String, String> requestMap) {
 		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
 			logger.error(KeystoneUtil.getErrmsg());
 			return KeystoneUtil.getErrmsg();
 		}
-		
+
 		String respXml = null;
 
-		
 		String fromUserName = requestMap.get("FromUserName");
 		String toUserName = requestMap.get("ToUserName");
 		String orderId = requestMap.get("OrderId");
@@ -67,8 +70,20 @@ public class MerchantOrderEvent extends Event {
 		buffer.append("如果您有任何疑问，可以直接在下方输入与我们的在线客服联系。").append("\n");
 		t.setContent(buffer.toString());
 		message.setText(t);
-		
+
 		respXml = new CustomerService().sendTextMessage(at, message).toString();
+
+		String url = UrlUtil.getServerUrl(request, "/api/order/orderextend/add");
+		JSONObject params = new JSONObject();
+		params.put("buyerOpenid", fromUserName);
+		params.put("productId", productId);
+		params.put("orderId", orderId);
+		String resp = HttpClientUtil.doPostJson(url, params.toString(), "UTF-8");
+		if (null == resp) {
+			logger.error("fail to post");
+		} else {
+			logger.info(resp);
+		}
 
 		return respXml;
 	}

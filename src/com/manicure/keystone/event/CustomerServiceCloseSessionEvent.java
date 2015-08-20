@@ -6,6 +6,8 @@ package com.manicure.keystone.event;
 import java.util.Date;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.keystone.entity.customer.message.Text;
 import com.manicure.keystone.entity.customer.message.TextMessage;
@@ -25,7 +27,7 @@ public class CustomerServiceCloseSessionEvent extends Event {
 	 * @see com.manicure.keystone.event.Event#execute(java.util.Map)
 	 */
 	@Override
-	public String execute(Map<String, String> requestMap) {
+	public String execute(HttpServletRequest request, Map<String, String> requestMap) {
 		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
 			logger.error(KeystoneUtil.getErrmsg());
@@ -37,7 +39,7 @@ public class CustomerServiceCloseSessionEvent extends Event {
 		String fromUserName = requestMap.get("FromUserName");
 		// 开发者微信号
 		String toUserName = requestMap.get("ToUserName");
-		
+
 		String kfAccount = requestMap.get("KfAccount");
 
 		TransferCustomerService transferMessage = new TransferCustomerService();
@@ -55,11 +57,11 @@ public class CustomerServiceCloseSessionEvent extends Event {
 		message.setTouser(fromUserName);
 		Text t = new Text();
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(kfAccount +" 祝您购物愉快。").append("\n");
+		buffer.append(kfAccount + " 祝您购物愉快。").append("\n");
 		t.setContent(buffer.toString());
 		message.setText(t);
 		new CustomerService().sendTextMessage(at, message);
-		
+
 		return respXml;
 	}
 

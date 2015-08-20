@@ -6,6 +6,8 @@ package com.manicure.keystone.event;
 import java.util.Date;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.manicure.keystone.entity.response.TextMessage;
 import com.manicure.keystone.service.impl.MessageService;
 
@@ -21,7 +23,7 @@ public class SubscribeEvent extends Event {
 	 * @see com.manicure.keystone.event.Event#execute(java.util.Map)
 	 */
 	@Override
-	public String execute(Map<String, String> requestMap) {
+	public String execute(HttpServletRequest request, Map<String, String> requestMap) {
 		String respXml = null;
 		// 发送方帐号
 		String fromUserName = requestMap.get("FromUserName");

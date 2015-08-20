@@ -6,6 +6,8 @@ package com.manicure.keystone.event;
 import java.util.Date;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.manicure.base.helper.KeystoneUtil;
 import com.manicure.keystone.entity.customer.message.Text;
 import com.manicure.keystone.entity.customer.message.TextMessage;
@@ -24,7 +26,7 @@ public class CustomerServiceCreateSessionEvent extends Event {
 	 * @see com.manicure.keystone.event.Event#execute(java.util.Map)
 	 */
 	@Override
-	public String execute(Map<String, String> requestMap) {
+	public String execute(HttpServletRequest request, Map<String, String> requestMap) {
 		String at = KeystoneUtil.getAccessToken();
 		if (null == at) {
 			logger.error(KeystoneUtil.getErrmsg());
