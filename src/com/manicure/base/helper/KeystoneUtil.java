@@ -31,8 +31,6 @@ import com.manicure.keystone.service.impl.CoreService;
 public class KeystoneUtil {
 	private static final Logger logger = LoggerFactory.getLogger(KeystoneUtil.class);
 
-	private static JSONObject accessToken = null;
-
 	/**
 	 * @return the accessToken
 	 */
@@ -180,16 +178,22 @@ public class KeystoneUtil {
 			logger.error(at.toString());
 			return;
 		}
-		accessToken = at;
-		logger.info("access token: " + accessToken);
+		
+		logger.info("access token: " + at.getString("access_token"));
 	}
 
-	public static JSONObject getLocalAccessToken() {
-		if (null == accessToken) {
+	public static synchronized JSONObject getLocalAccessToken() {
+		String at = ConfigUtil.getProperty("token.properties", "token.api.accessToken");
+		String et = ConfigUtil.getProperty("token.properties", "token.api.expireTime");
+		if (null == at || null == et) {
 			return refreshLocalAccessToken();
 		} else {
-			return accessToken;
+			JSONObject rst = new JSONObject();
+			rst.put("access_token", at);
+			rst.put("expires_in", et);
+			return rst;
 		}
+
 	}
 
 	public static JSONObject getRemoteAccessToken() {
@@ -202,13 +206,18 @@ public class KeystoneUtil {
 		return JSONObject.fromObject(resp);
 	}
 
-	public static JSONObject refreshLocalAccessToken() {
+	public static synchronized JSONObject refreshLocalAccessToken() {
 		CoreService coreService = new CoreService();
 		JSONObject at = coreService.getAccessToken(Const.APP_ID, Const.APP_SECRET);
 		if (at.containsKey("errcode")) {
 			logger.error(at.toString());
+			return at;
 		}
-		accessToken = at;
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("token.api.accessToken", at.getString("access_token"));
+		map.put("token.api.expireTime", at.getString("expires_in"));
+		map.put("token.api.timestamp", Long.toString(new Date().getTime()));
+		ConfigUtil.setProperty("token.properties", map);
 		return at;
 	}
 

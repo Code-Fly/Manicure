@@ -17,19 +17,19 @@
 		<div role="main">
 
 			<div id="technician-grid-1" class="ui-grid-a ui-bar ui-bar-i" style="text-align: center;">
-				<div class="ui-block-a" style="text-align: center;padding: 0.2em;">
+				<div class="ui-block-a" style="text-align: center;padding: 0.2em;width: 30%;">
 
 					<img style="width: 100%;" id="technician-headerPic">
 
 				</div>
-				<div class="ui-block-b" style="text-align: left;padding: 0.2em;vertical-align: middle;">
+				<div class="ui-block-b" style="text-align: left;padding-left: 1em;">
 					<p>
 						<span id="technician-name"></span> <span style="color: blue;font-size: 0.6em;" id="technician-jobTitle"></span>
 					</p>
 					<p style="color: orange;" id="technician-stars"></p>
-					<p style="font-size: 0.8em;">
+					<!-- <p style="font-size: 0.8em;">
 						<span id="technician-orderCount"></span>
-					</p>
+					</p> -->
 				</div>
 			</div>
 			<div class="ui-grid-b ui-bar" style="font-size: 0.8em;text-align: center;">
