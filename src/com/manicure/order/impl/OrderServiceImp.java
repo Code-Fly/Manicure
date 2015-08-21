@@ -62,7 +62,10 @@ public class OrderServiceImp implements OrderServiceInterface {
 		if (null == oetmapper.selectByPrimaryKey(record)){
 			return oetmapper.insertSelective(record);
 		} else {
-			return oetmapper.updateByPrimaryKeySelective(record);
+			int num = oetmapper.updateByPrimaryKeySelective(record);
+			// 支付完成后删除该条临时记录（确保下次购买同样商品时 能插入到临时数据表）
+			oetmapper.deleteByPrimaryKey(record);
+			return num;
 		}
 	}
 
