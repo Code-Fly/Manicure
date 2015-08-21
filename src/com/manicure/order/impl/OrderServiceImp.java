@@ -62,9 +62,15 @@ public class OrderServiceImp implements OrderServiceInterface {
 		if (null == oetmapper.selectByPrimaryKey(record)){
 			return oetmapper.insertSelective(record);
 		} else {
+			/**
+			 *  order id 不为空证明已经支付完成
+			 *  order id 为空 证明该商品之前有一次未支付的，则此次购买该商品，覆盖之前之前未支付的记录
+			 */
 			int num = oetmapper.updateByPrimaryKeySelective(record);
-			// 支付完成后删除该条临时记录（确保下次购买同样商品时 能插入到临时数据表）
-			oetmapper.deleteByPrimaryKey(record);
+			if(null != record.getOrderId() && !record.getOrderId().trim().isEmpty()){
+				// 支付完成后删除该条临时记录（确保下次购买同样商品时 能插入到临时数据表）
+				oetmapper.deleteByPrimaryKey(record);
+			}
 			return num;
 		}
 	}
