@@ -11,7 +11,7 @@ $(document).on(
 				queryTechnician();
 
 				function queryProduct() {
-					$.mobile.loading("show");
+					
 					$.getJSON(_ctx + "/api/keystone/product/query/" + _pid, function(json) {
 						if (null == json) {
 							alert("null");
@@ -21,14 +21,13 @@ $(document).on(
 							alert("商品可能已下架");
 							return;
 						}
-
 						loadProduct(json.product_info);
-						$.mobile.loading("hide");
 					});
 
 				}
 
 				function queryTechnician() {
+					$.mobile.loading("show");
 					$.getJSON(_ctx + "/api/technician/query", {
 						productId : _pid
 					}, function(json) {
@@ -36,8 +35,8 @@ $(document).on(
 							alert("null");
 							return;
 						}
-
 						loadTechnician(json);
+						$.mobile.loading("hide");
 					});
 				}
 

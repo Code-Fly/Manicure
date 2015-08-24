@@ -382,10 +382,10 @@
   <select id="getCommentInfoByTecId" parameterType="java.lang.Integer" resultType="java.util.HashMap">
   select count(*) as comment_count, 
 		sum(oc.evaluation) as evaluation,
-		avg(oc.stars) as stars, 
-		avg(oc.profnal_score) as profnal_score,
-		avg(oc.move_score) as move_score,
-		avg(oc.punctual_score) as  punctual_score
+		round(avg(oc.stars),1) as stars, 
+		round(avg(oc.profnal_score),1) as profnal_score,
+		round(avg(oc.move_score),1) as move_score,
+		round(avg(oc.punctual_score),1) as  punctual_score
 		from order_comment oc, order_extend oe 
   where oc.order_id = oe.order_id 
 	    and oe.tec_id = #{tecId,jdbcType=INTEGER};

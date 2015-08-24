@@ -178,8 +178,8 @@
   
   <select id="select3GoodTechs" resultMap="3GoodTechResultMap">
  select te.id,te.name,te.header_pic,te.job_title,sum(oc.evaluation) evaluation,
-avg(oc.stars) stars,avg(oc.profnal_score) profnal_score,
-avg(oc.move_score) move_score,avg(oc.punctual_score) punctual_score
+round(avg(oc.stars),1) stars,round(avg(oc.profnal_score),1) profnal_score,
+round(avg(oc.move_score),1) move_score,round(avg(oc.punctual_score),1) punctual_score
 from order_comment oc ,technician te,order_extend oe 
 where oc.order_id = oe.order_id
 and oe.tec_id = te.id  
