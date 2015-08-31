@@ -37,6 +37,25 @@ INSERT INTO `business` (`id`, `name`, `lng`, `lat`, `province`, `city`, `distric
 /*!40000 ALTER TABLE `business` ENABLE KEYS */;
 
 
+-- 导出  表 test.favorite 结构
+CREATE TABLE IF NOT EXISTS `favorite` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `product_id` varchar(64) DEFAULT NULL COMMENT '服务id',
+  `buyer_openid` varchar(28) DEFAULT NULL COMMENT '用户id',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '收藏时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='收藏';
+
+-- 正在导出表  test.favorite 的数据：~4 rows (大约)
+/*!40000 ALTER TABLE `favorite` DISABLE KEYS */;
+INSERT INTO `favorite` (`id`, `product_id`, `buyer_openid`, `time`) VALUES
+	(2, 'pxgY4xCJRaYAnLCXqqa9zYJzAw5k', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', '2015-08-19 15:00:25'),
+	(3, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', '2015-08-19 15:25:34'),
+	(4, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xMJB-wNeWM1R_yHJwyI1yEQ', '2015-08-19 15:26:28'),
+	(5, 'pxgY4xCJRaYAnLCXqqa9zYJzAw5k', 'oxgY4xMJB-wNeWM1R_yHJwyI1yEQ', '2015-08-19 15:26:46');
+/*!40000 ALTER TABLE `favorite` ENABLE KEYS */;
+
+
 -- 导出  表 test.order_comment 结构
 CREATE TABLE IF NOT EXISTS `order_comment` (
   `order_id` varchar(48) NOT NULL DEFAULT '0' COMMENT '订单id',
@@ -53,11 +72,19 @@ CREATE TABLE IF NOT EXISTS `order_comment` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单评价表，一个订单一个评价';
 
--- 正在导出表  test.order_comment 的数据：~2 rows (大约)
+-- 正在导出表  test.order_comment 的数据：~10 rows (大约)
 /*!40000 ALTER TABLE `order_comment` DISABLE KEYS */;
 INSERT INTO `order_comment` (`order_id`, `evaluation`, `stars`, `profnal_score`, `move_score`, `punctual_score`, `description`, `time`, `pic1`, `pic2`, `pic3`) VALUES
+	('14139058477811055457', 1, 5.0, 5.0, 5.0, 5.0, '不咋地', '2015-08-16 10:30:05', NULL, NULL, NULL),
+	('14139058477811107681', 1, 5.0, 5.0, 5.0, 5.0, '还行 ', '2015-08-17 10:30:05', NULL, NULL, NULL),
 	('14139058477811107682', 1, 5.0, 5.0, 5.0, 5.0, '我觉得太牛逼了啊', '2015-08-18 10:30:05', 'http://img3.imgtn.bdimg.com/it/u=3213189824,882695731&fm=21&gp=0.jpg', 'http://img3.imgtn.bdimg.com/it/u=3213189824,882695731&fm=21&gp=0.jpg', 'http://www.wed114.cn/jiehun/uploads/allimg/150117/44_150117112200_1.jpg'),
-	('14139058477811174845', 1, 4.0, 4.5, 4.0, 5.0, '亲亲爱爱 美死了 下次还找他', '2015-08-04 15:18:46', 'http://img3.imgtn.bdimg.com/it/u=3213189824,882695731&fm=21&gp=0.jpg', 'http://www.wed114.cn/jiehun/uploads/allimg/150117/44_150117112200_1.jpg', 'http://www.wed114.cn/jiehun/uploads/allimg/150117/44_150117112200_1.jpg');
+	('14139058477811174845', 1, 4.0, 4.0, 4.0, 5.0, '亲亲爱爱 美死了 下次还找他', '2015-08-04 15:18:46', '', '', ''),
+	('14139058477811179908', 1, 5.0, 5.0, 5.0, 5.0, '嗯 。。。', '2015-08-04 15:18:46', NULL, NULL, NULL),
+	('14139058477811388960', 1, 5.0, 5.0, 5.0, 2.0, '11111', '2015-08-01 15:18:46', NULL, NULL, NULL),
+	('14139058477811388973', 0, 5.0, 4.0, 4.0, 4.0, 'こんにちは', '2015-08-02 15:18:46', 'http://img3.imgtn.bdimg.com/it/u=3213189824,882695731&fm=21&gp=0.jpg', 'http://img3.imgtn.bdimg.com/it/u=3213189824,882695731&fm=21&gp=0.jpg', NULL),
+	('14139058477811391868', 0, 1.0, 3.0, 3.0, 3.0, '哈哈哈', '2015-08-04 15:18:46', NULL, NULL, NULL),
+	('14139058477811396388', 0, 5.0, 5.0, 5.0, 5.0, 'ありがど', '2015-08-03 15:18:46', 'http://www.wed114.cn/jiehun/uploads/allimg/150117/44_150117112200_1.jpg', NULL, NULL),
+	('14139058477811397061', 1, 5.0, 5.0, 5.0, 3.0, '啦啦啦', '2015-08-05 15:18:46', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `order_comment` ENABLE KEYS */;
 
 
@@ -76,12 +103,24 @@ CREATE TABLE IF NOT EXISTS `order_extend` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单扩展表，主表信息微信提供14139058477811179908';
 
--- 正在导出表  test.order_extend 的数据：~3 rows (大约)
+-- 正在导出表  test.order_extend 的数据：~15 rows (大约)
 /*!40000 ALTER TABLE `order_extend` DISABLE KEYS */;
 INSERT INTO `order_extend` (`order_id`, `tec_id`, `product_id`, `buyer_openid`, `buyer_nick`, `name`, `order_time`, `order_type`, `address`, `tel`) VALUES
-	('14139058477811107682', 1, 'pxgY4xCJRaYAnLCXqqa9zYJzAw5k', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'zhangqw', '张权威', '2015-08-18 10:00:00', 1, ' 南京花花世界', NULL),
-	('14139058477811174845', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xMJB-wNeWM1R_yHJwyI1yEQ', 'PaladinX ', '谢开源', '2015-08-06 20:00:00', 1, '南京阎王殿', '13000000'),
-	('14139058477811179908', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xMJB-wNeWM1R_yHJwyI1yEQ', 'PaladinX ', '谢开源', '2015-08-01 10:00:00', 1, '南京雨花区吊死公司', '150000000');
+	('14139058477811388960', 1, 'pxgY4xCWoiksX47EHr_7XcFhPci8', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 16:00:00', 0, '南京市雨花台区雨花南路32号1幢', '25545569'),
+	('14139058477811388973', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-22 17:00:00', 0, '江苏省南京市雨花台区雨花南路', '15950592210'),
+	('14139058477811389037', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-22 16:00:00', 0, '江苏省南京市雨花台区雨花南路', '15950592210'),
+	('14139058477811390086', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 15:00:00', 0, '江苏省南京市雨花台区雨花南路', '15950592210'),
+	('14139058477811391868', 1, 'pxgY4xCWoiksX47EHr_7XcFhPci8', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 16:00:00', 0, '南京市雨花台区雨花南路32号1幢', '25545569'),
+	('14139058477811392557', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 17:00:00', 1, '南京市雨花台区凤翔新城', '15950592210'),
+	('14139058477811392611', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 17:00:00', 1, '南京市雨花台区凤翔新城', '15950592210'),
+	('14139058477811396247', 2, 'pxgY4xCWoiksX47EHr_7XcFhPci8', 'oxgY4xMJB-wNeWM1R_yHJwyI1yEQ', 'zhangqw', NULL, '2015-08-23 17:00:00', 1, '南京市建邺区南京市建邺区政府', '15951903466'),
+	('14139058477811396334', 2, 'pxgY4xCWoiksX47EHr_7XcFhPci8', 'oxgY4xMJB-wNeWM1R_yHJwyI1yEQ', 'zhangqw', NULL, '2015-08-23 18:00:00', 1, '南京市雨花台区龙淮路-道路', '15951903466'),
+	('14139058477811396370', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 15:00:00', 0, NULL, NULL),
+	('14139058477811396388', 2, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 23:00:00', 0, NULL, NULL),
+	('14139058477811397025', 2, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 23:00:00', 1, '江苏省南京市雨花台区雨花南路58-2号', '15950592210'),
+	('14139058477811397038', 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-21 23:00:00', 0, NULL, NULL),
+	('14139058477811397061', 2, 'pxgY4xCWoiksX47EHr_7XcFhPci8', 'oxgY4xMJB-wNeWM1R_yHJwyI1yEQ', 'zhangqw', NULL, '2015-08-22 23:00:00', 1, '江苏省南京市雨花台区龙淮路', '15951903466'),
+	('14139058477811397370', 2, 'pxgY4xLG0WxSLPw6rK2bo1zbI4gk', 'oxgY4xDnXebndNr-B6r5fRDXrHFo', 'PaladinX', NULL, '2015-08-22 15:00:00', 0, NULL, NULL);
 /*!40000 ALTER TABLE `order_extend` ENABLE KEYS */;
 
 
@@ -107,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `order_extend_tmp` (
 
 -- 导出  表 test.technician 结构
 CREATE TABLE IF NOT EXISTS `technician` (
-  `id` int(12) NOT NULL  AUTO_INCREMENT,
+  `id` int(12) NOT NULL AUTO_INCREMENT,
   `name` varchar(16) DEFAULT NULL,
   `service_type` int(2) DEFAULT NULL COMMENT '服务类型',
   `protal_id` varchar(24) DEFAULT NULL COMMENT '技师所在门店id',
@@ -121,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `technician` (
   `self_pic2` varchar(128) DEFAULT NULL,
   `self_pic3` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='技师表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='技师表';
 
 -- 正在导出表  test.technician 的数据：~3 rows (大约)
 /*!40000 ALTER TABLE `technician` DISABLE KEYS */;
@@ -156,13 +195,28 @@ CREATE TABLE IF NOT EXISTS `tec_service` (
   `tec_id` int(9) NOT NULL COMMENT '技师id',
   `product_id` varchar(64) NOT NULL COMMENT '服务id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='技师与服务关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='技师与服务关联表';
 
--- 正在导出表  test.tec_service 的数据：~2 rows (大约)
+-- 正在导出表  test.tec_service 的数据：~17 rows (大约)
 /*!40000 ALTER TABLE `tec_service` DISABLE KEYS */;
 INSERT INTO `tec_service` (`id`, `tec_id`, `product_id`) VALUES
 	(1, 1, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68'),
-	(2, 1, 'pxgY4xCJRaYAnLCXqqa9zYJzAw5k');
+	(2, 1, 'pxgY4xCJRaYAnLCXqqa9zYJzAw5k'),
+	(3, 1, 'pxgY4xLG0WxSLPw6rK2bo1zbI4gk'),
+	(4, 1, 'pxgY4xDUmHRfbE90Z9gqNO4wkwQU'),
+	(5, 1, 'pxgY4xCWoiksX47EHr_7XcFhPci8'),
+	(6, 1, 'pxgY4xC4jNrz9_G_MAf6nSOFVhUs'),
+	(7, 1, 'pxgY4xO7NfXn27Xj_kEcDD9u0eMs'),
+	(8, 1, 'pxgY4xMFRlgnMJuxWiRs56oMWAAY'),
+	(9, 1, 'pxgY4xE65f8MG-OS9XL8PTihkJ4E'),
+	(10, 1, 'pxgY4xHojg30SJlBXgQnxwi-6AAo'),
+	(11, 1, 'pxgY4xIBx9bu7j1r6xw1qRgiNnzw'),
+	(12, 2, 'pxgY4xLG0WxSLPw6rK2bo1zbI4gk'),
+	(13, 2, 'pxgY4xHkOZMnQEmUSE8d3H1Otn68'),
+	(14, 2, 'pxgY4xCJRaYAnLCXqqa9zYJzAw5k'),
+	(15, 2, 'pxgY4xDUmHRfbE90Z9gqNO4wkwQU'),
+	(16, 2, 'pxgY4xGHkCUTkdvP3lRppvGCBjXs'),
+	(17, 2, 'pxgY4xDy7XiXwuTW-tv85Zr-eyxk');
 /*!40000 ALTER TABLE `tec_service` ENABLE KEYS */;
 
 
@@ -182,12 +236,3 @@ SET SQL_MODE=@OLDTMP_SQL_MODE;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-
-
-CREATE TABLE `favorite` (
-	`id` INT(12) NOT NULL AUTO_INCREMENT,
-	`product_id` VARCHAR(64) NULL DEFAULT NULL COMMENT '服务id',
-	`buyer_openid` VARCHAR(28) NULL DEFAULT NULL COMMENT '用户id',
-	`time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '收藏时间',
-	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='我的收藏表';
